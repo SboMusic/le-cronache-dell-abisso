@@ -18,3 +18,7 @@ I dati personali sono in %LOCALAPPDATA%/Frontiere e non fanno parte del reposito
 Cartelle locali gioco, distribuzione, backup, archivio e temporanei sono escluse da Git.
 
 Il nome ufficiale è Le Cronache dell’Abisso. L’avvio unico è Avvia Le Cronache dell Abisso.cmd; l’eseguibile è ChroniclesOfTheAbyss.exe. Il percorso dati %LOCALAPPDATA%/Frontiere viene mantenuto per conservare i salvataggi esistenti. I nomi storici nei sorgenti sono dettagli interni.
+
+## Sviluppo 2.0 separato
+
+Questa copia è di preproduzione. Consulta [documenti e registro](documentazione/v2/README.md). Usa Avvia Anteprima 2.0.cmd soltanto dopo la compilazione: i dati sono separati dalla 1.0. Non sono ancora presenti le nuove meccaniche.

@@ -3,6 +3,7 @@
 .github/pull_request_template.md
 .github/workflows/windows.yml
 .gitignore
+Avvia Anteprima 2.0.cmd
 Avvia Le Cronache dell Abisso.cmd
 CHANGELOG.md
 CONTRIBUTING.md
@@ -23,6 +24,14 @@ documentazione/schermate/menu.png
 documentazione/schermate/mission-10.png
 documentazione/schermate/mission-4.png
 documentazione/STRUTTURE.md
+documentazione/v2/01-STATO-1.0.md
+documentazione/v2/02-DESIGN-2.0.md
+documentazione/v2/03-ANALISI-CODICE.md
+documentazione/v2/04-PIANO-E-VERSIONI.md
+documentazione/v2/05-LORE-2.0.md
+documentazione/v2/06-REGISTRO.md
+documentazione/v2/README.md
+documentazione/v2/VERIFICA-PREPRODUZIONE.json
 grafica/campagna-v1/prompt-pietra.md
 grafica/demoni-v1/prompt-artwork.md
 grafica/forest-v1/PROMPTS.md

@@ -1,5 +1,8 @@
 # Le Cronache dell’Abisso — Chronicles of the Abyss
 
+> **2.0 development branch — design/preproduction only.** No new gameplay is implemented yet. The stable 1.0 remains available at its original release. See the [2.0 design, audit and development log](documentazione/v2/README.md).
+> **Ramo 2.0 — sola progettazione.** Documenti, analisi e piano di sviluppo; nessun nuovo contenuto giocabile.
+
 A single-player fantasy real-time strategy game for Windows, inspired by **Warcraft II**, written in C++17 with SFML.
 
 **1.0.0 is the initial, base playable release.** Development will continue with future versions aimed at improving gameplay, balance, enemy behavior, animations and the overall experience. No release dates are announced.

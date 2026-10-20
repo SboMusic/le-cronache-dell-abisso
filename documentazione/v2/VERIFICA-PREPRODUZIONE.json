@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-20",
+  "baseline": "b68c51dfa3c5568195b798791c74d8f4358ed55b",
+  "source_and_assets_unchanged": true,
+  "local_document_links_valid": true,
+  "new_gameplay_implemented": false,
+  "model_suites_passed": 10,
+  "numbered_checks": 801,
+  "final_battles": "both factions; paid economy",
+  "v1_save_files_accessed": false,
+  "new_executable_or_installer_created": false
+}

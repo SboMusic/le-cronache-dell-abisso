@@ -1,5 +1,6 @@
 param([switch]$SenzaInstaller)
 $ErrorActionPreference='Stop'
+throw 'Ramo 2.0 in progettazione: pacchetti disabilitati finche versione, canale e dati non saranno aggiornati. Usare la release 1.0 esistente.'
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 $root=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $version='1.0.0'
