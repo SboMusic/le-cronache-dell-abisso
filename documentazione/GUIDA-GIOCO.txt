@@ -9,7 +9,7 @@ English players: see GUIDE-ENGLISH.txt for full controls and campaign instructio
 LE CRONACHE DELL'ABISSO - VERSIONE 1.0.0
 
 AVVIO
-Apri Avvia Le Cronache dell Abisso.cmd, oppure Frontiere.exe nella versione installata/portatile.
+Apri Avvia Le Cronache dell Abisso.cmd, oppure ChroniclesOfTheAbyss.exe nella versione installata/portatile.
 Inizia nuova campagna: scegli Umani oppure Stirpe oscura. Entrambe sono giocabili sulle undici mappe esistenti, con incantatori, eserciti e presentazioni adattati. La campagna oscura non e ancora una storia autonoma con mappe esclusive. Ogni avvio crea una nuova campagna separata, senza cancellare le precedenti.
 Riprendi campagna: scegli una delle partite salvate, riconoscibile da stirpe, missione e data. Il salvataggio della versione precedente rimane disponibile. Opzioni: lingua e schermo intero/finestra. Prologo: partita guidata con scelta della stirpe. Esci: chiude il gioco.
 

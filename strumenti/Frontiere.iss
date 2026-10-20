@@ -4,14 +4,14 @@ AppName=Le Cronache dell Abisso
 AppVersion=1.0.0
 AppVerName=Le Cronache dell Abisso - 1.0.0
 VersionInfoVersion=1.0.0.0
-DefaultDirName={localappdata}\Programs\Frontiere
+DefaultDirName={localappdata}\Programs\ChroniclesOfTheAbyss
 DefaultGroupName=Le Cronache dell Abisso
 DisableProgramGroupPage=yes
 PrivilegesRequired=lowest
 MinVersion=10.0
 WizardStyle=modern
 SetupIconFile=..\progetto\frontiere.ico
-UninstallDisplayIcon={app}\Frontiere.exe
+UninstallDisplayIcon={app}\ChroniclesOfTheAbyss.exe
 UninstallFilesDir={app}\disinstallazione
 OutputDir=..\distribuzione
 OutputBaseFilename=Chronicles-of-the-Abyss-1.0.0-Windows-Setup
@@ -29,11 +29,11 @@ Name: "desktopicon"; Description: "{cm:DesktopShortcut}"; GroupDescription: "{cm
 [Files]
 Source: "..\gioco\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: "*.pdb,*.lib,frontiere-preview.png"
 [Icons]
-Name: "{group}\Le Cronache dell Abisso"; Filename: "{app}\Frontiere.exe"; WorkingDir: "{app}"
+Name: "{group}\Le Cronache dell Abisso"; Filename: "{app}\ChroniclesOfTheAbyss.exe"; WorkingDir: "{app}"
 Name: "{group}\Uninstall Le Cronache dell Abisso"; Filename: "{uninstallexe}"
-Name: "{autodesktop}\Le Cronache dell Abisso"; Filename: "{app}\Frontiere.exe"; WorkingDir: "{app}"; Tasks: desktopicon
+Name: "{autodesktop}\Le Cronache dell Abisso"; Filename: "{app}\ChroniclesOfTheAbyss.exe"; WorkingDir: "{app}"; Tasks: desktopicon
 [Run]
-Filename: "{app}\Frontiere.exe"; Description: "Play Le Cronache dell Abisso"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\ChroniclesOfTheAbyss.exe"; Description: "Play Le Cronache dell Abisso"; Flags: nowait postinstall skipifsilent
 
 
 [CustomMessages]

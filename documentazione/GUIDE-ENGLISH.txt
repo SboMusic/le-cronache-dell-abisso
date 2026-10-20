@@ -1,7 +1,7 @@
 CHRONICLES OF THE ABYSS - VERSION 1.0.0
 
 START AND LANGUAGE
-Run Frontiere.exe in the portable/installed game, or the launcher in the project folder.
+Run ChroniclesOfTheAbyss.exe in the portable/installed game, or the launcher in the project folder.
 Click Italiano / English at the top right of the main menu or pause menu.
 The language changes immediately and is remembered at the next launch.
 The internal executable and existing save folder keep their old names for compatibility.

@@ -29,7 +29,7 @@ foreach($mode in @('DISPLAY','CONTROL','ROSTER','GRAPHICS','PACKAGE','FOREST','P
  foreach($flag in @('CHEAT_TEST','PRESENTATION_TEST','DISPLAY_TEST','CONTROL_TEST','ROSTER_TEST','GRAPHICS_TEST','PACKAGE_TEST','FOREST_TEST','PROGRESS_TEST','CAMPAIGN_TEST','MAP_PREVIEW','DARK','DEMON_PREVIEW','WORKER_PREVIEW','ARSENAL')){Remove-Item ('Env:FRONTIERE_'+$flag) -ErrorAction SilentlyContinue}
  Set-Item ('Env:FRONTIERE_'+$mode+'_TEST') '1'
  $env:FRONTIERE_DATA_DIR=Join-Path $root ('temporanei/dati-test-'+$mode.ToLower()+'-'+[guid]::NewGuid().ToString('N'))
- $process=Start-Process (Join-Path $game 'Frontiere.exe') -WorkingDirectory $game -WindowStyle Hidden -RedirectStandardOutput (Join-Path $logs ($mode+'-autonomo.log')) -RedirectStandardError (Join-Path $logs ($mode+'-errori-autonomo.log')) -PassThru
+ $process=Start-Process (Join-Path $game 'ChroniclesOfTheAbyss.exe') -WorkingDirectory $game -WindowStyle Hidden -RedirectStandardOutput (Join-Path $logs ($mode+'-autonomo.log')) -RedirectStandardError (Join-Path $logs ($mode+'-errori-autonomo.log')) -PassThru
  if(-not $process.WaitForExit(25000)){Stop-Process -Id $process.Id;throw "Timeout $mode"}
  Remove-Item ('Env:FRONTIERE_'+$mode+'_TEST')
  if($process.ExitCode -ne 0){throw "Verifica $mode fallita. Consultare i log."}

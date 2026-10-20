@@ -13,7 +13,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File strumenti/Compila.ps1
 ```
 
 The script locates Visual Studio using vswhere, builds Release/Win32 and assembles gioco/.
-Run gioco/Frontiere.exe or Avvia Le Cronache dell Abisso.cmd. You can also open
+Run gioco/ChroniclesOfTheAbyss.exe or Avvia Le Cronache dell Abisso.cmd. You can also open
 progetto/Frontiere.vcxproj and choose Release / Win32; the script is needed to assemble runtime assets.
 SFML 2.5.1 headers, x86 import libraries, DLLs, source archive and notices are already included.
 
@@ -59,7 +59,7 @@ Generated runtime, release artifacts, local backups, old prototypes and test pro
 
 ## Compatibility
 
-The internal executable is Frontiere.exe, the installer AppId is stable and saves remain under
+The internal executable is ChroniclesOfTheAbyss.exe, the installer AppId is stable and saves remain under
 %LOCALAPPDATA%/Frontiere to support updates from earlier development versions.
 New campaigns use campagne/<id> folders. Global language and display settings stay at the root.
 The world save reader supports formats 1, 2 and 3; the current writer uses format 3.

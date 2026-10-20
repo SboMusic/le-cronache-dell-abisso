@@ -3,7 +3,6 @@
 .github/pull_request_template.md
 .github/workflows/windows.yml
 .gitignore
-Avvia Frontiere.cmd
 Avvia Le Cronache dell Abisso.cmd
 CHANGELOG.md
 CONTRIBUTING.md
@@ -21,6 +20,8 @@ documentazione/schermate/dark-campaign.png
 documentazione/schermate/factions.png
 documentazione/schermate/gameplay.png
 documentazione/schermate/menu.png
+documentazione/schermate/mission-10.png
+documentazione/schermate/mission-4.png
 documentazione/STRUTTURE.md
 grafica/campagna-v1/prompt-pietra.md
 grafica/demoni-v1/prompt-artwork.md

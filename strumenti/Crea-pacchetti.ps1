@@ -5,7 +5,7 @@ $root=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $version='1.0.0'
 $dist=Join-Path $root 'distribuzione'
 $game=Join-Path $root 'gioco'
-if(-not(Test-Path (Join-Path $game 'Frontiere.exe'))){throw 'Compilare prima il gioco con strumenti/Compila.ps1.'}
+if(-not(Test-Path (Join-Path $game 'ChroniclesOfTheAbyss.exe'))){throw 'Compilare prima il gioco con strumenti/Compila.ps1.'}
 $stage=Join-Path $root ('temporanei/pacchetti-'+[guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory $stage,$dist,(Join-Path $root 'backup') -Force | Out-Null
 function Assert-Local([string]$path){$full=[IO.Path]::GetFullPath($path);if(-not $full.StartsWith($root+[IO.Path]::DirectorySeparatorChar,[StringComparison]::OrdinalIgnoreCase)){throw "Percorso esterno: $path"};return $full}
@@ -31,7 +31,7 @@ Copy-Item $sourceZip (Join-Path $game 'sorgenti') -Force
 if(Test-Path (Join-Path $game 'frontiere-preview.png')){Move-Item -LiteralPath (Assert-Local (Join-Path $game 'frontiere-preview.png')) -Destination (Join-Path $stage 'anteprima-diagnostica.png')}
 $manifest=foreach($file in Get-ChildItem $game -Recurse -File | Where-Object {$_.Name -ne 'MANIFEST-SHA256.txt'}){(Get-FileHash $file.FullName -Algorithm SHA256).Hash.ToLower()+'  '+$file.FullName.Substring($game.Length+1).Replace('\','/')}
 Set-Content (Join-Path $game 'MANIFEST-SHA256.txt') $manifest -Encoding ascii
-$portable=Join-Path $stage 'portatile/Frontiere'
+$portable=Join-Path $stage 'portatile/ChroniclesOfTheAbyss'
 Copy-Tree $game $portable
 Zip-Folder (Split-Path $portable -Parent) (Join-Path $dist "Chronicles-of-the-Abyss-$version-Windows-Portable.zip")
 if(-not $SenzaInstaller){
@@ -41,21 +41,20 @@ if(-not $SenzaInstaller){
  & $iscc /Qp (Join-Path $PSScriptRoot 'Frontiere.iss')
  if($LASTEXITCODE -ne 0){throw 'Creazione installer fallita.'}
 }
-$backupStage=Join-Path $stage 'backup/Frontiere'
+$backupStage=Join-Path $stage 'backup/ChroniclesOfTheAbyss'
 Copy-Tree $game (Join-Path $backupStage 'gioco')
-Copy-Item (Join-Path $root 'Avvia Frontiere.cmd') $backupStage
 Copy-Item (Join-Path $root 'Avvia Le Cronache dell Abisso.cmd') $backupStage
 Copy-Item (Join-Path $root 'LEGGIMI.md') $backupStage
 $restore=@"
 RIPRISTINO LE CRONACHE DELL ABISSO $version
-1. Estrarre questa cartella Frontiere e aprire Avvia Le Cronache dell Abisso.cmd.
-2. Per ripristinare il progetto, estrarre gioco/sorgenti/Chronicles-of-the-Abyss-$version-Source.zip nella stessa cartella Frontiere.
+1. Estrarre questa cartella ChroniclesOfTheAbyss e aprire Avvia Le Cronache dell Abisso.cmd.
+2. Per ripristinare il progetto, estrarre gioco/sorgenti/Chronicles-of-the-Abyss-$version-Source.zip nella stessa cartella ChroniclesOfTheAbyss.
 3. Sono inclusi sorgenti, asset, librerie, licenze, documentazione e script di compilazione/installazione.
 Questo backup riguarda il gioco corrente. Repository precedente, prototipo Godot e versioni storiche restano nell'archivio locale del progetto e non sono necessari per eseguirlo o ricompilarlo.
 "@
 Set-Content (Join-Path $backupStage 'RIPRISTINO.txt') $restore -Encoding utf8
 if(Test-Path (Join-Path $dist "Chronicles-of-the-Abyss-$version-Windows-Setup.exe")){New-Item -ItemType Directory (Join-Path $backupStage 'installer') -Force | Out-Null;Copy-Item (Join-Path $dist "Chronicles-of-the-Abyss-$version-Windows-Setup.exe") (Join-Path $backupStage 'installer')}
-$backup=Join-Path $root ('backup/Frontiere-'+$version+'-backup-'+(Get-Date -Format 'yyyyMMdd-HHmmss')+'.zip')
+$backup=Join-Path $root ('backup/ChroniclesOfTheAbyss-'+$version+'-backup-'+(Get-Date -Format 'yyyyMMdd-HHmmss')+'.zip')
 Zip-Folder (Split-Path $backupStage -Parent) $backup
 $hashes=foreach($file in Get-ChildItem $dist -File | Where-Object {$_.Extension -in @('.zip','.exe')}){(Get-FileHash $file.FullName -Algorithm SHA256).Hash.ToLower()+'  '+$file.Name}
 Set-Content (Join-Path $dist 'SHA256SUMS.txt') $hashes -Encoding ascii

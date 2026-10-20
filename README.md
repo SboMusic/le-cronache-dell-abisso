@@ -1,6 +1,8 @@
 # Le Cronache dell’Abisso — Chronicles of the Abyss
 
-A single-player fantasy real-time strategy game for Windows, written in C++17 with SFML.
+A single-player fantasy real-time strategy game for Windows, inspired by **Warcraft II**, written in C++17 with SFML.
+
+**1.0.0 is the initial, base playable release.** Development will continue with future versions aimed at improving gameplay, balance, enemy behavior, animations and the overall experience. No release dates are announced.
 **Version 1.0.0 · Italiano / English · Human and Dark Kin factions · Offline play**
 
 ![Main menu](documentazione/schermate/menu.png)
@@ -36,7 +38,17 @@ its eleven maps and main objectives, with adapted introductions, armies, opposin
 requirements. A separate Dark Kin story with exclusive maps is not included in 1.0.0.
 The release is single-player; it does not include multiplayer, a map editor, music or voice acting.
 
-![Gameplay](documentazione/schermate/gameplay.png)
+## Gameplay gallery / Galleria di gioco
+
+Screenshots captured directly from the game. The coastal and final maps are shown in preview mode with exploration revealed.
+Schermate reali del gioco; le mappe costiera e finale sono mostrate in anteprima con esplorazione rivelata.
+
+| First settlement / Primo insediamento | Coast / Costa |
+| --- | --- |
+| ![Settlement gameplay](documentazione/schermate/gameplay.png) | ![Coastal mission preview](documentazione/schermate/mission-4.png) |
+
+![Final battlefield and the Worldstone / Campo finale e Pietra del Mondo](documentazione/schermate/mission-10.png)
+
 
 ## Quick start
 
@@ -60,6 +72,8 @@ See the [English player guide](documentazione/GUIDE-ENGLISH.txt) and [guida ital
 Saves and settings live in `%LOCALAPPDATA%/Frontiere`; each new campaign has its own `campagne/<id>` folder.
 Updating or uninstalling the game does not remove player saves. Back up that folder to preserve your campaigns.
 
+The published 1.0.0 downloads retain their original internal file names. Current source builds use `ChroniclesOfTheAbyss.exe` and the single launcher `Avvia Le Cronache dell Abisso.cmd`. Existing saves remain in `%LOCALAPPDATA%/Frontiere` for compatibility.
+
 ## Build and contribute
 
 Install Visual Studio 2022 with Desktop development with C++, **MSVC v142 x86/x64** and a Windows SDK.
@@ -70,7 +84,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File strumenti/Compila.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File strumenti/Verifica.ps1
 ```
 
-The first command creates `gioco/Frontiere.exe` with its runtime assets. The second runs the model
+The first command creates `gioco/ChroniclesOfTheAbyss.exe` with its runtime assets. The second runs the model
 and native interface tests. Model-only tests can run with `strumenti/Verifica.ps1 -SoloSimulazione`.
 SFML headers, import libraries, runtime DLLs and official SFML source are included.
 Visual Studio and Inno Setup themselves are not bundled.
@@ -80,6 +94,8 @@ See [developer setup](documentazione/DEVELOPMENT.md), [architecture](documentazi
 GitHub Actions builds the Windows application and runs simulation tests on changes.
 
 ## Italiano
+
+Il gioco è **ispirato a Warcraft II**. La **1.0.0 è una versione base giocabile**, il punto di partenza del progetto: sono previsti aggiornamenti futuri per migliorare gameplay, bilanciamento, comportamento dei nemici, animazioni ed esperienza generale. Non sono ancora annunciate date di uscita.
 
 La versione **1.0.0** include il gioco Windows, dieci missioni più la battaglia finale, due stirpi,
 interfaccia italiana/inglese e più campagne salvate separatamente.

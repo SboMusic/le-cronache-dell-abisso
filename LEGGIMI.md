@@ -16,3 +16,5 @@ La variante oscura riusa le undici mappe e gli obiettivi principali della campag
 I dati personali sono in %LOCALAPPDATA%/Frontiere e non fanno parte del repository o dei pacchetti pubblici.
 
 Cartelle locali gioco, distribuzione, backup, archivio e temporanei sono escluse da Git.
+
+Il nome ufficiale è Le Cronache dell’Abisso. L’avvio unico è Avvia Le Cronache dell Abisso.cmd; l’eseguibile è ChroniclesOfTheAbyss.exe. Il percorso dati %LOCALAPPDATA%/Frontiere viene mantenuto per conservare i salvataggi esistenti. I nomi storici nei sorgenti sono dettagli interni.

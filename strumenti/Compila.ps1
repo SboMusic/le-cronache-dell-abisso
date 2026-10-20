@@ -11,7 +11,7 @@ if($LASTEXITCODE -ne 0){throw 'Compilazione Frontiere fallita.'}
 if($SoloCompila){exit 0}
 $game=Join-Path $root 'gioco'
 New-Item -ItemType Directory $game -Force | Out-Null
-Copy-Item (Join-Path $project 'build/Release/Frontiere.exe') $game -Force
+Copy-Item (Join-Path $project 'build/Release/ChroniclesOfTheAbyss.exe') $game -Force
 Copy-Item (Join-Path $project 'vendor/SFML-2.5.1/bin/*.dll') $game -Force
 Copy-Item (Join-Path $project 'vendor/runtime-msvc/*.dll') $game -Force
 Copy-Item (Join-Path $project 'assets') $game -Recurse -Force
