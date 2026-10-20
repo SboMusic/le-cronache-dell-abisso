@@ -1,0 +1,7 @@
+# Pietra del Mondo
+
+Asset originale generato con image_gen integrato, sfondo trasparente. File finale: `progetto/assets/campagna-v1/pietra-del-mondo.png`. Il motore aggiunge un'aura pulsante e particelle; il monumento non è una struttura costruibile. Nella battaglia finale si trova nel campo nemico e viene preservato.
+
+## Prompt finale
+
+Use case: stylized-concept. Original game asset for Frontiere Le Cronache dell'Abisso. A single majestic ancient Worldstone crystal monument, isolated on genuinely transparent background. Painterly detailed pre-rendered 2D medieval fantasy RTS building sprite, elevated three-quarter overhead camera like an isometric strategy game, no perspective ground plane beyond a compact round stone pedestal. Tall faceted translucent turquoise and pale gold central crystal, five smaller luminous gems arranged around a weathered stone ring at its base, carved ancient neutral symbols without readable writing. Noble and mysterious sacred artifact, not sinister, one impressive focal point, upper left diffuse daylight, readable silhouette, dark stone pedestal with subtle golden cracks and sparse small moss. Emerald teal radiant core and restrained soft magical aura, preserve actual alpha outside object. All monument visible with generous transparent padding, base centered lower part, no people no armies no scenery no background no border no captions no logo. Original design unrelated to any existing game franchise. Suitable to display 200 pixels tall in a realistic hand painted strategy battlefield.

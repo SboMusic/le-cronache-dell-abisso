@@ -1,0 +1,89 @@
+CHRONICLES OF THE ABYSS - VERSION 1.0.0
+
+START AND LANGUAGE
+Run Frontiere.exe in the portable/installed game, or the launcher in the project folder.
+Click Italiano / English at the top right of the main menu or pause menu.
+The language changes immediately and is remembered at the next launch.
+The internal executable and existing save folder keep their old names for compatibility.
+
+MODES
+Start new campaign: choose Humans or Dark Kin. Each new game creates a separate campaign
+with its own progress, manual save and autosave. The dark campaign uses the existing
+eleven maps with adapted factions, casters and story introductions; it is not yet a
+separate story with exclusive maps.
+Continue campaign: choose a save by faction, mission and date. Previous-version saves
+remain available. Options: language and fullscreen/windowed. Prologue: a guided free
+game with faction choice. Quit: closes the game.
+
+CONTROLS
+Left-click: select. Drag: group selection. Shift: add to selection.
+Right-click: move, attack, gather or repair according to the target.
+Workers can also gather by selecting a tree after selecting a worker.
+Hold the middle mouse button and drag to pan. Moving the pointer alone does not pan.
+WASD/arrows: pan. Mouse wheel: zoom. Minimap: click or drag to move instantly.
+O: worker from the selected command hall. T: soldier from selected barracks.
+B: barracks placement for selected worker. H: select combat units.
+C: cancel production/research. U: select a nearby shore to land a transport's troops.
+F3 units, F4 buildings, F5 research, F6 spells: paused catalogs with mission limits.
+F9: save campaign. F10: load manual save, or autosave if no manual save exists.
+
+ECONOMY AND BUILDINGS
+Command hall trains workers only and offers town upgrades.
+Barracks I trains soldiers; Barracks II requires a lumber mill and unlocks archers.
+Barracks III requires Veteran Doctrine; it unlocks veteran rangers.
+Farms add six population slots, up to 90. In campaign, a finished farm is mandatory
+before training more units. Both sides follow population and resource rules.
+Lumber mill: wood depot with +2 wood per delivery, ranged upgrades and Forestry.
+Forge: Weapons and Armor research. Constructing it alone does not buy upgrades.
+Stable: knights. Sanctuary: healers, guardians and Veteran Doctrine.
+Workshop: ballistae, saboteurs and scout airships. Academy: casters and magical research.
+Aviary: war rocs. Watchtower: detection; upgrade to guard or artillery tower.
+Shipyard: coastal construction, ships. Foundry: heavy ships and fleet upgrades.
+Tanker: builds a platform on an oil deposit, then gathers oil from that platform.
+Refinery: more oil per delivery. Palisades block land routes.
+Workers are busy at their construction sites until the building is complete.
+Gold mines and individual trees are finite and disappear when exhausted.
+Forestry allows replanting trees. Explored terrain remains clear; hidden enemies
+must be rediscovered by your troops. See mission briefings for exact unlocks.
+
+TRANSPORTS AND SPELLS
+Move a transport near shore. Select up to six land units and right-click the ship.
+Move the ship near an island, select Land troops or U, then click nearby free shore.
+Right-clicking a nearby shore with the selected transport also lands passengers.
+Casters require mana and may need Arcane Knowledge. Select a caster, choose its spell
+icon, then click a target within range. Healers automatically heal nearby allies.
+
+CAMPAIGN
+1. Build 2 farms, deliver 120 gathered gold and 80 wood, reach the marked village.
+2. Finish a barracks, field 3 soldiers, defeat 3 sentries, reach the northeastern marker.
+3. Lumber mill, Barracks II, 2 archers; clear and hold the archive 10 s; escort Seren home.
+4. Command Hall II, stable, 2 knights, guard tower; hold the pass 90 s; destroy the barracks.
+   Protect both your command hall and the Abyssal refugee shelter.
+5. Shipyard, tanker, oil platform, stockpile 60 oil; frigate and transport; land and hold
+   the island temple with 3 land combat units for 20 s. Workers/healers/ships do not count.
+6. Sanctuary, healer, Veteran Doctrine, Barracks III, 2 rangers; hold each archive 8 s,
+   then defend the central archive for 30 s.
+7. Workshop and 2 ballistae; destroy 3 military depots, then the enemy command hall.
+8. Foundry, battleship and transport; hold the lighthouse with 3 combat units for 20 s,
+   then destroy the marked enemy harbor. Frigates detect submarines.
+9. Command Hall III, academy, Arcane Knowledge, 2 arcanists; hold each seal 10 s,
+   then defend the central circle for 45 s.
+10. Second command hall, aviary and 2 war rocs; reclaim 2 outposts (12 s each),
+    then destroy both marked advanced workshops.
+Final war: economy, farms, workshop, academy and at least 20 combat units.
+   The enemy attacks only after your preparation and at least 7 minutes.
+   Destroy EVERY enemy unit and building in all three camps. Preserve the Worldstone.
+
+SAVES
+Autosave at mission start and victory is separate from the manual save slot.
+Continue saved game chooses the latest manual save/autosave. F10 prefers manual.
+New campaigns: %LOCALAPPDATA%/Frontiere/campagne/<id>. Old saves stay at the root.
+Screen and language settings remain at %LOCALAPPDATA%/Frontiere.
+The latest valid save of the chosen campaign is loaded; a corrupt slot falls back
+to the other slot of that campaign.
+Updates and uninstallation preserve player data. Old saves still load.
+
+SHARING
+Share Chronicles-of-the-Abyss-1.0.0-Windows-Setup.exe or Chronicles-of-the-Abyss-1.0.0-Windows-Portable.zip.
+The game runs offline on Windows 10/11 without Visual Studio or paid software.
+The package includes libraries, original art, licenses and corresponding source code.

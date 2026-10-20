@@ -1,0 +1,22 @@
+name: Windows build and simulation
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-2022
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Build Windows game
+        shell: pwsh
+        run: ./strumenti/Compila.ps1
+      - name: Run model and full-battle tests
+        shell: pwsh
+        run: ./strumenti/Verifica.ps1 -SoloSimulazione

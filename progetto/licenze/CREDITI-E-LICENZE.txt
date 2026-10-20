@@ -1,0 +1,28 @@
+LE CRONACHE DELL ABISSO 1.0.0 - CREDITI E LICENZE
+
+Frontiere contiene modifiche e codice derivato dal progetto Warcraft-II-HD di lori2001 e dal motore NGin creato da Szoke Lorand. Il codice derivato e le modifiche di Frontiere sono distribuiti secondo GNU GPL versione 3. Il testo completo e' in GPL-3.0.txt. Questa versione modificata non e' il progetto originale e non e' un prodotto Blizzard.
+
+Il pacchetto del gioco contiene esclusivamente la grafica originale Frontiere e l'icona originale generata da strumenti/Crea-icona.ps1. Non contiene le cartelle di immagini, suoni, mappe o font del vecchio repository. Il vecchio repository e il laboratorio sono conservati soltanto nell'archivio locale di sviluppo, fuori dal pacchetto del gioco e dall'installer.
+
+SFML 2.5.1 - Copyright (C) 2007-2018 Laurent Gomila. Licenza zlib/png: SFML.txt. SFML graphics usa FreeType e stb_image. This software is based in part on the work of the FreeType Team. Avvisi: FreeType-FTL.txt e stb_image.txt. I sorgenti ufficiali SFML sono inclusi nell'archivio sorgente di Frontiere, in progetto/vendor/sorgenti.
+
+Le DLL Microsoft Visual C++ 2019 Runtime sono componenti Microsoft redistribuibili forniti con Visual Studio. Non fanno parte del codice GPL di Frontiere e conservano i rispettivi diritti Microsoft. Sono incluse nella directory dell'applicazione; non viene modificato il runtime di sistema.
+
+Il gioco usa i font Segoe UI o Arial gia' presenti in Windows. Nessun font Microsoft e' redistribuito nel pacchetto.
+
+SORGENTI CORRISPONDENTI
+Nella cartella sorgenti del gioco si trova Chronicles-of-the-Abyss-1.0.0-Source.zip, con codice, risorse necessarie, librerie, licenze, progetto Visual Studio e script di compilazione/installazione. Non richiede chiavi o password per l'estrazione. Per ricompilare, seguire progetto/LEGGIMI.md nell'archivio.
+
+Il programma e' fornito senza garanzie, secondo i termini della licenza allegata.
+
+
+Artwork demoni v1: due atlas originali generati con image_gen integrato, 19 unita e 18 strutture. Nessun asset Blizzard. Prompt e descrizione in grafica/demoni-v1 nell archivio sorgente.
+
+Mappe v1: tre geometrie di scenario originali definite in RtsCampaign.inl e atlas rocce-v1.png generato con image_gen integrato; prompt conservato in grafica/mappe-v1/prompt-rocce.md nell archivio sorgente.
+
+Texture originali 0.10.0: assets/mappe-v2/terreni-v2.png, generate con image_gen. Prompt e note nel progetto sorgente: grafica/mappe-v2/prompt-texture.md.
+
+Pietra del Mondo 0.10.0: assets/campagna-v1/pietra-del-mondo.png, artwork originale generato con image_gen integrato. Prompt incluso in grafica/campagna-v1/prompt-pietra.md nei sorgenti.
+
+Illustrazioni narrative 0.11.0: assets/illustrazioni-v1/{copertina,insediamento,citta-libere,guerra-finale}.png. Artwork originali generati tramite image_gen integrato. Prompt e note nei sorgenti: grafica/illustrazioni-v1/prompt-illustrazioni.md. Nessuna grafica Warcraft incorporata.
+Localizzazione inglese: assets/localization/en.tsv. Titolo visibile: Le Cronache dell Abisso / Chronicles of the Abyss.

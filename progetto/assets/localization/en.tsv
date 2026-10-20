@@ -1,0 +1,599 @@
+Inizia missione	Start mission
+Indietro	Back
+Campagna umana - L ultima alba	Human campaign - The Last Dawn
+[Completata] 	[Completed] 
+[Bloccata] 	[Locked] 
+Riprendi salvataggio	Continue saved game
+Menu principale	Main menu
+< Missioni precedenti	< Previous missions
+Missioni successive >	Next missions >
+10 missioni + battaglia finale  |  Pagina 	10 missions + final battle  |  Page 
+MISSIONE COMPLETATA	MISSION COMPLETE
+MISSIONE FALLITA	MISSION FAILED
+Missione successiva	Next mission
+Campagna completata	Campaign complete
+Riprova	Retry
+Rigioca la missione	Replay mission
+Scelta missioni	Select mission
+Campagna umana	Human campaign
+Arsenale di prova	Sandbox arsenal
+Razza prove: creature oscure (cambia)	Sandbox faction: Abyssal (change)
+Razza prove: umani (cambia)	Sandbox faction: Human (change)
+Esci	Quit
+Prologo libero	Free prologue
+PARTITA IN PAUSA	GAME PAUSED
+Riprendi	Resume
+Ricomincia	Restart
+Salva partita (F9)	Save game (F9)
+Carica partita (F10)	Load game (F10)
+La Pietra resta intatta. L esercito avversario e sconfitto.	The Worldstone is intact. The opposing army is defeated.
+Liora e le comunita del Confine possono costruire una nuova alba.	Liora and the Border communities can build a new dawn.
+F11 schermo/finestra | F9 salva | F10 carica | Esc indietro	F11 fullscreen/window | F9 save | F10 load | Esc back
+Completa la missione precedente per sbloccarla.	Complete the previous mission to unlock this one.
+Avanzamento salvato. Puoi rigiocare le missioni sbloccate.	Progress saved. You can replay unlocked missions.
+Impossibile salvare l avanzamento su disco.	Unable to save campaign progress.
+Riprova la missione oppure carica l ultimo salvataggio con F10.	Retry this mission or press F10 to load your last save.
+Alfa 1.0.0 - Campagna completa e guerra finale	Alpha 1.0.0 - Full campaign and final war
+CAMPAGNE DI AVARON / 1.0.0	CAMPAIGNS OF AVARON / 1.0.0
+Partita in pausa: premi P per riprendere.	Game paused: press P to resume.
+I soldati si sbloccano nella seconda missione.	Soldiers unlock in the second mission.
+Costruisci prima una caserma: seleziona operaio, premi B e scegli il terreno.	Build a barracks first: select a worker, press B and choose a site.
+Clic sul terreno libero: caserma. Destro: annulla.	Click open ground to place a barracks. Right-click to cancel.
+Seleziona comando (operaio), caserma (soldato) o operaio (costruisci).	Select a command hall (worker), barracks (soldier) or worker (build).
+Clic sulla costa vicino al trasporto per sbarcare. Destro annulla.	Click the shore near the transport to land. Right-click to cancel.
+Esplora prima questa zona.	Explore this area first.
+Esplora prima questa zona per costruire.	Explore this area before building.
+Costruzione annullata.	Construction cancelled.
+Salvataggi disponibili nelle missioni della campagna.	Saving is available during campaign missions.
+Impossibile creare la cartella dei salvataggi.	Unable to create the save folder.
+Salvataggio non riuscito: controlla lo spazio libero.	Save failed: check free disk space.
+Salvataggio non riuscito: file precedente conservato.	Save failed: previous save preserved.
+Impossibile completare il salvataggio: file precedente conservato.	Unable to finish saving: previous save preserved.
+Partita salvata. F10 per riprenderla.	Game saved. Press F10 to load.
+Salvataggio assente o non valido. Partita corrente conservata.	Save missing or invalid. Current game preserved.
+Salvataggio danneggiato o incompatibile. Partita corrente conservata.	Save corrupt or incompatible. Current game preserved.
+Partita ripresa. 	Game loaded. 
+Serve 	Requires 
+ per addestrare 	 to train 
+Serve un 	Requires a 
+ per costruire.	 to build.
+Scegli la posizione di 	Choose a site for 
+ in uno spazio libero sulla mappa.	 on open ground.
+ per questa ricerca.	 for this research.
+Seleziona prima un incantatore che conosce questa magia.	First select a caster who knows this spell.
+Magia 	Spell 
+: clic sul bersaglio; destro annulla.	: click a target; right-click to cancel.
+ARSENALE DELLA FRONTIERA	ARSENAL OF THE ABYSS
+F3  UNITA	F3  UNITS
+F4  EDIFICI	F4  BUILDINGS
+F5  RICERCHE	F5  RESEARCH
+F6  MAGIE	F6  SPELLS
+ oro / 	 gold / 
+ legno / 	 wood / 
+ petrolio	 oil
+Da 	From 
+Livello ricerca 	Research level 
+Livello 	Level 
+Edificio: 	Building: 
+Potenzia la singola caserma selezionata	Upgrade this selected barracks
+Evolvi in 	Upgrade to 
+Seleziona o costruisci una torre di vedetta	Select or build a watchtower
+60 oro / 30 legno	60 gold / 30 wood
+110 oro / 50 legno	110 gold / 50 wood
+Evoluzione: 8 secondi	Upgrade: 8 seconds
+ mana | Bersaglio entro 460	 mana | Target within 460
+Seleziona incantatore, scegli magia e bersaglio	Select a caster, spell and target
+Richiede Sapienza arcana	Requires Arcane Knowledge
+Supporto e controllo del campo	Support and battlefield control
+Catalogo in pausa | 1-9: scelta rapida | Esc/destro: chiudi	Game paused | 1-9: quick choice | Esc/right-click: close
+Pagina 	Page 
+< Indietro	< Back
+Avanti >	Next >
+ oro, 	 gold, 
+ legno, 	 wood, 
+In costruzione	Under construction
+ secondi rimanenti	 seconds remaining
+Annulla produzione/ricerca e restituisci le risorse	Cancel training/research and refund resources
+Annulla	Cancel
+Torna ai comandi dell'operaio	Back to worker commands
+Costruisce	Building
+Operaio impegnato fino al completamento del cantiere	Worker is busy until construction is complete
+Muovi	Move
+Scegli una destinazione sulla mappa	Choose a destination on the map
+Ferma	Stop
+Interrompi gli ordini delle unita selezionate	Stop selected units
+Attacca	Attack
+Scegli un bersaglio nemico	Choose an enemy target
+Raccogli	Gather
+Scegli un albero o una miniera	Choose a tree or gold mine
+Ripara	Repair
+Scegli una struttura alleata danneggiata	Choose a damaged allied building
+Apri gli edifici costruibili dall'operaio	Show buildings this worker can construct
+Pianta albero	Plant tree
+10 oro | Richiede Silvicoltura | Crescita: 12 s	10 gold | Requires Forestry | Growth: 12 s
+Scegli una piattaforma completata	Choose a completed oil platform
+Piattaforma	Oil platform
+ | Su giacimento petrolifero	 | On an oil deposit
+Sbarca i passeggeri sulla costa vicina	Land passengers on the nearby shore
+Sbarca	Land troops
+ mana | Scegli un bersaglio	 mana | Choose a target
+Richiede questa caserma livello 	Requires this barracks at level 
+Torre frecce	Arrow tower
+60 oro, 30 legno | 8 secondi	60 gold, 30 wood | 8 seconds
+Torre cannone	Cannon tower
+110 oro, 50 legno | 8 secondi	110 gold, 50 wood | 8 seconds
+Deposito legno: +2 per carico. Sblocca Caserma II. Ricerche: tiro e silvicoltura (se disponibili).	Wood depot: +2 per delivery. Unlocks Barracks II. Research: marksmanship and forestry (when available).
+Compra Armi e Armature con le icone: costruire la fucina da sola non applica le ricerche.	Use the icons to buy Weapons and Armor. Building a forge alone does not apply upgrades.
++6 posti	+6 population
+Info edificio	Building info
+Riprendi la partita per impartire ordini.	Resume the game to issue orders.
+; destro annulla.	; right-click to cancel.
+Ricerca Silvicoltura alla segheria.	Research Forestry at the lumber mill.
+Scegli dove piantare (10 oro). Destro annulla.	Choose where to plant (10 gold). Right-click to cancel.
+EDIFICI DELL'OPERAIO	WORKER BUILDINGS
+COMANDI DELLA SELEZIONE	SELECTED COMMANDS
+Seleziona una struttura o un'unita\nper vedere le sue azioni e i costi.	Select a building or unit\nto see its actions and costs.
+< Indietro       	< Back       
+       Avanti >	       Next >
+PIETRA DEL MONDO	WORLDSTONE
+Rifugio dei profughi	Refugee shelter
+Villaggio abbandonato	Abandoned village
+Archivio dei Custodi	Keepers' archive
+Tempio delle Citta Libere	Temple of the Free Cities
+PRESIDIO RECUPERATO	OUTPOST RECLAIMED
+Presidia il punto	Hold this position
+Oro: 	Gold: 
+Legno: 	Wood: 
+Petrolio: 	Oil: 
+OBIETTIVO	OBJECTIVE
+Mappa 	Map 
+ | rotella: zoom	 | wheel: zoom
+ORO	GOLD
+LEGNO	WOOD
+PETROLIO	OIL
+UNITA	UNITS
+Selezionati: 	Selected: 
+Destro: ordini al gruppo	Right-click: group orders
+Scegli un'unita sulla mappa	Select a unit on the map
+ salute	 health
+Costruzione: 	Construction: 
+Ricerca: 	Research: 
+Addestramento: 	Training: 
+Costruisce: operaio impegnato	Building: worker busy
+Raggiunge il cantiere	Going to construction site
+Taglia legna	Chopping wood
+Va al bordo della foresta	Going to forest edge
+Raccoglie oro	Mining gold
+ | Rimasti: 	 | Remaining: 
+Consegna carico: 	Delivering cargo: 
+Caserma livello 	Barracks level 
+Comando livello 	Command hall level 
+F3 Unita	F3 Units
+F4 Edifici	F4 Buildings
+F5 Ricerca	F5 Research
+F6 Magie	F6 Spells
+Centrale: trascina | Minimap: clic/trascina	Middle: drag | Minimap: click/drag
+ESC  /  MENU DELLA PARTITA	ESC  /  GAME MENU
+PAUSA	PAUSED
+VITTORIA	VICTORY
+SCONFITTA	DEFEAT
+Premi P per riprendere	Press P to resume
+Premi R per una nuova partita	Press R for a new game
+1. Un posto da chiamare casa	1. A Place to Call Home
+2. La strada di Velmora	2. The Road to Velmora
+3. I custodi delle carte	3. Keepers of the Records
+4. Il prezzo dell obbedienza	4. The Price of Obedience
+5. Le citta libere	5. The Free Cities
+6. Le parole dei Cinque	6. The Words of the Five
+7. Le officine del confine	7. The Border Workshops
+8. La rotta delle profondita	8. The Deepwater Route
+9. La memoria della Pietra	9. The Memory of the Stone
+10. Prima dell ultima alba	10. Before the Last Dawn
+Finale. Il cuore del mondo	Finale. The Heart of the World
+Partita libera	Free game
+Missione non disponibile	Mission unavailable
+ | Assalto tra 	 | Attack in 
+Liora: costruisci due fattorie (	Liora: build two farms (
+/2). Operaio > Costruisci.	/2). Worker > Build.
+Consegna oro 	Deliver gold 
+/120 e legno 	/120 and wood 
+/80. Destro sulle risorse.	/80. Right-click resources.
+Raggiungi il villaggio segnalato con un operaio. Nessun nemico nella valle.	Send a worker to the marked village. There are no enemies in this valley.
+Caserma: 	Barracks: 
+da costruire	build required
+ | Soldati 	 | Soldiers 
+/3. Addestra dalla caserma.	/3. Train at the barracks.
+Apri la strada: elimina le tre sentinelle (	Clear the road: eliminate three sentries (
+/3). Esplora con le truppe.	/3). Scout with your troops.
+Porta una pattuglia al segnale alla fine della strada, verso nord-est.	Send a patrol to the marker at the northeastern end of the road.
+Scorta - Segheria: 	Escort - Lumber mill: 
+ | Caserma II: 	 | Barracks II: 
+da ricercare	research required
+ | Arcieri 	 | Archers 
+Libera l archivio segnalato e presidialo per 10 s (	Clear the marked archive and hold it for 10 s (
+Scorta Seren Dhal al comando. Segue la strada: proteggila dalle pattuglie.	Escort Seren Dhal to your command hall. Protect her from patrols along the road.
+Prepara: Comando II, scuderia, 2 cavalieri e torre di guardia. Nessun assalto prima dei preparativi.	Prepare: Command Hall II, stable, 2 knights and a guard tower. Attacks wait until you are ready.
+Assalto tra 	Attack in 
+ s! Porta l esercito al passo segnalato. Proteggi il rifugio.	 s! Move your army to the marked pass. Protect the shelter.
+Difendi il passo segnalato: 	Defend the marked pass: 
+/90 s sicuri. Proteggi il rifugio!	/90 s secured. Protect the shelter!
+Il rifugio resiste. Distruggi la caserma nemica segnalata a nord-est.	The shelter holds. Destroy the marked enemy barracks to the northeast.
+Costa: cantiere > cisterna > piattaforma sul petrolio. Accumula 60 petrolio (	Coast: shipyard > tanker > oil platform. Stockpile 60 oil (
+Crea fregata (40 petrolio) e trasporto (20). La fregata scorta lo sbarco sull isola a sud-est.	Build a frigate (40 oil) and transport (20). Escort the landing on the southeastern island.
+Scorta la nave con la fregata. Presidia il tempio con 3 combattenti: 	Escort the transport with your frigate. Hold the temple with 3 combat units: 
+/20 s. Navi escluse.	/20 s. Ships do not count.
+SCONFITTA: il comando e stato distrutto.	DEFEAT: your command hall was destroyed.
+SCONFITTA: Seren Dhal e caduta durante la scorta.	DEFEAT: Seren Dhal fell during the escort.
+Obiettivo completato. 	Objective complete. 
+MISSIONE COMPLETATA: 	MISSION COMPLETE: 
+SCONFITTA: il rifugio dei profughi e stato distrutto.	DEFEAT: the refugee shelter was destroyed.
+Operaio	Worker
+Raccoglie oro/legno, costruisce e ripara	Gathers gold/wood, builds and repairs
+Soldato	Soldier
+Fanteria da mischia	Melee infantry
+Comando	Command hall
+Deposito, operai e sviluppo della citta	Depot, workers and town development
+Caserma	Barracks
+Soldati; potenzia per arcieri e veterani	Soldiers; upgrade for archers and veterans
+Miniera	Gold mine
+Bosco	Forest
+Giacimento	Oil deposit
+Arciere	Archer
+Tiro a distanza e difesa antiaerea	Ranged attacks and anti-air defense
+Esploratore veterano	Veteran ranger
+Tiratore rapido, ampia gittata	Fast ranged fighter, long range
+Cavaliere	Knight
+Mischia veloce e corazzata	Fast armored melee fighter
+Custode	Guardian
+Cavaliere sacro, cura e protezione	Sacred knight, healing and protection
+Balista	Ballista
+Assedio a lunga gittata e danni ad area	Long-range siege and area damage
+Guastatore	Saboteur
+Esplosione ravvicinata, monouso	Short-range blast, consumed on use
+Arcanista	Arcanist
+Magie offensive e controllo	Offensive magic and control
+Evocatore	Summoner
+Spiriti, tempesta e furia	Spirits, storm and rage
+Guaritore	Healer
+Cura automatica e magia di supporto	Automatic healing and support magic
+Aeronave da ricognizione	Scout airship
+Volo e rilevamento dei sommergibili	Flying scout and submarine detection
+Roc da guerra	War roc
+Attacco volante ad area, anche antiaereo	Flying area attack, including air targets
+Nave cisterna	Oil tanker
+Costruisce piattaforme e trasporta petrolio	Builds platforms and carries oil
+Trasporto	Transport
+Imbarca fino a sei unita terrestri	Carries up to six land units
+Fregata	Frigate
+Scorta navale, antiaerea e rilevamento	Naval escort, anti-air and detection
+Corazzata	Battleship
+Artiglieria navale e bombardamento costiero	Naval artillery and shore bombardment
+Sommergibile	Submarine
+Siluri navali, occultato senza rilevatori	Naval torpedoes, hidden without detectors
+Spirito evocato	Summoned spirit
+Servitore temporaneo richiamato dai caduti	Temporary servant summoned from fallen units
+Fattoria	Farm
+Aggiunge sei posti di popolazione	Adds six population slots
+Segheria	Lumber mill
+Deposito legno e sblocco tiratori	Wood depot and ranged unit unlocks
+Fucina	Forge
+Ricerca armi e armature	Weapons and armor research
+Scuderia	Stable
+Addestra la cavalleria	Trains cavalry
+Santuario	Sanctuary
+Guaritori, custodi e dottrina veterana	Healers, guardians and veteran doctrine
+Accademia arcana	Arcane academy
+Incantatori e ricerca magica	Casters and magical research
+Officina	Workshop
+Assedio, guastatori e ricognizione	Siege, saboteurs and reconnaissance
+Voliera	Aviary
+Addestra i roc da guerra	Trains war rocs
+Torre di vedetta	Watchtower
+Rilevamento; evoluzione in torre armata	Detection; upgrades to an armed tower
+Torre di guardia	Guard tower
+Difesa a distanza e antiaerea	Ranged and anti-air defense
+Torre di artiglieria	Artillery tower
+Difesa ad area contro terra e navi	Area defense against land and naval units
+Cantiere navale	Shipyard
+Si costruisce sulla costa; produce navi	Built on the coast; produces ships
+Fonderia navale	Naval foundry
+Sblocca corazzate e migliora la flotta	Unlocks battleships and upgrades the fleet
+Raffineria	Refinery
+Aumenta il petrolio per consegna	Increases oil per delivery
+Piattaforma petrolifera	Oil platform
+Cisterna: costruisci su un giacimento in mare	Tanker: build on an offshore oil deposit
+Palizzata	Palisade
+Blocca i percorsi terrestri	Blocks land routes
+Servo d ombra	Shadow servant
+Ghoul cornuto	Horned ghoul
+Spina oscura	Dark thorn
+Predatore antico	Ancient predator
+Cavaliere delle steppe	Steppe rider
+Campione degli spiriti	Spirit champion
+Lanciapietre	Stone thrower
+Dirigibile	Airship
+Viverna delle nebbie	Mist wyvern
+Imp lavoratore	Worker imp
+Diavolo guerriero	Devil warrior
+Arciere infernale	Infernal archer
+Predatore abissale	Abyssal predator
+Cavaliere infernale	Infernal knight
+Custode dell abisso	Abyssal guardian
+Balista demoniaca	Demonic ballista
+Imp dinamitardo	Blast imp
+Piromante infernale	Infernal pyromancer
+Evocatore dell abisso	Abyssal summoner
+Sacerdote oscuro	Dark priest
+Occhio alato	Winged eye
+Viverna infernale	Infernal wyvern
+Cisterna infernale	Infernal tanker
+Arca dei dannati	Ark of the Damned
+Fregata demoniaca	Demonic frigate
+Corazzata infernale	Infernal battleship
+Predatore sommerso	Submerged predator
+Spettro abissale	Abyssal wraith
+Cittadella infernale	Infernal citadel
+Caserma delle fauci	Maw barracks
+Nido demoniaco	Demonic nest
+Segheria infernale	Infernal lumber mill
+Forgia delle braci	Ember forge
+Serraglio infernale	Infernal menagerie
+Altare dell abisso	Altar of the Abyss
+Torre degli evocatori	Summoners' tower
+Officina dei tormenti	Torment workshop
+Nido delle viverne	Wyvern nest
+Torre del teschio	Skull tower
+Torre delle spine	Thorn tower
+Torre del fuoco	Fire tower
+Cantiere dei dannati	Shipyard of the Damned
+Fonderia abissale	Abyssal foundry
+Raffineria infernale	Infernal refinery
+Trivella infernale	Infernal drill
+Muro delle corna	Horn wall
+Albero	Tree
+Nessuno	None
+Lega del Confine	Border League
+Stirpe dell Ombra	Shadow Kin
+Comando II	Command Hall II
+Comando III	Command Hall III
+Armi	Weapons
+Armature	Armor
+Tiro di precisione	Marksmanship
+Cannoni navali	Naval guns
+Corazze navali	Naval armor
+Dottrina veterana	Veteran Doctrine
+Sapienza arcana	Arcane Knowledge
+Caserma II	Barracks II
+Caserma III	Barracks III
+Silvicoltura	Forestry
+Cura	Heal
+Pioggia di fuoco	Firestorm
+Celerita	Haste
+Furia	Rage
+Scudo	Shield
+Rivelazione	Reveal
+Richiamo degli spiriti	Call of Spirits
+Vortice	Vortex
+1/5 - Costruisci una fattoria: operaio > Costruisci > Fattoria. +6 posti.	1/5 - Build a farm: worker > Build > Farm. +6 population.
+2/5 - Costruisci la caserma. L operaio resta al cantiere fino al completamento.	2/5 - Build the barracks. Your worker stays on site until it is finished.
+3/5 - Porta i soldati a 3. Per l oro: operaio > clic destro sulla miniera.	3/5 - Train 3 soldiers. For gold: worker > right-click a gold mine.
+4/5 - Esplora la strada verso est fino all avamposto. Sbloccate Segheria, Fucina e Comando II.	4/5 - Scout the eastern road to the outpost. Unlock Lumber Mill, Forge and Command Hall II.
+5/5 - Distruggi il comando nemico. Tecnologie avanzate sbloccate; prepara economia ed esercito.	5/5 - Destroy the enemy command hall. Advanced tech unlocked; prepare your economy and army.
+Obiettivo completato! 	Objective complete! 
+Santuario, 1 guaritore, Dottrina veterana, Caserma III e 2 veterani. Prepara economia e cura.	Sanctuary, 1 healer, Veteran Doctrine, Barracks III and 2 rangers. Prepare your economy and healing.
+Recupera i tre archivi: 	Reclaim the three archives: 
+/3. Presidio: 8 s senza nemici per archivio.	/3. Hold each archive for 8 s without enemies.
+Difendi l archivio centrale: 	Defend the central archive: 
+/30 s sicuri. Proteggi i guaritori.	/30 s secured. Protect your healers.
+Costruisci l officina e addestra 2 baliste (	Build a workshop and train 2 ballistae (
+Distruggi i tre depositi militari: 	Destroy the three military depots: 
+/3. Le baliste hanno lunga gittata.	/3. Ballistae have long range.
+Rifornimenti interrotti. Distruggi il comando nemico a nord-est.	Supplies cut off. Destroy the enemy command hall to the northeast.
+Fonderia, corazzata e trasporto. Raccogli petrolio; le fregate vedono i sommergibili.	Foundry, battleship and transport. Gather oil; frigates detect submarines.
+Sbarca e presidia il faro con 3 combattenti per 20 s. Proteggi la flotta.	Land and hold the lighthouse with 3 combat units for 20 s. Protect the fleet.
+La rotta e aperta. Distruggi il porto nemico segnalato sulla costa nord-est.	The route is open. Destroy the marked enemy harbor on the northeastern coast.
+Comando III, accademia, Sapienza arcana e 2 arcanisti. Crea un esercito di supporto.	Command Hall III, academy, Arcane Knowledge and 2 arcanists. Build a supporting army.
+Recupera i tre sigilli: 	Recover the three seals: 
+/3. Presidia ogni cerchio per 10 s.	/3. Hold each circle for 10 s.
+Difendi il cerchio centrale: 	Defend the central circle: 
+/45 s sicuri. Attenzione alla magia nemica.	/45 s secured. Beware of enemy magic.
+Due comandi, voliera e 2 roc da guerra. Sviluppa una seconda base con i lavoratori.	Two command halls, an aviary and 2 war rocs. Send workers to develop a second base.
+Recupera i due presidi: 	Reclaim both outposts: 
+/2. Presidia ogni punto per 12 s.	/2. Hold each position for 12 s.
+Distruggi le due officine avanzate segnalate: impedisci la produzione di viverne e assedio.	Destroy both marked advanced workshops to stop wyvern and siege production.
+Prepara officina, accademia e 20 combattenti (	Prepare a workshop, academy and 20 combat units (
+/20). Amplia fattorie e raccolta.	/20). Expand farms and resource gathering.
+Primo assalto tra 	First assault in 
+ s. Nemici: 	 s. Enemies: 
+ unita, 	 units, 
+ strutture.	 buildings.
+GUERRA FINALE - Elimina tutti: 	FINAL WAR - Eliminate all: 
+ unita e 	 units and 
+ strutture. Pietra intatta.	 buildings. Preserve the Stone.
+VITTORIA FINALE: la Pietra e salva. Il campo nemico e completamente sconfitto.	FINAL VICTORY: the Stone is safe. The entire enemy force is defeated.
+Sviluppa la citta, prepara le truppe e distruggi il comando nemico. F3-F6: cataloghi.	Develop your town, train troops and destroy the enemy command hall. F3-F6: catalogs.
+ARSENALE DI PROVA: tecnologie e risorse disponibili. F3-F6 cataloghi, F2 altra fazione.	SANDBOX ARSENAL: technologies and resources ready. F3-F6 catalogs, F2 switch faction.
+Oro insufficiente: 	Insufficient gold: 
+Legno insufficiente: 	Insufficient wood: 
+Petrolio insufficiente: 	Insufficient oil: 
+ petrolio.	 oil.
+Operaio impegnato nella costruzione.	Worker busy building.
+Destinazione irraggiungibile per questo tipo di unita.	Destination unreachable for this unit type.
+L'albero sta ancora crescendo.	This tree is still growing.
+Gli operai raccolgono oro/legno; le cisterne raccolgono dalle piattaforme.	Workers gather gold/wood; tankers gather from oil platforms.
+Operaio al lavoro sulla risorsa.	Worker gathering resources.
+Taglio legna: l'operaio raggiunge il bordo accessibile della foresta.	Chopping wood: worker heading to an accessible forest edge.
+Nessun albero raggiungibile in questa foresta.	No reachable tree in this forest.
+Risorsa irraggiungibile.	Resource unreachable.
+Raccolta oro avviata.	Gold gathering started.
+Raccolta petrolio avviata.	Oil gathering started.
+Cantiere gia assegnato a un operaio.	A worker is already assigned to this site.
+Cantiere irraggiungibile.	Construction site unreachable.
+Trasporto pieno (6 posti).	Transport full (6 seats).
+Avvicina il trasporto alla costa per imbarcare.	Move the transport closer to shore to board troops.
+Scegli terra libera vicino al trasporto (entro 200).	Choose free land near the transport (within 200).
+Sbarco completato.	Landing complete.
+Nessuno spazio libero sulla costa.	No free space on the shore.
+Il guaritore segue il gruppo e cura gli alleati vicini.	The healer follows the group and heals nearby allies.
+Questa unita non puo colpire quel bersaglio.	This unit cannot attack that target.
+Disponibile nelle missioni successive della campagna.	Available later in the campaign.
+Avanza nell obiettivo guidato per sbloccare questa scelta.	Advance the guided objective to unlock this choice.
+Richiede comando livello 	Requires command hall level 
+Richiede 	Requires 
+Richiede Dottrina veterana al santuario	Requires Veteran Doctrine at the sanctuary
+Riservato alla Lega del Confine	Reserved for the Border League
+Riservato alla Stirpe dell Ombra	Reserved for the Shadow Kin
+Seleziona un edificio adatto, completato e libero.	Select a suitable, finished and idle building.
+Serve una fattoria completata prima di creare altre unita.	Complete a farm before creating more units.
+Potenzia questa caserma al livello 	Upgrade this barracks to level 
+Edificio ancora in costruzione: 	Building still under construction: 
+ secondi.	 seconds.
+Addestramento gia in corso: 	Training already in progress: 
+Popolazione piena: costruisci una fattoria.	Population full: build a farm.
+ in addestramento: 	 in training: 
+Seleziona una cisterna per la piattaforma.	Select a tanker to build the platform.
+Seleziona un operaio.	Select a worker.
+Operaio gia impegnato nella costruzione.	Worker already busy building.
+La piattaforma va collocata su un giacimento in mare.	Place the platform on an offshore oil deposit.
+ in costruzione: operaio assegnato.	 under construction: worker assigned.
+Terreno roccioso: scegli una radura.	Rocky ground: choose a clearing.
+Fuori dai bordi della mappa.	Outside the map boundaries.
+Abbatti prima gli alberi in questo spazio.	Chop down the trees in this area first.
+La miniera occupa ancora questo spazio.	The mine still occupies this area.
+Spazio occupato da un'altra struttura.	Space occupied by another building.
+Nessun deposito raggiungibile: il carico resta all'operaio.	No reachable depot: the worker keeps the cargo.
+Ricerca Silvicoltura alla segheria per piantare alberi.	Research Forestry at the lumber mill to plant trees.
+Pianta su terreno asciutto dentro la mappa.	Plant on dry ground inside the map.
+Spazio occupato per l'albero.	This space is occupied; cannot plant a tree.
+Albero piantato: cresce in 12 secondi (10 oro).	Tree planted: grows in 12 seconds (10 gold).
+Ricerca sbloccata in una missione successiva.	Research unlocks in a later mission.
+Completa prima gli obiettivi: fattoria, caserma e tre soldati.	First complete the objectives: farm, barracks and three soldiers.
+Esplora prima la strada fino all avamposto.	First scout the road to the outpost.
+Seleziona 	Select 
+ per 	 for 
+Partita terminata.	Game over.
+Edificio ancora in costruzione.	Building still under construction.
+Edificio occupato: attendi o annulla la produzione.	Building busy: wait or cancel production.
+Comando gia potenziato a questo livello.	Command hall already upgraded to this level.
+ gia completata per questa caserma.	 already completed for this barracks.
+Richiede prima Caserma II.	Requires Barracks II first.
+ gia al livello massimo.	 already at maximum level.
+Questa ricerca e gia in corso in un altro edificio.	This research is already in progress elsewhere.
+Richiede Comando livello 	Requires Command Hall level 
+Richiede Segheria: costruiscila con un operaio.	Requires a Lumber Mill: build one with a worker.
+Richiede Dottrina veterana al Santuario.	Requires Veteran Doctrine at the Sanctuary.
+Richiede una Caserma completata.	Requires a completed Barracks.
+Richiede una Fucina completata.	Requires a completed Forge.
+Risorse insufficienti: 	Insufficient resources: 
+Ricerca avviata: 	Research started: 
+Produzione/ricerca annullata, risorse restituite.	Training/research cancelled, resources refunded.
+Seleziona una torre di vedetta completata e libera.	Select a completed, idle watchtower.
+Evoluzione torre avviata.	Tower upgrade started.
+Completata: 	Completed: 
+L'unita selezionata non conosce questa magia.	The selected unit does not know this spell.
+Mana insufficiente o magia in ricarica.	Insufficient mana or spell on cooldown.
+Bersaglio della magia troppo lontano (460).	Spell target too far away (460).
+Ricerca Sapienza arcana prima di usare questa magia.	Research Arcane Knowledge before using this spell.
+Scegli un bersaglio alleato.	Choose an allied target.
+Il bersaglio e gia in piena salute.	The target is already at full health.
+Servono caduti vicini; massimo otto spiriti.	Requires nearby fallen units; maximum eight spirits.
+Magia: 	Spell: 
+Trasporto pieno.	Transport full.
+Risorsa esaurita: assegna un nuovo giacimento o ripianta gli alberi.	Resource depleted: assign a new deposit or replant trees.
+ completata. Operaio disponibile.	 complete. Worker available.
+Torre potenziata.	Tower upgraded.
+Produzione in attesa: completa una fattoria per avere posti disponibili.	Production waiting: finish a farm for more population space.
+ pronto.	 ready.
+Uscita occupata: libera spazio davanti all'edificio.	Exit blocked: clear space in front of the building.
+VITTORIA! R: nuova partita.	VICTORY! R: new game.
+SCONFITTA. R: riprova.	DEFEAT. R: retry.
+Costruisci	Build
+Risorse	Resources
+Petrolio	Oil
+Esplora	Explore
+CONSOLE DEI TRUCCHI	CHEAT CONSOLE
+Partita in pausa | Invio: esegui | Esc: chiudi | Su/Giu: cronologia	Game paused | Enter: execute | Esc: close | Up/Down: history
+Aggiunge oro	Add gold
+Aggiunge legno	Add wood
+Aggiunge petrolio	Add oil
+Tutte le risorse	All resources
+Struttura selezionata	Selected building
+Tecnologie massime	Maximum technologies
+Tutte le ricerche	All research
+Ignora i limiti delle missioni	Bypass mission unlock limits
+Costruzione e produzione x40	Construction and production x40
+Termina cantieri e code	Finish construction and queues
+Nessun costo di produzione	Free production
+90 posti senza fattorie	90 slots without farms
+Congela tutti i nemici	Freeze all enemies
+Nessun danno agli alleati	Allies take no damage
+Mostra tutta la mappa	Reveal the entire map
+Ripristina salute e mana	Restore health and mana
+Ricarica la magia	Restore mana
+Elimina tutti i nemici	Eliminate all enemies
+Completa tutti gli obiettivi	Complete all objectives
+Sblocca tutte le missioni	Unlock every mission
+Termina con una sconfitta	Finish with a defeat
+Disattiva i trucchi continui	Disable continuous cheats
+I trucchi continui accettano on/off. Senza parametro cambiano stato.	Continuous cheats accept on/off. Without a parameter they toggle.
+Scrivi un comando. Le quantita sono facoltative (da 1 a 1000000).	Type a command. Amounts are optional (from 1 to 1000000).
+Comandi disponibili nelle due lingue. Esempio: oro 5000 / gold 5000.	Commands work in both languages. Example: gold 5000 / oro 5000.
+Comando non valido. Invio > aiuto.	Invalid command. Enter > help.
+Usa on oppure off.	Use on or off.
+Trucco: 	Cheat: 
+Quantita valida: da 1 a 1000000.	Valid amount: from 1 to 1000000.
+Risorse aggiunte: 	Resources added: 
+Usa potenzia oppure potenzia tutto.	Use upgrade or upgrade all.
+Seleziona comando, caserma o torre completata.	Select a completed command hall, barracks or watchtower.
+Potenziamenti applicati.	Upgrades applied.
+Questo comando non richiede parametri.	This command takes no parameters.
+Salute e mana ripristinati.	Health and mana restored.
+Cantieri e code pronti al prossimo aggiornamento.	Construction and queues will finish on the next update.
+Esercito e strutture nemiche eliminati.	Enemy units and buildings eliminated.
+MISSIONE COMPLETATA: tutti gli obiettivi conclusi.	MISSION COMPLETE: all objectives completed.
+Trucchi continui disattivati. Risorse e progressi restano.	Continuous cheats disabled. Resources and progress remain.
+Comando sconosciuto. Invio > aiuto.	Unknown command. Enter > help.
+Tutte le missioni sbloccate nel menu campagna.	All missions unlocked in the campaign menu.
+TRUCCHI USATI | Invio: console	CHEATS USED | Enter: console
+Invio: console trucchi	Enter: cheat console
+Liora Venn - Valle dei Mulini\nLa Lega deve riaprire un insediamento evacuato.\nCostruisci due fattorie, consegna 120 oro e 80 legno,\npoi raggiungi il villaggio lungo il sentiero.\nNessun nemico: impara con calma economia e cantieri.\nDisponibili: operai, comando e fattorie.\nSconfitta: perdi il comando.	Liora Venn - Valley of Mills\nThe League must reopen an evacuated settlement.\nBuild two farms, deliver 120 gold and 80 wood,\nthen reach the village along the path.\nNo enemies: learn economy and building at your pace.\nAvailable: workers, command hall and farms.\nDefeat: lose your command hall.
+Liora Venn - Passo delle Sentinelle\nLa strada dei convogli attraversa un passo roccioso.\nCompleta una caserma e porta i soldati a tre.\nElimina le tre sentinelle e raggiungi la fine della strada.\nNon ci sono ondate o assalti automatici alla base.\nNuovi elementi: soldati e combattimento di gruppo.\nSconfitta: perdi il comando.	Liora Venn - Sentry Pass\nThe convoy road crosses a rocky mountain pass.\nComplete a barracks and field three soldiers.\nEliminate three sentries and reach the road's end.\nThere are no waves or automatic attacks on your base.\nNew elements: soldiers and group combat.\nDefeat: lose your command hall.
+Liora Venn - Bosco dei Custodi\nSeren Dhal attende nell archivio, oltre il bosco.\nCompleta una segheria, potenzia una caserma a II\ne addestra due arcieri. Libera e presidia l archivio\nper 10 secondi, poi scorta Seren al tuo comando.\nIl nemico raccoglie e paga le proprie truppe.\nSconfitta: perdi il comando oppure Seren dopo il recupero.	Liora Venn - Keepers' Wood\nSeren Dhal awaits at the archive beyond the forest.\nComplete a lumber mill, upgrade a barracks to II\nand train two archers. Clear and hold the archive\nfor 10 seconds, then escort Seren to your command hall.\nThe enemy gathers resources and pays for its troops.\nDefeat: lose your hall, or Seren after rescuing her.
+Liora Venn - Gola delle Braci\nSeren ha trovato ordini contro i profughi dell Abisso.\nLiora sceglie di proteggere il loro rifugio.\nSviluppa Comando II, scuderia, due cavalieri\ne una torre di guardia. Poi presidia il passo per 90 s.\nInfine distruggi la caserma che minaccia il rifugio.\nSconfitta: perdi il comando o il rifugio.\nAssalti annunciati solo dopo la preparazione.	Liora Venn - Ember Gorge\nSeren has found orders targeting Abyssal refugees.\nLiora chooses to protect their shelter.\nDevelop Command Hall II, a stable, two knights\nand a guard tower. Then hold the pass for 90 s.\nFinally destroy the barracks threatening the shelter.\nDefeat: lose your command hall or the shelter.\nAttacks are announced only after preparations.
+Liora Venn - Costa delle Citta Libere\nLe comunita costiere custodiscono altre testimonianze.\nCostruisci un cantiere vicino alla costa meridionale.\nCrea una cisterna, costruisci una piattaforma sul petrolio\ne accumula 60 petrolio. Crea fregata e trasporto.\nImbarca truppe con clic destro sul trasporto vicino riva.\nSbarca sull isola a sud-est e libera il tempio.\nPresidialo con almeno tre combattenti per 20 secondi.\nSconfitta: perdi il comando.	Liora Venn - Coast of the Free Cities\nCoastal communities hold more ancient testimony.\nBuild a shipyard near the southern coast.\nCreate a tanker, build a platform on an oil deposit\nand stockpile 60 oil. Build a frigate and transport.\nBoard troops by right-clicking the transport near shore.\nLand on the southeastern island and free the temple.\nHold it with at least three combat units for 20 s.\nDefeat: lose your command hall.
+Liora Venn - Altipiano delle Testimonianze\nSeren confronta gli archivi delle due stirpi.\nCostruisci il santuario e addestra un guaritore.\nRicerca Dottrina veterana, Caserma III e due veterani.\nLibera i tre archivi e presidiali per 8 secondi ciascuno.\nPoi difendi l archivio centrale per 30 secondi.\nLa guerra cresce: i nemici producono pattuglie miste.\nSconfitta: perdi tutti i comandi.	Liora Venn - Plateau of Testimonies\nSeren compares the records of both peoples.\nBuild a sanctuary and train a healer.\nResearch Veteran Doctrine, Barracks III and two rangers.\nClear the three archives; hold each one for 8 s.\nThen defend the central archive for 30 s.\nWar grows: enemies produce mixed patrols.\nDefeat: lose all your command halls.
+Liora Venn - Valle delle Fornaci\nLe officine riforniscono i reparti dei rastrellamenti.\nCostruisci un officina e addestra due baliste.\nDistruggi i tre depositi segnalati, poi il comando nemico.\nGli avversari impiegano cavalleria e macchine d assedio.\nColpisci fattorie e lavoratori per ridurre i rinforzi.\nSconfitta: perdi tutti i comandi.	Liora Venn - Valley of Furnaces\nThe workshops supply the forces conducting raids.\nBuild a workshop and train two ballistae.\nDestroy three marked depots, then the enemy hall.\nYour opponents deploy cavalry and siege engines.\nStrike farms and workers to reduce reinforcements.\nDefeat: lose all your command halls.
+Liora Venn - Arcipelago delle Chiuse\nLe comunita costiere chiedono una rotta sicura.\nSviluppa la fonderia navale e crea corazzata e trasporto.\nPetrolio: cisterna > piattaforma > raccolta.\nSbarca sull isola e presidia il faro per 20 secondi\ncon almeno tre combattenti. Poi distruggi il porto nemico.\nLe fregate rilevano i sommergibili avversari.\nSconfitta: perdi tutti i comandi.	Liora Venn - Lockgate Archipelago\nThe coastal communities ask for a safe sea route.\nBuild a naval foundry, battleship and transport.\nOil: tanker > platform > gathering.\nLand on the island and hold the lighthouse for 20 s\nwith three combat units. Then destroy the enemy harbor.\nFrigates detect enemy submarines.\nDefeat: lose all your command halls.
+Liora Venn - Terrazze della Memoria\nI frammenti spiegano come preservare la Pietra.\nSviluppa Comando III, accademia e Sapienza arcana.\nAddestra due arcanisti, poi recupera i tre sigilli.\nPresidia ogni sigillo per 10 secondi senza nemici.\nInfine difendi il cerchio centrale per 45 secondi.\nGli evocatori avversari usano magia: cura e disperdi i gruppi.\nSconfitta: perdi tutti i comandi.	Liora Venn - Terraces of Memory\nThe fragments explain how to preserve the Stone.\nDevelop Command Hall III, academy and Arcane Knowledge.\nTrain two arcanists, then recover three seals.\nHold each seal for 10 s with no enemies nearby.\nFinally defend the central circle for 45 s.\nEnemy summoners use magic: heal and spread out.\nDefeat: lose all your command halls.
+Liora Venn - Il Fronte dell Alba\nUnisci le guarnigioni prima della guerra decisiva.\nCostruisci un secondo comando e una voliera.\nAddestra due roc da guerra e recupera i due presidi.\nPoi distruggi le due officine militari segnalate.\nLe viverne nemiche richiedono arcieri e difese antiaeree.\nSconfitta: perdi tutti i comandi.	Liora Venn - The Dawn Front\nUnite the garrisons before the decisive war.\nBuild a second command hall and an aviary.\nTrain two war rocs and reclaim both outposts.\nThen destroy the two marked military workshops.\nEnemy wyverns require archers and anti-air defenses.\nDefeat: lose all your command halls.
+Liora Venn - Il Cuore del Mondo\nLa Pietra e custodita nella fortezza avversaria.\nPrepara economia, fattorie e un esercito di almeno 20\ncombattenti, con officina e accademia.\nTre campi nemici, veterani, assedio, magie e viverne.\nGli assalti partono dopo la preparazione e almeno 7 minuti.\nVittoria: distruggi ogni struttura e ogni unita nemica.\nLa Pietra deve restare intatta. Nessun rinforzo gratuito.\nSconfitta: perdi tutti i comandi.	Liora Venn - The Heart of the World\nThe Worldstone is guarded in the enemy fortress.\nPrepare your economy, farms and an army of at least 20\ncombat units, with a workshop and academy.\nThree enemy camps: veterans, siege, magic and wyverns.\nAttacks wait for preparations and at least 7 minutes.\nVictory: destroy every enemy building and unit.\nThe Stone must remain intact. No free reinforcements.\nDefeat: lose all your command halls.
+Impossibile salvare la lingua. Preferenza valida per questa sessione.	Unable to save language preference. It applies to this session.
+Inizia nuova campagna	Start new campaign
+Riprendi campagna	Continue campaign
+Opzioni	Options
+Prologo	Prologue
+Umani - Lega del Confine	Humans - Border League
+Stirpe oscura - Figli dell Abisso	Dark Kin - Children of the Abyss
+Lingua: Italiano (cambia)	Language: Italian (change)
+Lingua: English (cambia)	Language: English (change)
+Schermo intero (cambia)	Fullscreen (change)
+Finestra (cambia)	Windowed (change)
+Stirpe oscura	Dark Kin
+Umani	Humans
+Missione 	Mission 
+Campagna precedente	Previous campaign
+Nessuna campagna salvata.	No saved campaigns.
+Scegli la campagna da riprendere.	Choose the campaign to continue.
+Impossibile creare una nuova campagna.	Unable to create a new campaign.
+< Campagne precedenti	< Previous campaigns
+Campagne successive >	Next campaigns >
+Le campagne di Avaron	The Campaigns of Avaron
+Nuova campagna - Scegli la stirpe	New campaign - Choose your kin
+Prologo - Scegli la stirpe	Prologue - Choose your kin
+Riprendi una campagna	Continue a campaign
+Campagna oscura - Le voci dell Abisso	Dark campaign - Voices of the Abyss
+Ogni nuova campagna ha salvataggi e progressi separati.	Every new campaign has separate saves and progress.
+Le comunita dell Abisso possono costruire una nuova alba.	The Abyssal communities can build a new dawn.
+Comandante della Lega	League commander
+Comando non valido.	Invalid command.
+Comando sconosciuto.	Unknown command.

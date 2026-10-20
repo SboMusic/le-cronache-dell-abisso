@@ -1,0 +1,11 @@
+Frontiere - Demo alfa 1.0.0
+
+Installazione per l'utente corrente su Windows 10/11. Non servono Visual Studio o connessione Internet per giocare. Sono inclusi i componenti runtime necessari e l'archivio dei sorgenti.
+
+Questa e' una versione alfa giocabile: contiene dieci missioni umane piu una battaglia finale con salvataggi locali; la campagna demoniaca, multiplayer e audio restano da sviluppare. Il gioco e' ispirato al genere RTS fantasy e usa le risorse grafiche originali di Frontiere.
+
+Il programma di installazione crea una cartella Frontiere e un collegamento nel menu Start. Il collegamento sul desktop e' facoltativo. La disinstallazione e' disponibile nelle App di Windows e nel menu Start.
+
+
+Italiano / English: scelta nel menu principale e di pausa del gioco.
+English guide included: GUIDE-ENGLISH.txt.

@@ -1,0 +1,7 @@
+Microsoft Visual C++ Runtime - componenti redistribuibili per applicazioni native Windows.
+File copiati dalla directory Redist/MSVC/14.29.30133/x86/Microsoft.VC142.CRT dell'installazione Visual Studio Community 2022 usata per la compilazione.
+Copyright Microsoft Corporation. Tutti i diritti riservati.
+Questi componenti sono redistribuiti con l'applicazione, non sono soggetti alla GPL di Frontiere.
+Riferimenti ufficiali:
+https://learn.microsoft.com/en-us/cpp/windows/redistributing-visual-cpp-files?view=msvc-170
+https://visualstudio.microsoft.com/license-terms/vs2022-ga-community/

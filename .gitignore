@@ -1,0 +1,36 @@
+# Generated game, releases and private work folders
+/gioco/
+/distribuzione/
+/backup/
+/archivio/
+/temporanei/
+/progetto/build/
+/strumenti/inno-setup/
+.vs/
+*.user
+*.suo
+*.pdb
+*.obj
+*.ilk
+*.log
+__pycache__/
+.env
+.env.*
+*.pem
+*.key
+# Publish current documentation, not the local working history.
+/documentazione/*
+!/documentazione/GUIDA-GIOCO.txt
+!/documentazione/GUIDE-ENGLISH.txt
+!/documentazione/INSTALLAZIONE.txt
+!/documentazione/STRUTTURE.md
+!/documentazione/DEVELOPMENT.md
+!/documentazione/ARCHITECTURE.md
+!/documentazione/RELEASE-1.0.0.md
+!/documentazione/schermate/
+!/documentazione/lore/
+/documentazione/lore/*
+!/documentazione/lore/storia-rivista-v2.md
+!/documentazione/lore/atlante-narrativo-v2.md
+!/documentazione/lore/archivi-delle-fazioni-v2.md
+!/documentazione/lore/piano-campagna-10-e-finale.md

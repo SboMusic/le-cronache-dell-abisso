@@ -1,0 +1,76 @@
+LE CRONACHE DELL'ABISSO / CHRONICLES OF THE ABYSS - 1.0.0
+
+LINGUA / LANGUAGE
+Italiano / English: pulsante in alto a destra nel menu principale e nel menu di pausa.
+La scelta cambia subito interfaccia, storia, missioni, obiettivi, cataloghi e messaggi.
+La preferenza viene salvata in %LOCALAPPDATA%/Frontiere/lingua.cfg.
+English players: see GUIDE-ENGLISH.txt for full controls and campaign instructions.
+
+LE CRONACHE DELL'ABISSO - VERSIONE 1.0.0
+
+AVVIO
+Apri Avvia Le Cronache dell Abisso.cmd, oppure Frontiere.exe nella versione installata/portatile.
+Inizia nuova campagna: scegli Umani oppure Stirpe oscura. Entrambe sono giocabili sulle undici mappe esistenti, con incantatori, eserciti e presentazioni adattati. La campagna oscura non e ancora una storia autonoma con mappe esclusive. Ogni avvio crea una nuova campagna separata, senza cancellare le precedenti.
+Riprendi campagna: scegli una delle partite salvate, riconoscibile da stirpe, missione e data. Il salvataggio della versione precedente rimane disponibile. Opzioni: lingua e schermo intero/finestra. Prologo: partita guidata con scelta della stirpe. Esci: chiude il gioco.
+
+MISSIONI
+1. Un posto da chiamare casa - Valle dei Mulini: due fattorie completate, consegna di 120 oro e 80 legno, poi raggiungi il cortile del villaggio segnalato. Il contatore considera i carichi consegnati, non il denaro iniziale. Nessun nemico.
+2. La strada di Velmora - Passo delle Sentinelle: completa la caserma, porta i soldati a tre, elimina tre sentinelle e raggiungi la fine della strada a nord-est. Nessuna ondata o assalto automatico alla base.
+3. I custodi delle carte - Bosco dei Custodi: completa la segheria, ricerca Caserma II e addestra due arcieri. Libera l archivio e presidialo per dieci secondi. Seren Dhal raggiunge poi automaticamente il tuo comando: proteggila. La sua morte dopo il recupero o la perdita del comando causano la sconfitta.
+4. Il prezzo dell obbedienza - Gola delle Braci: proteggi il rifugio dei profughi demoniaci. Ricerca Comando II, completa una scuderia, addestra due cavalieri e costruisci una torre di guardia. Hai poi 20 secondi di preavviso prima degli assalti. Porta truppe al passo dorato: servono 90 secondi complessivi con truppe alleate presenti e nessun nemico vicino. Durante gli scontri il conteggio si ferma. Infine distruggi la caserma segnalata a nord-est. Perdi se cade il comando o il rifugio.
+5. Le citta libere - Costa delle Citta Libere: costruisci un cantiere sulla costa meridionale, addestra una cisterna e clicca con il destro sul giacimento segnalato per costruire una piattaforma. A piattaforma completa, assegna la cisterna alla raccolta con clic destro sulla piattaforma. Accumula almeno 60 petrolio; poi addestra una fregata e un trasporto. Avvicinalo alla costa, seleziona fino a sei truppe terrestri e clicca con il destro sul trasporto. Muovi la nave verso il lato occidentale dell isola a sud-est. Seleziona il trasporto, premi Sbarca (oppure U) e clicca sulla spiaggia vicina. Il destro sulla spiaggia funziona anche direttamente. Elimina le guardie e porta almeno tre combattenti terrestri al tempio per 20 secondi consecutivi senza nemici. Operai, guaritori e navi non contano per il presidio. Comando II e gia completato, come sviluppo della missione precedente. Una torre iniziale protegge parte della costa. La flotta nemica difende il proprio porto: sbarca sul lato occidentale dell isola e usa le fregate per colpire eventuali navi ostili; due fregate rendono la traversata piu sicura. Il santuario con i guaritori e ora disponibile.
+Le prime quattro mappe sono terrestri. La quinta introduce acqua, petrolio, cisterne, trasporti e fregate. Le missioni successive introducono veterani, assedio, flotta pesante, magia e volanti. Il terreno, le foreste, i percorsi e le risorse cambiano per scenario. L obiettivo attuale rimane in basso; quando serve, un segnale dorato indica la destinazione anche sulla minimappa.
+
+SALVATAGGI
+F9: salva manualmente la campagna. F10: carica il salvataggio manuale; se manca, usa quello automatico. Le stesse voci sono nel menu Esc.
+Riprendi campagna elenca le campagne e apre il piu recente salvataggio valido di quella scelta. Se un file e danneggiato viene provato l altro slot della stessa campagna.
+Il gioco salva automaticamente all inizio e alla vittoria di una missione, su uno slot distinto dal manuale. La vittoria sblocca stabilmente la missione successiva.
+Le nuove campagne sono in %LOCALAPPDATA%/Frontiere/campagne/<identificativo> con campagna.sav, campagna-auto.sav e campagna.progresso. Il vecchio salvataggio resta direttamente in %LOCALAPPDATA%/Frontiere. Sono dati dell utente, separati da installer e cartella del gioco; l aggiornamento e la disinstallazione non li cancellano. Per un backup delle partite copia anche questi file.
+Riprendi conserva risorse, unita, edifici, cantieri, produzione, ricerche, ordini, percorsi, esplorazione, proiettili, obiettivi, scorta e camera. Un file mancante o danneggiato non sostituisce la partita corrente.
+I salvataggi sono attivi per le campagne; il Prologo rimane una modalita guidata separata.
+
+COMANDI
+Sinistro: selezione. Trascina: selezione multipla. Shift: aggiungi alla selezione.
+Destro: muovi, attacca, raccogli o ripara secondo il bersaglio.
+Tieni premuto il pulsante centrale e trascina per spostare la camera. Il solo movimento del puntatore non la sposta. WASD/frecce: camera. Rotella: zoom. Minimappa: clic o trascinamento.
+F3 unita, F4 edifici, F5 ricerche, F6 magie: cataloghi in pausa; mostrano i contenuti disponibili nella missione.
+Esc: menu. P: pausa. R: ricomincia la missione attuale. F2: cambia fazione soltanto nelle modalita libere.
+O: operaio dal comando selezionato. T: soldato dalla caserma. B: costruzione rapida della caserma, se sbloccata. H: seleziona truppe. C: annulla produzione/ricerca. U: scegli la spiaggia per sbarcare da un trasporto.
+
+ECONOMIA E COSTRUZIONE
+Seleziona un operaio e clicca con il destro su oro o alberi. I carichi vanno consegnati. Conviene dividere il lavoro tra miniera e legname.
+Operaio > Costruisci: scegli un edificio disponibile, poi un terreno libero gia esplorato. L operaio raggiunge il cantiere e rimane impegnato fino al termine. Se muore, un altro puo usare Ripara sul cantiere per riprenderlo.
+Fattorie completate: +6 posti, limite massimo 90. Nel prologo e nella campagna occorre almeno una fattoria completata per produrre nuove unita. Se una fattoria viene persa e mancano posti, l addestramento attende.
+Gli alberi contengono 80 legno ciascuno: una volta esauriti scompaiono e liberano spazio. Anche le miniere esaurite liberano il terreno. Alberi vivi, miniere, rocce e strutture impediscono di sovrapporre fondamenta.
+Caserma II: segheria completata, 120 oro, 80 legno e 12 secondi; sblocca gli arcieri. Ogni caserma ha il proprio livello. I messaggi spiegano i requisiti mancanti.
+Il terreno scoperto resta chiaro. I nemici si vedono solo nella visuale attuale. La mappa sconosciuta resta nera.
+
+VERSIONE E DISTRIBUZIONE
+Alfa giocabile: dieci missioni umane piu la battaglia finale, briefing testuali, campagna e salvataggi locali. La campagna demoniaca narrativa, l archivio interattivo della lore, dialoghi audio e multiplayer non sono ancora implementati. Gli artwork demoniaci sono disponibili nelle prove e per gli avversari.
+Windows 10/11 con driver OpenGL funzionante. Non servono Visual Studio o Internet per giocare. Librerie incluse; licenze e sorgenti nelle cartelle omonime. Installer per utente corrente, collegamento Start e desktop facoltativo. Frontiere non e firmato digitalmente.
+
+SCHERMO: F11 o Alt+Invio per alternare schermo intero e finestra.
+La scelta viene ricordata. Rotella: zoom; tasto centrale: trascina la mappa.
+STRUTTURE: seleziona un edificio e passa sopra Info edificio.
+Segheria: deposito legno e +2 legni per carico; sblocca Caserma II.
+Fucina: compra Armi e Armature dalle icone per migliorare l esercito.
+Consulta documentazione/STRUTTURE.md per la guida completa.
+
+MONDO E RISORSE (0.10.0)
+Le miniere hanno 6000 oro, gli alberi 80 legno. Esauriti, scompaiono e liberano spazio; nessun rifornimento automatico. Passa sopra una risorsa per leggere il contenuto rimasto. Il lavoratore mostra anche la riserva che sta estraendo.
+Le missioni 4 e 5 appena iniziate usano mappe 3840 x 2400, con nuove aree e miniere. Le prime tre restano 2560 x 1600. Le vecchie partite mantengono la dimensione originale; ricomincia una missione per giocare la mappa ampliata.
+Minimappa piu compatta: clic/trascinamento immediati, camera con tasto centrale. Strade e acqua usano nuove texture originali; acqua e rive sono animate, con attrezzi, schegge, scintille e scie nei lavori e negli scontri.
+La campagna completa comprende ora 10 missioni e uno scontro finale separato, tutti giocabili.
+
+CAMPAGNA COMPLETA (0.10.0)
+Le missioni si scelgono su tre pagine. Completando la quinta si sblocca la sesta senza cancellare i salvataggi precedenti.
+6. Le parole dei Cinque: crea un guaritore e due veterani dopo Dottrina veterana e Caserma III. Recupera i tre archivi con presidi di 8 secondi, poi difendi l archivio centrale per 30 secondi sicuri. Prepara raccolta e un esercito rinforzato: due veterani da soli non bastano.
+7. Le officine del confine: costruisci officina e due baliste, distruggi i tre depositi segnalati, poi il comando avversario. Proteggi le baliste con fanteria e guaritori.
+8. La rotta delle profondita: raccogli petrolio, costruisci la fonderia navale, produci corazzata e trasporto. Sbarca con almeno tre combattenti e presidia il faro per 20 secondi, poi distruggi il porto nemico. Usa fregate o ricognitori contro i sommergibili.
+9. La memoria della Pietra: ricerca Comando III e Sapienza arcana, costruisci l accademia e addestra due arcanisti. Recupera i tre sigilli con presidi di 10 secondi e difendi il cerchio centrale per 45 secondi. Le magie offensive richiedono bersagli e mana.
+10. Prima dell ultima alba: costruisci un secondo comando, una voliera e due roc. Recupera due presidi (12 secondi ciascuno), quindi distruggi le due officine avanzate segnalate. Le viverne nemiche richiedono difese antiaeree.
+Finale. Il cuore del mondo: tre campi fortificati e la Pietra del Mondo nel campo nemico. Prepara officina, accademia e almeno venti combattenti. Il primo assalto automatico non parte prima di sette minuti e del completamento dei preparativi; resta almeno un minuto di preavviso se finisci piu tardi. I reparti nemici hanno ricerche d elite, cavalleria, assedio, viverne ed evocatori. Espandi fattorie, raccolta, difese e guaritori; venti combattenti sono la soglia per aprire il fronte, non una promessa di vittoria immediata.
+Nel finale devi eliminare OGNI unita e struttura della fazione nemica, inclusi lavoratori, torri, fattorie e palizzate. Distruggere soltanto i comandi non basta. Dopo la caduta dei comandi, gli ultimi bersagli vengono segnalati sulla minimappa. Il cristallo e neutrale e protetto: resta intatto e non va distrutto. Perdi soltanto quando non hai piu alcun comando.
+I rinforzi nemici sono addestrati e pagati con risorse finite. Distruggere fattorie, lavoratori e strutture produttive riduce concretamente le loro capacita. Non appaiono ondate gratuite.
+H seleziona anche i guaritori, escludendo gli operai. Negli ordini di attacco al gruppo i guaritori si avvicinano a distanza di supporto e curano gli alleati; non infliggono danni. Tieni protetti i cantieri: se cade un operaio, usa Ripara con un altro per riprendere la costruzione.
+Salva con F9 prima delle grandi offensive; F10 carica il salvataggio manuale. I presidi recuperati, i tempi di difesa, le produzioni e le forze del finale sono inclusi nel salvataggio.
