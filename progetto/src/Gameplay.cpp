@@ -15,6 +15,7 @@ void Gameplay::regressionGraphics(){
  world_.get(world_.entities.back().id)->selected=true;
  world_.gather(*world_.get(8),3);world_.move(*world_.get(11),{850,720});updateVisuals(.25f);
  auto savedView=view_;float savedTime=world_.time;view_.setCenter(900,1380);view_.setSize(400,400);sf::RenderTexture frame;require(frame.create(320,320),"animated terrain render target initializes");frame.setView(sf::View(sf::FloatRect(700,1180,400,400)));world_.time=0;frame.clear();drawTerrain(frame);frame.display();auto first=frame.getTexture().copyToImage();world_.time=1;frame.clear();drawTerrain(frame);frame.display();auto second=frame.getTexture().copyToImage();require(!std::equal(first.getPixelsPtr(),first.getPixelsPtr()+320*320*4,second.getPixelsPtr()),"water changes rendered pixels over time");world_.time=savedTime;view_=savedView;
+ #include "GameplayAnimationChecks.inl"
  std::cout<<"SUCCESS "<<checks<<" graphics checks"<<std::endl;
 }
 void Gameplay::loadArt(){
@@ -33,10 +34,11 @@ void Gameplay::loadArt(){
  loadDemonArt();
 }
 void Gameplay::updateVisuals(float dt){
- for(const auto& e:world_.entities){auto& v=visuals_[e.id];if(!v.initialized){v.last=v.display=e.pos;v.initialized=true;}
+ for(const auto& e:world_.entities){auto& v=visuals_[e.id];if(!v.initialized){v.last=v.display=e.pos;v.buildProgress=presentation::constructionProgress(e.build,e.buildTotal);v.initialized=true;}
   auto delta=e.pos-v.last;float travelled=alpha::distance(e.pos,v.last);if(travelled>300){v.display=e.pos;travelled=0;}v.last=e.pos;v.phase+=dt;v.stride+=travelled*.045f;float blend=1-std::exp(-std::max(0.f,dt)*22);v.display+=(e.pos-v.display)*blend;v.speed+=(dt>0?travelled/dt-v.speed:0)*std::min(1.f,dt*12);
+  float built=presentation::constructionProgress(e.build,e.buildTotal);v.buildProgress=e.build<=0?1.f:v.buildProgress+(built-v.buildProgress)*(1-std::exp(-dt*14));
   if(e.hp<=0){v.death+=dt;continue;}
-  if(e.order==alpha::Order::Attack||e.order==alpha::Order::Gather){auto t=world_.get(e.target);if(t)delta=t->pos-e.pos;}
+  if(v.speed<5&&(e.order==alpha::Order::Attack||e.order==alpha::Order::Gather||e.order==alpha::Order::Build||e.order==alpha::Order::Repair)){auto t=world_.get(e.target);if(t)delta=t->pos-e.pos;}
   if(std::abs(delta.x)+std::abs(delta.y)>.1f)v.direction=delta.y>=0?(delta.x>=0?0:1):(delta.x<0?2:3);
  }
 }
@@ -53,8 +55,21 @@ const sf::Texture* Gameplay::textureFor(alpha::Kind kind,int faction)const{
 }
 void Gameplay::drawArt(sf::RenderTarget& target,const alpha::Entity& e,const Visual& v,float fade)const{
  const bool worker=e.kind==alpha::Kind::Worker;
- auto motion=presentation::workerAction(world_,e,v.speed>5);auto pose=presentation::workerPose(motion,v.phase+e.id*.07f,v.stride,e.cooldown,alpha::def(e.kind).cooldown);
- auto applyPose=[&](sf::Sprite& sprite){if(!worker)return;float facing=(v.direction==1||v.direction==2)?-1.f:1.f;sprite.rotate(pose.lean*facing);sprite.move(facing*pose.reach,pose.bob);};
+ auto motion=presentation::workerAction(world_,e,v.speed>5);auto pose=presentation::workerPose(motion,v.phase+e.id*.07f,v.stride,e.cooldown,alpha::def(e.kind).cooldown/(e.haste>0?1.4f:1.f));
+ float facing=(v.direction==1||v.direction==2)?-1.f:1.f;bool moving=v.speed>5;
+ bool striking=e.order==alpha::Order::Attack&&e.route.empty()&&e.cooldown>0;
+ auto combat=presentation::combatPose(striking?e.cooldown:0,alpha::def(e.kind).cooldown/(e.haste>0?1.4f:1.f));
+ auto applyPose=[&](sf::Sprite& sprite){
+  if(worker){sprite.rotate(pose.lean*facing);sprite.move(facing*pose.reach,pose.bob);return;}
+  if(!alpha::mobile(e.kind))return;
+  if(moving&&alpha::def(e.kind).domain==alpha::Domain::Land){sprite.rotate(std::sin(v.stride*3.14159265f)*1.5f);sprite.move(0,-std::abs(std::sin(v.stride*3.14159265f))*1.8f);}
+  if(striking){sprite.rotate(combat.lean*facing);auto enemy=world_.get(e.target);auto d=enemy?enemy->pos-e.pos:sf::Vector2f(facing,0);float length=std::max(1.f,alpha::distance({},d));sprite.move(d/length*combat.reach);}
+ };
+ auto paint=[&](const sf::Sprite& sprite){
+  if(!alpha::mobile(e.kind)&&!alpha::resource(e.kind)&&e.build>0){presentation::drawConstruction(target,sprite,v.initialized?v.buildProgress:presentation::constructionProgress(e.build,e.buildTotal));return;}
+  if(alpha::mobile(e.kind)&&e.hp>0&&alpha::def(e.kind).domain==alpha::Domain::Land){float work=worker?pose.stroke:striking?combat.reach/8:0;presentation::drawActor(target,sprite,v.stride,moving,work,facing);return;}
+  target.draw(sprite);
+ };
  bool humanArchivist=world_.mission==2&&e.id==world_.archivist;const auto* tex=textureFor(e.kind,humanArchivist?0:e.team>=0?world_.faction[e.team]:0);bool unit=alpha::mobile(e.kind);
  if(world_.mission==10&&e.id==world_.archivist){float pulse=.5f+.5f*std::sin(world_.time*1.8f);sf::CircleShape aura(95+pulse*8,64);aura.setOrigin(aura.getRadius(),aura.getRadius());aura.setScale(1,.5f);aura.setPosition(e.pos);aura.setFillColor({71,226,206,static_cast<sf::Uint8>(22+pulse*22)});aura.setOutlineThickness(2);aura.setOutlineColor({171,239,216,static_cast<sf::Uint8>(110+pulse*50)});target.draw(aura);sf::Sprite stone(crystalArt_);auto size=crystalArt_.getSize();float scale=250.f/size.y;stone.setOrigin(size.x*.5f,size.y*.84f);stone.setScale(scale,scale);stone.setPosition(e.pos);target.draw(stone);for(int i=0;i<7;++i){float t=std::fmod(world_.time*.3f+i*.14f,1.f);sf::CircleShape spark(2.f,5);spark.setPosition(e.pos+sf::Vector2f(std::sin(i*2.f+world_.time)*50,-40-t*130));spark.setFillColor({210,246,202,static_cast<sf::Uint8>((1-t)*180)});target.draw(spark);}return;}
 
@@ -66,31 +81,24 @@ void Gameplay::drawArt(sf::RenderTarget& target,const alpha::Entity& e,const Vis
  }
  if(!humanArchivist&&e.team>=0&&world_.faction[e.team]==1&&demonTile(e.kind)>=0&&demonReady_[unit?0:1]){
   sf::Sprite sprite(*tex);auto rect=demonRects_[int(e.kind)];sprite.setTextureRect(rect);float extent=unit?(worker?84.f:alpha::def(e.kind).domain==alpha::Domain::Sea?118.f:98.f):e.kind==alpha::Kind::Wall?72.f:195.f;float scale=extent/std::max(rect.width,rect.height);sprite.setOrigin(rect.width*.5f,rect.height*.83f);sprite.setScale(scale,scale);
-  if(unit&&(v.direction==1||v.direction==2))sprite.setScale(-scale,scale);sprite.setPosition(e.pos);sf::Uint8 opacity=static_cast<sf::Uint8>((e.build>0?165:255)*fade);sprite.setColor({255,255,255,opacity});
-  bool working=world_.busy(e)||(e.order==alpha::Order::Gather&&e.route.empty()&&e.work>0);bool attack=e.order==alpha::Order::Attack&&e.route.empty()&&e.cooldown>0;
-  if(unit&&!worker&&!e.route.empty())sprite.move(0,std::sin(v.phase*9)*2);if(unit&&!worker&&(working||attack)){float swing=std::sin(v.phase*10);sprite.setRotation(swing*7);sprite.move(swing*2,0);}
+  if(unit&&(v.direction==1||v.direction==2))sprite.setScale(-scale,scale);sprite.setPosition(e.pos);sf::Uint8 opacity=static_cast<sf::Uint8>(255*fade);sprite.setColor({255,255,255,opacity});
   if(unit&&alpha::def(e.kind).domain==alpha::Domain::Air)sprite.move(0,std::sin(v.phase*5)*4);
-  applyPose(sprite);if(e.hp<=0){sprite.setRotation(v.death*75);sprite.setScale(sprite.getScale().x,sprite.getScale().y*(1-v.death*.7f));}target.draw(sprite);return;
+  applyPose(sprite);if(e.hp<=0){sprite.setRotation(v.death*75);sprite.setScale(sprite.getScale().x,sprite.getScale().y*(1-v.death*.7f));}paint(sprite);return;
  }
  if(e.kind==alpha::Kind::Oil){for(int i=0;i<4;++i){sf::CircleShape slick(24.f+i*4,28);slick.setOrigin(slick.getRadius(),slick.getRadius());slick.setScale(1.4f,.5f);slick.setPosition(e.pos+sf::Vector2f(std::sin(i*2.f)*13,std::cos(i*2.f)*6));slick.setFillColor({21,47,49,static_cast<sf::Uint8>(90*fade)});target.draw(slick);}sf::CircleShape ripple(43+std::sin(v.phase*2)*3,32);ripple.setOrigin(ripple.getRadius(),ripple.getRadius());ripple.setScale(1,.45f);ripple.setPosition(e.pos);ripple.setFillColor(sf::Color::Transparent);ripple.setOutlineThickness(1.5f);ripple.setOutlineColor({112,173,167,static_cast<sf::Uint8>(130*fade)});target.draw(ripple);float bob=std::sin(v.phase*3+e.id)*2;sf::RectangleShape buoy({15,20});buoy.setOrigin(7,16);buoy.setPosition(e.pos+sf::Vector2f(0,bob));buoy.setFillColor({135,87,49,static_cast<sf::Uint8>(255*fade)});buoy.setOutlineColor({204,172,105,static_cast<sf::Uint8>(255*fade)});buoy.setOutlineThickness(2);target.draw(buoy);sf::RectangleShape pole({2,24});pole.setPosition(e.pos+sf::Vector2f(0,-36+bob));pole.setFillColor({176,164,125});target.draw(pole);sf::ConvexShape flag(3);flag.setPoint(0,{0,0});flag.setPoint(1,{15,5});flag.setPoint(2,{0,10});flag.setPosition(e.pos+sf::Vector2f(2,-36+bob));flag.setFillColor({191,112,65});target.draw(flag);return;}
  if(!tex){sf::CircleShape fallback(alpha::radius(e.kind),unit?5:6);fallback.setOrigin(alpha::radius(e.kind),alpha::radius(e.kind));fallback.setPosition(e.pos);fallback.setFillColor(e.team<0?sf::Color(194,166,79):(e.team==0?sf::Color(65,168,178):sf::Color(211,98,72)));target.draw(fallback);return;}
  sf::Sprite sprite(*tex);float width=unit?(worker?82.f:105.f):(e.kind==alpha::Kind::Forest?210.f:(e.kind==alpha::Kind::Mine?170.f:e.kind==alpha::Kind::Wall?72.f:195.f));
  bool animated=unit&&alpha::legacyArt(e.kind)>=0;int tile=alpha::def(e.kind).atlas;
  if(animated||tile>=0){int col=0,row=0;
-  if(animated){if(worker)col=pose.frame;else if(!e.route.empty())col=1+(int(v.phase*7)%2);else if((e.order==alpha::Order::Attack&&e.cooldown>.3f)||(e.kind==alpha::Kind::Worker&&e.order==alpha::Order::Gather&&e.work>0)||world_.busy(e))col=int(v.phase*5)%2?3:0;row=v.direction;}
+  if(animated){if(worker)col=pose.frame;else if(moving)col=1+(int(v.stride)%2);else if(striking)col=combat.frame;row=v.direction;}
   else{col=tile%4;row=tile/4;}
   int left=col*tex->getSize().x/4,top=row*tex->getSize().y/4,cw=(col+1)*tex->getSize().x/4-left,ch=(row+1)*tex->getSize().y/4-top;
   sprite.setTextureRect({left,top,cw,ch});sprite.setOrigin(cw*.5f,ch*(unit?.65f:.68f));sprite.setScale(width/cw,width/ch);
   if(!animated&&unit&&(v.direction==1||v.direction==2))sprite.setScale(-sprite.getScale().x,sprite.getScale().y);
  }else{sprite.setOrigin(tex->getSize().x*.5f,tex->getSize().y*.68f);float scale=width/std::max(tex->getSize().x,tex->getSize().y);sprite.setScale(scale,scale);}
- auto color=sf::Color(255,255,255,static_cast<sf::Uint8>((e.build>0?165:255)*fade));if(e.kind==alpha::Kind::Spirit)color=sf::Color(100,222,240,static_cast<sf::Uint8>(180*fade));if(e.kind==alpha::Kind::Submarine)color.a=static_cast<sf::Uint8>(170*fade);if(!humanArchivist&&e.team>=0&&world_.faction[e.team]==1)color=sf::Color(148,112,191,color.a);sprite.setColor(color);
+ auto color=sf::Color(255,255,255,static_cast<sf::Uint8>(255*fade));if(e.kind==alpha::Kind::Spirit)color=sf::Color(100,222,240,static_cast<sf::Uint8>(180*fade));if(e.kind==alpha::Kind::Submarine)color.a=static_cast<sf::Uint8>(170*fade);if(!humanArchivist&&e.team>=0&&world_.faction[e.team]==1)color=sf::Color(148,112,191,color.a);sprite.setColor(color);
  sprite.setPosition(e.pos);
- bool chopping=e.kind==alpha::Kind::Worker&&e.order==alpha::Order::Gather&&e.route.empty()&&e.work>0;
- chopping=chopping||(world_.busy(e)&&e.route.empty());
- bool striking=e.order==alpha::Order::Attack&&e.route.empty()&&e.cooldown>0;
- if(!worker&&(chopping||striking)){float swing=std::sin(v.phase*(chopping?10.f:14.f));sprite.setRotation(swing*(chopping?9.f:6.f));sprite.move(swing*3,0);}
- if(!animated&&unit&&!worker&&!e.route.empty())sprite.move(0,std::sin(v.phase*9)*2);
- applyPose(sprite);if(e.hp<=0){sprite.setRotation(v.death*75);sprite.setScale(sprite.getScale().x,sprite.getScale().y*(1-v.death*.7f));}target.draw(sprite);
+ applyPose(sprite);if(e.hp<=0){sprite.setRotation(v.death*75);sprite.setScale(sprite.getScale().x,sprite.getScale().y*(1-v.death*.7f));}paint(sprite);
 }
 void Gameplay::regressionProductionControls(){
  CommandPanel panel;int checks=0;auto require=[&](bool ok,const char* label){if(!ok)throw std::runtime_error(label);++checks;std::cout<<"PASS "<<label<<std::endl;};

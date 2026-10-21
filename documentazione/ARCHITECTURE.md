@@ -39,3 +39,7 @@ Map grids now use buffers sized to cols×rows, with validated resizeMap and opti
 RtsRegions.inl authors all eleven layouts, moving settlements, finite resources, objectives and AI anchors. RtsLegacyRegions.inl retains historical layouts only for explicit regression fixtures. Navigation uses A* and reserved service approaches around resources and depots. WorkerAnimation.h models distance-driven movement and activity poses; rendering interpolates positions and reuses existing atlases.
 
 New authored worlds write schema 5 (layout identity and mission goal); readers retain formats 1–4. Existing saves preserve their layout. The first mission adds paid rival workers with defensive retaliation, no military production or raids. The advanced authored objective tests are controlled scenarios; full paid-war regression still uses the historical map.
+
+## Animation increment 2.0.0-dev.4
+
+ActorAnimation.h renders non-overlapping construction bands with a soft reveal edge and articulated actor meshes. Gameplay visual state smooths the actual construction fraction; progress never runs independently. WorkerAnimation.h provides asymmetric tool strokes; soldier attacks use cooldown-relative impact/recovery, matching the simulation’s immediate damage timing. GameplayAnimationChecks.inl tests native framebuffer pixels for both factions. Save format and combat rules are unchanged.

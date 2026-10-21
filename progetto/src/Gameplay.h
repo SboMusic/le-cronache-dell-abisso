@@ -2,6 +2,7 @@
 #include "NGin.h"
 #include "Version.h"
 #include "WorkerAnimation.h"
+#include "ActorAnimation.h"
 
 #include "CommandPanel.h"
 #include "AlphaSimulation.h"
@@ -61,7 +62,7 @@ private:
  void loadDemonArt();
  int demonTile(alpha::Kind)const;
  bool groundReady_=false;
- struct Visual { sf::Vector2f last,display; int direction=0; float phase=0,death=0,stride=0,speed=0; bool initialized=false; };
+ struct Visual { sf::Vector2f last,display; int direction=0; float phase=0,death=0,stride=0,speed=0,buildProgress=1; bool initialized=false; };
  bool legacyFixture_=false;
  std::unordered_map<int,Visual> visuals_;
  void drawActivity(sf::RenderTarget&,const alpha::Entity&,const Visual&)const;

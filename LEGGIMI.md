@@ -21,6 +21,6 @@ Il nome ufficiale è Le Cronache dell’Abisso. L’avvio unico è Avvia Le Cron
 
 ## Sviluppo 2.0 separato
 
-Questa copia è la prima build di sviluppo 2.0.0-dev.3. Consulta [documenti e registro](documentazione/v2/README.md). Usa Avvia Anteprima 2.0.cmd soltanto dopo la compilazione: i dati sono separati dalla 1.0. Nuove partite con mappe crescenti, villaggio più distante e reclutamento entro i posti liberi; nuove unità, artwork e meccaniche tattiche arriveranno nei passi successivi.
+Questa copia è la prima build di sviluppo 2.0.0-dev.4. Consulta [documenti e registro](documentazione/v2/README.md). Usa Avvia Anteprima 2.0.cmd soltanto dopo la compilazione: i dati sono separati dalla 1.0. Nuove partite con mappe crescenti, villaggio più distante e reclutamento entro i posti liberi; nuove unità, artwork e meccaniche tattiche arriveranno nei passi successivi.
 
 Dev.3: nuove mappe in tutti i livelli e azioni dei lavoratori riviste. Avviare una nuova campagna o ricominciare la missione per la ricostruzione; i salvataggi precedenti restano invariati.

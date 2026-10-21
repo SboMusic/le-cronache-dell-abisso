@@ -82,3 +82,14 @@ Esito definitivo V2-002: compilazione riuscita; dodici suite modello superate (9
 - Milestone: M2 avanzata e prima revisione M5; nuove unità della 2.0, rune e altre meccaniche future non implementate qui. Bilanciamento completo delle mappe avanzate ancora da provare giocando.
 
 Esito definitivo V2-003: compilazione dev.3 riuscita; tredici suite modello superate (2166 controlli numerati, di cui 1255 sui nuovi layout, più guerre storiche per entrambe le stirpi); dieci modalità native superate, inclusi 177 controlli campagna. Corretta la traduzione integrale del nuovo briefing inglese e il disegno delle strade, che ora segue la griglia dei nuovi layout. Controllate visivamente base iniziale, costa, arcipelago e finale. Rapporto VERIFICA-RICOSTRUZIONE-003.json; nessun installer finale, bilanciamento avanzato ancora da giocare.
+
+## V2-004 — 21 ottobre 2026 — Cantieri e animazioni
+
+- Base 91421ba. Richiesta: migliorare operai/raccoglitori e soldati, con strutture trasparenti che si riempiono in modo fluido.
+- ActorAnimation.h: riempimento verticale sfumato, sagoma tenue, posa del colpo e deformazione articolata leggera delle figure. Gameplay conserva l’avanzamento visivo e segue la progressione reale del cantiere; il completamento rende l’artwork pienamente opaco.
+- WorkerAnimation: sollevamento, impatto e recupero distinti, ritmi specifici; eliminata la sovrapposizione fra utensile dipinto e utensile animato. Cammino e orientamento legati al movimento reale.
+- Soldati: passo dalla distanza, movimento di gambe/busto, affondo verso il bersaglio e recupero dalla ricarica effettiva. Scia solo all’impatto, lampo breve per gli attacchi a distanza. Stesse regole per gli oscuri. Nessuna modifica alla simulazione del danno o ai salvataggi.
+- GameplayAnimationChecks.inl aggiunge prove sul framebuffer delle due fazioni e una sequenza dimostrativa opzionale. La prima verifica ha rilevato accumulo di alpha sovrapponendo sagoma e parte piena: corretto usando fasce non sovrapposte.
+- Versione 2.0.0-dev.4, copia 1.0 e riferimenti stabili conservati. Artwork riutilizzati, nessun nuovo atlante completo né installer finale.
+
+Esito V2-004: compilazione riuscita, tredici suite modello superate (2166 controlli numerati più guerre storiche), dieci modalità native superate. Grafica: 118 controlli funzionali più 25 controlli opzionali per la cattura, totale 143 nella prova registrata. Sequenza e fotogrammi verificati visivamente; rapporto VERIFICA-ANIMAZIONI-004.json.

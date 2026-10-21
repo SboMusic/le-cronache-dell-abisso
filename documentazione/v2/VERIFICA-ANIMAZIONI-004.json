@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-21",
+  "version": "2.0.0-dev.4",
+  "base": "91421ba",
+  "build": "passed",
+  "model_suites": {
+    "alpha_tests": "SUCCESS 41 checks",
+    "authored_maps_tests": "SUCCESS 1255 authored maps, worker activity and navigation checks",
+    "campaign_slots_tests": "SUCCESS 70 faction campaign and save slot checks",
+    "campaign_tests": "SUCCESS 125 campaign maps objectives and saves checks",
+    "cheat_tests": "SUCCESS 64 cheat simulation checks",
+    "final_battle_tests": "SUCCESS both human and dark final wars, paid economy only",
+    "forest_tests": "SUCCESS 59 forest regression checks",
+    "map_foundation_tests": "SUCCESS 30 dynamic map and legacy save checks",
+    "mechanics_tests": "SUCCESS 30 economy and command mechanics checks",
+    "progression_tests": "SUCCESS 36 progression and shared economy checks",
+    "region_tests": "SUCCESS 78 progressive regions and free economy checks",
+    "roster_tests": "SUCCESS 260 roster checks",
+    "war_tests": "SUCCESS 118 late campaign and final war checks"
+  },
+  "native_modes": {
+    "display": "SUCCESS display toggle checks",
+    "control": "SUCCESS 10 interface checks",
+    "roster": "SUCCESS 84 roster interface checks",
+    "graphics": "SUCCESS 143 graphics checks",
+    "package": "SUCCESS 25 standalone package checks",
+    "forest": "SUCCESS 22 forest and camera interface checks",
+    "progress": "SUCCESS 121 guided interface checks",
+    "campaign": "SUCCESS 177 campaign interface and save checks",
+    "cheat": "SUCCESS 139 console and localization checks",
+    "presentation": "SUCCESS 39 illustration and bilingual frontend checks"
+  },
+  "graphics_count_note": "143 checks with optional capture: 118 graphics checks plus target initialization and 24 saved demonstration frames.",
+  "targeted_checks": [
+    "Real building atlases for both factions: monotonically increasing solid pixel coverage.",
+    "Construction visual fraction remains still without progress and follows resumed work.",
+    "Completed construction is fully solid.",
+    "Walking, chopping, mining, building and attacks change actual framebuffer pixels.",
+    "Stopped soldiers do not march in place.",
+    "Attack trail stops during cooldown recovery."
+  ],
+  "visual_qa": "Inspected native demonstration frames 3, 12 and 23, then final frame 12 after removal of duplicate baked tools. GIF assembled from the renderer’s 24 frames, not generated artwork.",
+  "art_scope": "Existing atlases, procedural poses/meshes and tool effects; no new complete bitmap sprite set.",
+  "scope_limits": "Advanced rebuilt campaign balance remains pending. Full paid-war regressions use the historical final map.",
+  "save_schema": "Unchanged: reads 1–5; new authored worlds remain 5. No restart needed for animation changes.",
+  "stable_refs_unchanged": {
+    "main": "b68c51dfa3c5568195b798791c74d8f4358ed55b",
+    "release/1.x": "b68c51dfa3c5568195b798791c74d8f4358ed55b",
+    "v1.0.0": "49779c18f8911e33a9c981dbb338baeafdaf8e00"
+  },
+  "installer_created": false
+}
