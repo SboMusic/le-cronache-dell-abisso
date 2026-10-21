@@ -64,6 +64,7 @@ public:
  float width()const{return float(cols*cell);}
  float height()const{return float(rows*cell);}
  void expandMap();
+ void prepareCampaignRegion();
  std::vector<Entity> entities;
  std::vector<Shot> shots;
  std::vector<Effect> effects;
@@ -150,6 +151,7 @@ public:
 #include "RtsCampaignLater.inl"
 #include "RtsWarCampaign.inl"
 #include "RtsWarEconomy.inl"
+#include "RtsRegions.inl"
 #include "RtsCheats.inl"
 #include "RtsSave.inl"
 

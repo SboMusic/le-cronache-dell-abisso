@@ -67,4 +67,4 @@ New campaigns use campagne/<id> folders. Global language and display settings st
 The world save reader supports formats 1, 2, 3 and 4; the current writer uses format 4. Stable 1.0 cannot read preview saves; import old campaigns only from copies.
 Do not silently discard player saves or change faction after load/restart.
 
-The first 2.0 increment adds dynamic map buffers with validated dimensions. map_foundation_tests exercises a 192×120 map, extended land/sea/air routes, exploration, legacy saves and failed-load rollback. Native campaign regression also saves a camera position beyond the original mission boundary. Current campaign layouts remain unchanged.
+The first 2.0 increment adds dynamic map buffers with validated dimensions. map_foundation_tests exercises a 192×120 map, extended land/sea/air routes, exploration, legacy saves and failed-load rollback. Native campaign regression also saves a camera position beyond the original mission boundary. Since dev.2, new campaign maps grow from 112×70 to 192×120, with regional resources and forests; the first village is relocated. Existing saves retain their layout.

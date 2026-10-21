@@ -5,7 +5,7 @@ int checks=0;
 void check(bool ok,const char* label){if(!ok)throw std::runtime_error(label);++checks;std::cout<<"PASS "<<label<<'\n';}
 std::string snapshot(const World& w){std::ostringstream out;check(w.save(out),"world serializes");return out.str();}
 int main(){try{
- World w;w.startMission(0);w.raidsEnabled=false;
+ World w;w.startHumanMission(0);w.raidsEnabled=false;
  w.terrain[65]=Terrain::Road;w.refreshVision();bool known=w.exploredAt({300,300});
  w.resizeMap(192,120,true);
  check(w.width()==7680&&w.height()==4800&&w.terrain.size()==23040,"four times legacy mission area uses matching storage");
@@ -32,7 +32,7 @@ int main(){try{
  std::istringstream truncated(saved.substr(0,saved.size()/2));check(!copy.restore(truncated)&&snapshot(copy)==before,"truncated large save does not replace active game");
  bool rejected=false;try{copy.resizeMap(0,120);}catch(const std::invalid_argument&){rejected=true;}
  check(rejected&&snapshot(copy)==before,"invalid resize leaves world unchanged");
- World small;small.startMission(0);auto modern=snapshot(small);
+ World small;small.startHumanMission(0);auto modern=snapshot(small);
  auto legacy=modern;legacy.replace(0,legacy.find('\n'),"FRONTIERE_SAVE 3");World old;std::istringstream v3(legacy);
  check(old.restore(v3)&&snapshot(old)==modern,"real version 3 field layout imports to version 4");
  auto line1=modern.find('\n'),line2=modern.find('\n',line1+1),line3=modern.find('\n',line2+1);
@@ -42,6 +42,6 @@ int main(){try{
  check(old.restore(v1)&&snapshot(old)==modern,"version 1 imports with original dimensions");
  auto fake= saved;fake.replace(0,fake.find('\n'),"FRONTIERE_SAVE 3");std::istringstream badLegacy(fake);
  check(!copy.restore(badLegacy),"legacy format cannot claim v4 dimensions");
- copy.reset();check(copy.cols==64&&copy.rows==40&&copy.terrain.size()==2560,"reset shrinks all map storage safely");copy.startMission(10);check(copy.cols==96&&copy.rows==60,"large test does not alter original mission layouts");
+ copy.reset();check(copy.cols==64&&copy.rows==40&&copy.terrain.size()==2560,"reset shrinks all map storage safely");copy.startMission(10);check(copy.cols==192&&copy.rows==120,"final mission reaches intended maximum campaign size");
  std::cout<<"SUCCESS "<<checks<<" dynamic map and legacy save checks\n";return 0;
  }catch(const std::exception& e){std::cerr<<"FAIL "<<e.what()<<'\n';return 1;}}

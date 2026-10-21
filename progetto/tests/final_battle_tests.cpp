@@ -7,7 +7,13 @@ int main(){try{
  for(int tick=0;tick<72000&&!w.result;++tick){
   if(tick%40==0){
    std::vector<int> workers,producers;for(auto& e:w.entities)if(e.hp>0&&e.team==0){if(e.kind==Kind::Worker&&!w.busy(e)&&e.order==Order::Idle)workers.push_back(e.id);if(!mobile(e.kind)&&e.build<=0)producers.push_back(e.id);}
-   for(int id:workers){auto person=w.get(id);if(!person)continue;Kind wanted=id%4?Kind::Forest:Kind::Mine;std::vector<std::pair<float,int>> resources;for(auto& e:w.entities)if(e.hp>0&&e.kind==wanted)resources.push_back({distance(e.pos,person->pos),e.id});std::sort(resources.begin(),resources.end());for(auto source:resources){w.gather(*person,source.second);if(person->order==Order::Gather)break;}}
+   for(int id:workers){auto person=w.get(id);if(!person)continue;int miners=0,loggers=0;for(const auto& ally:w.entities)if(ally.hp>0&&ally.team==0&&ally.kind==Kind::Worker){auto source=w.get(ally.source);if(source){if(source->kind==Kind::Mine)++miners;else if(source->kind==Kind::Forest)++loggers;}}Kind wanted=miners*3<loggers+1?Kind::Mine:Kind::Forest;std::vector<std::pair<float,int>> resources;for(auto& e:w.entities)if(e.hp>0&&e.kind==wanted)resources.push_back({distance(e.pos,person->pos),e.id});std::sort(resources.begin(),resources.end());for(auto source:resources){w.gather(*person,source.second);if(person->order==Order::Gather)break;}}
+   if((w.gold>1000&&w.wood<300)||(w.wood>1000&&w.gold<300)){
+    Kind wanted=w.gold>w.wood?Kind::Forest:Kind::Mine;
+    for(auto& person:w.entities)if(person.hp>0&&person.team==0&&person.kind==Kind::Worker&&!w.busy(person)){
+     auto current=w.get(person.source);if(current&&current->kind!=wanted){int source=-1;float best=1e9;for(const auto& e:w.entities)if(e.hp>0&&e.kind==wanted&&distance(person.pos,e.pos)<best){source=e.id;best=distance(person.pos,e.pos);}if(source>=0){w.gather(person,source);break;}}
+    }
+   }
    if(w.capacity(0)<90&&w.capacity(0)<w.population(0)+5)construct(Kind::Farm);
    else if(count(Kind::Workshop)==0)construct(Kind::Workshop);
    else if(count(Kind::Academy)==0)construct(Kind::Academy);

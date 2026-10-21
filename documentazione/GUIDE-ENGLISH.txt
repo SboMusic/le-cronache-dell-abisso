@@ -31,8 +31,8 @@ ECONOMY AND BUILDINGS
 Command hall trains workers only and offers town upgrades.
 Barracks I trains soldiers; Barracks II requires a lumber mill and unlocks archers.
 Barracks III requires Veteran Doctrine; it unlocks veteran rangers.
-Farms add six population slots, up to 90. In campaign, a finished farm is mandatory
-before training more units. Both sides follow population and resource rules.
+Farms add six population slots, up to 90. Units can train without a farm while starting population slots remain available.
+Mission objectives do not add an extra recruitment lock. Both sides follow population and resource rules.
 Lumber mill: wood depot with +2 wood per delivery, ranged upgrades and Forestry.
 Forge: Weapons and Armor research. Constructing it alone does not buy upgrades.
 Stable: knights. Sanctuary: healers, guardians and Veteran Doctrine.

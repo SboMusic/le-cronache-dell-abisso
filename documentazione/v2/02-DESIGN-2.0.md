@@ -121,3 +121,7 @@ Nuove regole insegnate una alla volta e poi combinate. Ogni missione: obiettivo 
 ## D14 — Criteri di riuscita
 
 Mappe ampie percorribili a terra/mare/aria; alberi eliminati aprono spazio; nessun blocco economico sui cristalli; tutti i livelli visibili; bonus non duplicati; riparatori spendono risorse; difensori rientrano; allarme locale; navi determinanti negli scenari navali; barriere spezzabili; paralisi contrastabile; corruzione curabile prima e dopo la perdita di controllo; cooldown persistenti; IA paga le medesime azioni. Fluidità su PC di riferimento da dichiarare, senza fissare requisiti hardware prima delle misure. Ogni milestone richiede prova giocata oltre ai controlli automatici.
+
+## D15 — Libertà entro le regole disponibili (21 ottobre 2026)
+
+Richiesta confermata: gli obiettivi guidano la vittoria, ma non obbligano a costruire fattorie se la capacita iniziale ha ancora posti. Si può raccogliere, esplorare e reclutare unità già sbloccate nell’ordine scelto. Le fattorie servono a espandere la popolazione; costi e requisiti tecnologici restano validi. Ogni nuova missione amplia entrambe le dimensioni e ridistribuisce luoghi utili. Priorità particolare agli accessi fra bosco e comando e alla distanza del villaggio iniziale.

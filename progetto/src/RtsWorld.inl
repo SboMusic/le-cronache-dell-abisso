@@ -119,7 +119,6 @@ inline std::string World::unavailable(Kind k,int team)const{const auto& d=def(k)
  if(k==Kind::Mage&&faction[team]!=0)return "Riservato alla Lega del Confine";if(k==Kind::Warlock&&faction[team]!=1)return "Riservato alla Stirpe dell Ombra";return "";
 }
 inline bool World::train(int id,Kind kind){auto b=get(id);const auto& d=def(kind);if(result||!b||b->team<0||!d.unit||d.producer==Kind::Count||b->kind!=d.producer){message="Seleziona un edificio adatto, completato e libero.";return false;}
- if((guided||mission>=0)&&!(b->team==0&&cheatSupply)&&!has(b->team,Kind::Farm)){message="Serve una fattoria completata prima di creare altre unita.";return false;}
  if(b->level<requiredProducerLevel(kind)){message="Potenzia questa caserma al livello "+std::to_string(requiredProducerLevel(kind))+".";return false;}
  if(b->build>0){message="Edificio ancora in costruzione: "+std::to_string(int(std::ceil(b->build)))+" secondi.";return false;}if(b->production>0){message="Addestramento gia in corso: "+std::to_string(int(std::ceil(b->production)))+" secondi.";return false;}
  auto reason=unavailable(kind,b->team);if(!reason.empty()){message=reason;return false;}if(population(b->team)+d.supply>capacity(b->team)){message="Popolazione piena: costruisci una fattoria.";return false;}
@@ -264,9 +263,14 @@ inline void World::combat(Entity& e,float){if(busy(e))return;
 }
 inline void World::steer(Entity& e,float dt){if(e.route.empty()){if(e.order==Order::Move)e.order=Order::Idle;return;}auto dest=e.route.front();auto domain=def(e.kind).domain;
  if(blocked(int(dest.x/cell),int(dest.y/cell),domain)){auto goal=e.goal;auto target=get(e.target);if(e.order==Order::Gather&&target&&target->kind==Kind::Forest)assignTree(e,target->pos);else if(e.order==Order::Return)returnCargo(e);else if(!path(e,goal,e.order==Order::Move?0.f:130.f)&&e.order!=Order::Build)e.order=Order::Idle;return;}
- float length=distance(dest,e.pos),speed=def(e.kind).speed*(e.haste>0?1.4f:1.f);auto p=length<=speed*dt?dest:e.pos+(dest-e.pos)*(speed*dt/length);
+ float length=distance(dest,e.pos),speed=def(e.kind).speed*(e.haste>0?1.4f:1.f);auto p=length<=speed*dt?dest:e.pos+(dest-e.pos)*(speed*dt/length);const auto intended=p;
  for(const auto& o:entities)if(o.hp>0&&o.carrier<0&&o.id!=e.id&&mobile(o.kind)&&def(o.kind).domain==domain){float dist=distance(p,o.pos),minDist=domain==Domain::Sea?42.f:25.f;if(dist>.1f&&dist<minDist)p+=(p-o.pos)*((minDist-dist)*dt*3/dist);}
- if(!blocked(int(p.x/cell),int(p.y/cell),domain))e.pos=p;if(distance(e.pos,dest)<(e.route.size()>1?18.f:8.f))e.route.erase(e.route.begin());
+ if((e.kind==Kind::Worker||e.kind==Kind::Tanker)&&distance(p,dest)>length-std::min(length,speed*dt)*.2f)p=intended;
+ if(blocked(int(p.x/cell),int(p.y/cell),domain))p=intended;
+ if(!blocked(int(p.x/cell),int(p.y/cell),domain)||(blocked(int(e.pos.x/cell),int(e.pos.y/cell),domain)&&distance(p,dest)<length))e.pos=p;if(distance(e.pos,dest)<(e.route.size()>1?18.f:8.f)){
+  bool clear=true;if(e.route.size()>1){auto next=e.route[1];for(int sample=1;sample<=12;++sample){auto point=e.pos+(next-e.pos)*(sample/12.f);if(blocked(int(point.x/cell),int(point.y/cell),domain)){clear=false;break;}}}
+  if(clear)e.route.erase(e.route.begin());
+ }
 }
 inline void World::processShots(float dt){for(auto& s:shots){if(cheatFreeze&&s.team==1)continue;s.remaining-=dt;auto t=get(s.target);if(!t||t->carrier>=0){s.remaining=0;continue;}float dist=distance(s.pos,t->pos);if(dist<=580*dt+radius(t->kind)){
   if(s.splash>0){for(auto& v:entities)if(v.hp>0&&v.carrier<0&&v.team>=0&&v.team!=s.team&&distance(v.pos,t->pos)<=s.splash&&!(def(v.kind).domain==Domain::Air&&!def(s.source).antiAir))damage(v,s.damage);}
@@ -292,7 +296,7 @@ inline void World::step(float dt){
   combat(e,dt);economy(e,dt);steer(e,dt);
  }
  // No entity insertions occur while iterating entities.
- for(int id:ready){auto b=get(id);if(!b)continue;sf::Vector2f pos;Kind k=b->training;int team=b->team;if(population(team,false)+def(k).supply>capacity(team)||((guided||mission>=0)&&!(team==0&&cheatSupply)&&!has(team,Kind::Farm))){b->production=.05f;if(team==0)message="Produzione in attesa: completa una fattoria per avere posti disponibili.";continue;}if(spawnPosition(*b,k,pos)){b->paid={};add(k,team,pos);message=std::string(name(k))+" pronto.";}else{b->production=.05f;message="Uscita occupata: libera spazio davanti all'edificio.";}}
+ for(int id:ready){auto b=get(id);if(!b)continue;sf::Vector2f pos;Kind k=b->training;int team=b->team;if(population(team,false)+def(k).supply>capacity(team)){b->production=.05f;if(team==0)message="Produzione in attesa: completa una fattoria per avere posti disponibili.";continue;}if(spawnPosition(*b,k,pos)){b->paid={};add(k,team,pos);message=std::string(name(k))+" pronto.";}else{b->production=.05f;message="Uscita occupata: libera spazio davanti all'edificio.";}}
  processShots(dt);if(mission>=0){updateMission(dt);if(!result&&raidsEnabled&&!cheatFreeze){aiTimer-=dt;if(aiTimer<=0){aiTimer=2;enemyEconomy();}}return;}bool player=false,enemy=false;for(const auto& e:entities)if(e.hp>0&&e.kind==Kind::Hall){if(e.team==0)player=true;else enemy=true;}
  if(!player||!enemy){result=player?1:-1;message=player?"VITTORIA! R: nuova partita.":"SCONFITTA. R: riprova.";return;}
  if(guided)updateProgression();if(raidsEnabled&&!cheatFreeze){aiTimer-=dt;if(aiTimer<=0){aiTimer=2;enemyEconomy();}}

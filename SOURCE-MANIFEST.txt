@@ -30,9 +30,12 @@ documentazione/v2/03-ANALISI-CODICE.md
 documentazione/v2/04-PIANO-E-VERSIONI.md
 documentazione/v2/05-LORE-2.0.md
 documentazione/v2/06-REGISTRO.md
+documentazione/v2/anteprima-inizio-dev2.png
+documentazione/v2/MAPPE-PROGRESSIVE.md
 documentazione/v2/README.md
 documentazione/v2/VERIFICA-M1-001.json
 documentazione/v2/VERIFICA-PREPRODUZIONE.json
+documentazione/v2/VERIFICA-REGIONI-002.json
 grafica/campagna-v1/prompt-pietra.md
 grafica/demoni-v1/prompt-artwork.md
 grafica/forest-v1/PROMPTS.md
@@ -114,6 +117,7 @@ progetto/src/RtsCampaignLater.inl
 progetto/src/RtsCatalog.h
 progetto/src/RtsCheats.inl
 progetto/src/RtsProgression.inl
+progetto/src/RtsRegions.inl
 progetto/src/RtsSave.inl
 progetto/src/RtsWarCampaign.inl
 progetto/src/RtsWarEconomy.inl
@@ -128,6 +132,7 @@ progetto/tests/forest_tests.cpp
 progetto/tests/map_foundation_tests.cpp
 progetto/tests/mechanics_tests.cpp
 progetto/tests/progression_tests.cpp
+progetto/tests/region_tests.cpp
 progetto/tests/roster_tests.cpp
 progetto/tests/war_tests.cpp
 progetto/vendor/runtime-msvc/concrt140.dll

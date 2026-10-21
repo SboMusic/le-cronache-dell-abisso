@@ -40,7 +40,7 @@ O: operaio dal comando selezionato. T: soldato dalla caserma. B: costruzione rap
 ECONOMIA E COSTRUZIONE
 Seleziona un operaio e clicca con il destro su oro o alberi. I carichi vanno consegnati. Conviene dividere il lavoro tra miniera e legname.
 Operaio > Costruisci: scegli un edificio disponibile, poi un terreno libero gia esplorato. L operaio raggiunge il cantiere e rimane impegnato fino al termine. Se muore, un altro puo usare Ripara sul cantiere per riprenderlo.
-Fattorie completate: +6 posti, limite massimo 90. Nel prologo e nella campagna occorre almeno una fattoria completata per produrre nuove unita. Se una fattoria viene persa e mancano posti, l addestramento attende.
+Fattorie completate: +6 posti, limite massimo 90. Si possono produrre unita senza fattorie finche restano posti nella capacita iniziale. Gli obiettivi non aggiungono un blocco al reclutamento. Se una fattoria viene persa e mancano posti, l addestramento attende.
 Gli alberi contengono 80 legno ciascuno: una volta esauriti scompaiono e liberano spazio. Anche le miniere esaurite liberano il terreno. Alberi vivi, miniere, rocce e strutture impediscono di sovrapporre fondamenta.
 Caserma II: segheria completata, 120 oro, 80 legno e 12 secondi; sblocca gli arcieri. Ogni caserma ha il proprio livello. I messaggi spiegano i requisiti mancanti.
 Il terreno scoperto resta chiaro. I nemici si vedono solo nella visuale attuale. La mappa sconosciuta resta nera.

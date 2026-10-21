@@ -1,9 +1,9 @@
 # Progettazione della versione 2.0
 
-Aggiornamento: 21 ottobre 2026. Stato: sviluppo avviato, incremento tecnico 2.0.0-dev.1.
+Aggiornamento: 21 ottobre 2026. Stato: sviluppo avviato, incremento tecnico 2.0.0-dev.2.
 Base analizzata: `b68c51dfa3c5568195b798791c74d8f4358ed55b`.
 
-La versione completa 2.0 resta in sviluppo. Il primo incremento introduce griglie di mappa dinamiche, formato salvataggi 4 con lettura 1–3 e profili di anteprima isolati. Le missioni mantengono le disposizioni e gli artwork della 1.0. Non è un installer finale né una release stabile.
+La versione completa 2.0 resta in sviluppo. Il primo incremento introduce griglie di mappa dinamiche, formato salvataggi 4 con lettura 1–3 e profili di anteprima isolati. Le nuove partite usano dimensioni crescenti, nuove regioni e un villaggio iniziale più distante; artwork e nuclei degli obiettivi avanzati restano provvisori. Non è un installer finale né una release stabile.
 
 ## Documenti
 
@@ -13,6 +13,7 @@ La versione completa 2.0 resta in sviluppo. Il primo incremento introduce grigli
 4. [Sviluppo per tappe e conservazione della 1.0](04-PIANO-E-VERSIONI.md).
 5. [Integrazione narrativa](05-LORE-2.0.md).
 6. [Registro delle modifiche e decisioni](06-REGISTRO.md).
+7. [Dimensioni effettive e regole delle mappe progressive](MAPPE-PROGRESSIVE.md).
 
 ## Convenzioni
 

@@ -1,0 +1,125 @@
+{
+  "date": "2026-10-21",
+  "version": "2.0.0-dev.2",
+  "base": "cc4c93f",
+  "build": "passed",
+  "model_suites": {
+    "alpha_tests": "SUCCESS 41 checks",
+    "roster_tests": "SUCCESS 260 roster checks",
+    "mechanics_tests": "SUCCESS 30 economy and command mechanics checks",
+    "forest_tests": "SUCCESS 59 forest regression checks",
+    "progression_tests": "SUCCESS 36 progression and shared economy checks",
+    "campaign_tests": "SUCCESS 125 campaign maps objectives and saves checks",
+    "war_tests": "SUCCESS 118 late campaign and final war checks",
+    "cheat_tests": "SUCCESS 64 cheat simulation checks",
+    "campaign_slots_tests": "SUCCESS 70 faction campaign and save slot checks",
+    "map_foundation_tests": "SUCCESS 30 dynamic map and legacy save checks",
+    "region_tests": "SUCCESS 78 progressive regions and free economy checks",
+    "final_battle_tests": "SUCCESS both human and dark final wars, paid economy only"
+  },
+  "native_modes": {
+    "display": "SUCCESS display toggle checks",
+    "control": "SUCCESS 10 interface checks",
+    "roster": "SUCCESS 84 roster interface checks",
+    "graphics": "SUCCESS 60 graphics checks",
+    "package": "SUCCESS 25 standalone package checks",
+    "forest": "SUCCESS 22 forest and camera interface checks",
+    "progress": "SUCCESS 121 guided interface checks",
+    "campaign": "SUCCESS 133 campaign interface and save checks",
+    "cheat": "SUCCESS 139 console and localization checks",
+    "presentation": "SUCCESS 39 illustration and bilingual frontend checks"
+  },
+  "full_battles": [
+    "SUCCESS full final war faction 0: 168 paid units, 21 paid buildings, 65 spells, 1654 simulated seconds, no free resources",
+    "SUCCESS full final war faction 1: 313 paid units, 22 paid buildings, 103 spells, 2956 simulated seconds, no free resources",
+    "SUCCESS both human and dark final wars, paid economy only"
+  ],
+  "maps": [
+    {
+      "mission": 1,
+      "cols": 112,
+      "rows": 70,
+      "width": 4480,
+      "height": 2800
+    },
+    {
+      "mission": 2,
+      "cols": 120,
+      "rows": 75,
+      "width": 4800,
+      "height": 3000
+    },
+    {
+      "mission": 3,
+      "cols": 128,
+      "rows": 80,
+      "width": 5120,
+      "height": 3200
+    },
+    {
+      "mission": 4,
+      "cols": 136,
+      "rows": 85,
+      "width": 5440,
+      "height": 3400
+    },
+    {
+      "mission": 5,
+      "cols": 144,
+      "rows": 90,
+      "width": 5760,
+      "height": 3600
+    },
+    {
+      "mission": 6,
+      "cols": 152,
+      "rows": 95,
+      "width": 6080,
+      "height": 3800
+    },
+    {
+      "mission": 7,
+      "cols": 160,
+      "rows": 100,
+      "width": 6400,
+      "height": 4000
+    },
+    {
+      "mission": 8,
+      "cols": 168,
+      "rows": 105,
+      "width": 6720,
+      "height": 4200
+    },
+    {
+      "mission": 9,
+      "cols": 176,
+      "rows": 110,
+      "width": 7040,
+      "height": 4400
+    },
+    {
+      "mission": 10,
+      "cols": 184,
+      "rows": 115,
+      "width": 7360,
+      "height": 4600
+    },
+    {
+      "mission": 11,
+      "cols": 192,
+      "rows": 120,
+      "width": 7680,
+      "height": 4800
+    }
+  ],
+  "new_layout_requires_restart": true,
+  "old_save_layout_preserved": true,
+  "stable_1_0_changed": false,
+  "population_rule": "available capacity, no mandatory farm",
+  "known_limits": [
+    "late mission objective cores not fully redesigned",
+    "artwork replacement and final 2.0 mechanics still pending"
+  ],
+  "regression_notes": "Legacy size/farm assertions updated; full-battle harvester assignment no longer depends on generated tree IDs and adapts to bank imbalance. No injected resources or weaker enemy rules."
+}

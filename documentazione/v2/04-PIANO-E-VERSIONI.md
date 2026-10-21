@@ -45,3 +45,5 @@ Ripristino storia da bundle: clonare `prima-della-2.0.bundle` in una nuova direc
 ## Avanzamento al 21 ottobre 2026
 
 M0 completata. M1 avviata, non completata: griglie dinamiche e salvataggi per mappe grandi disponibili; identità/controllo delle unità, misure di scala e schema futuro degli effetti ancora da sviluppare. Nessuna missione è stata ingrandita artificialmente. Prima prova tecnica 192×120 celle (7680×4800); limite di sicurezza attuale 256×256, non promessa di fluidità su tale dimensione. Il limite di 4096 entità e 4 MiB dei file campagna resta da riesaminare con foreste e percorsi reali.
+
+V2-002 avvia anche una prima parte di M2: nuove partite a dimensioni progressive e regioni popolate, villaggio ridistribuito e accessi liberi. La riprogettazione completa degli obiettivi avanzati e la nuova grafica restano da fare. Versione corrente 2.0.0-dev.2.

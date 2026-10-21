@@ -9,7 +9,7 @@ $vswhere=Join-Path ${env:ProgramFiles(x86)} 'Microsoft Visual Studio/Installer/v
 $vs=& $vswhere -latest -products '*' -requires Microsoft.Component.MSBuild -property installationPath | Select-Object -First 1
 if(-not $vs){throw 'Visual Studio con C++ non trovato.'}
 $bat=@('@echo off',('call "'+(Join-Path $vs 'VC/Auxiliary/Build/vcvars32.bat')+'" -vcvars_ver=14.29 >nul'),('cd /d "'+$out+'"'))
-foreach($name in @('alpha_tests','roster_tests','mechanics_tests','forest_tests','progression_tests','campaign_tests','war_tests','cheat_tests','campaign_slots_tests','map_foundation_tests','final_battle_tests')){
+foreach($name in @('alpha_tests','roster_tests','mechanics_tests','forest_tests','progression_tests','campaign_tests','war_tests','cheat_tests','campaign_slots_tests','map_foundation_tests','region_tests','final_battle_tests')){
  $optimization=if($name -eq 'final_battle_tests'){'/O2 '}else{''}
  $bat+=('cl /nologo '+$optimization+'/EHsc /std:c++17 /I "'+(Join-Path $project 'vendor/SFML-2.5.1/include')+'" "'+(Join-Path $project ('tests/'+$name+'.cpp'))+'" /Fe:"'+$name+'.exe" /link /STACK:8388608')
  $bat+='if not "%errorlevel%"=="0" exit /b %errorlevel%'
@@ -20,7 +20,7 @@ $cmdPath=Join-Path $out 'verifica-compilata.cmd'
 Set-Content $cmdPath $bat -Encoding ascii
 & $env:ComSpec /d /c $cmdPath
 if($LASTEXITCODE -ne 0){throw 'Verifiche della simulazione fallite. Consultare i log.'}
-foreach($name in @('alpha_tests','roster_tests','mechanics_tests','forest_tests','progression_tests','campaign_tests','war_tests','cheat_tests','campaign_slots_tests','map_foundation_tests','final_battle_tests')){Get-Content (Join-Path $logs ($name+'-autonomo.log')) -Tail 1}
+foreach($name in @('alpha_tests','roster_tests','mechanics_tests','forest_tests','progression_tests','campaign_tests','war_tests','cheat_tests','campaign_slots_tests','map_foundation_tests','region_tests','final_battle_tests')){Get-Content (Join-Path $logs ($name+'-autonomo.log')) -Tail 1}
 if($SoloSimulazione){exit 0}
 $game=Join-Path $root 'gioco'
 $previews=Join-Path $root 'documentazione/anteprime'
