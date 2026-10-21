@@ -1,6 +1,6 @@
 # Progettazione della versione 2.0
 
-Aggiornamento: 21 ottobre 2026. Stato: sviluppo avviato, incremento tecnico 2.0.0-dev.4.
+Aggiornamento: 21 ottobre 2026. Stato: sviluppo avviato, incremento tecnico 2.0.0-dev.5.
 Base analizzata: `b68c51dfa3c5568195b798791c74d8f4358ed55b`.
 
 La versione completa 2.0 resta in sviluppo. Il primo incremento introduce griglie di mappa dinamiche, formato salvataggi 4, ora 5 per i layout ricostruiti, con lettura 1–4 e profili di anteprima isolati. Le nuove partite usano undici layout ricostruiti, con boschi continui, nuovi insediamenti e obiettivi ridistribuiti. Il primo livello offre uno scontro facoltativo fra lavoratori. Animazioni riviste riutilizzando gli artwork. Non è un installer finale né una release stabile.

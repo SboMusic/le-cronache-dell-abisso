@@ -93,3 +93,10 @@ Esito definitivo V2-003: compilazione dev.3 riuscita; tredici suite modello supe
 - Versione 2.0.0-dev.4, copia 1.0 e riferimenti stabili conservati. Artwork riutilizzati, nessun nuovo atlante completo né installer finale.
 
 Esito V2-004: compilazione riuscita, tredici suite modello superate (2166 controlli numerati più guerre storiche), dieci modalità native superate. Grafica: 118 controlli funzionali più 25 controlli opzionali per la cattura, totale 143 nella prova registrata. Sequenza e fotogrammi verificati visivamente; rapporto VERIFICA-ANIMAZIONI-004.json.
+
+## V2-005 — 21 ottobre 2026 — Leggibilità del cantiere e utensili
+
+- Rimossa la barra verticale ciano/rossa che indicava la fazione degli edifici: l’anello a terra e la selezione sono sufficienti.
+- Rimosse le grandi aste schematiche dell’impalcatura. Piccola catasta di tavole con facce, venature e ombra, presente solo durante il cantiere; conservata la costruzione trasparente progressiva.
+- Utensili più piccoli: manico delineato e impugnatura, martello metallico sfaccettato con luce/ombra, piccone e ascia con profilo distinto. Aggiunta la mano sull’impugnatura; nessun nuovo artwork esterno.
+- Versione 2.0.0-dev.5. Compilazione e controlli nativi di grafica (143 con cattura), comandi (10) e avvio autonomo (25) superati. Controllato il fotogramma dimostrativo aggiornato. Nessuna modifica alle regole o ai salvataggi; non è necessario ricominciare la partita. La 1.0 resta invariata.

@@ -30,7 +30,7 @@
  if(std::getenv("FRONTIERE_ANIMATION_CAPTURE")){
   sf::RenderTexture demo;require(demo.create(1200,850),"animation showcase framebuffer initializes");
   const char* roles[]={"Cammino","Taglio legna","Estrazione oro","Costruzione","Attacco operaio","Passo soldato","Attacco soldato"};
-  for(int frame=0;frame<24;++frame){float t=frame*.08f,progress=frame/23.f;demo.clear({23,38,42});text(demo,"Anteprima animazioni | 2.0.0-dev.4",{24,15},25);
+  for(int frame=0;frame<24;++frame){float t=frame*.08f,progress=frame/23.f;demo.clear({23,38,42});text(demo,"Anteprima animazioni | " ABYSS_VERSION_TEXT,{24,15},25);
    for(int faction=0;faction<2;++faction){world_.faction[0]=faction;float row=faction?360.f:90.f;text(demo,faction?"STIRPE OSCURA":"UMANI",{24,row-20},19);
     for(int col=0;col<4;++col){alpha::Entity building;building.kind=col%2?alpha::Kind::Barracks:alpha::Kind::Hall;building.pos={200+col*290.f,row+120};building.buildTotal=20;float p=col<2?progress:std::clamp(progress+.3f,0.f,1.f);building.build=20*(1-p);Visual v;v.initialized=true;v.buildProgress=p;drawArt(demo,building,v,1);text(demo,std::to_string(int(p*100))+"%",building.pos+sf::Vector2f(-20,70),19);}
    }

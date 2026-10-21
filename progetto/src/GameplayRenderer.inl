@@ -19,7 +19,7 @@ void Gameplay::draw(sf::RenderTarget& target,sf::RenderStates states)const{
   if(world_.mission==3&&e.id==world_.archivist){auto refugee=e;refugee.team=1;drawArt(target,refugee,v,fade);}else drawArt(target,e,v,fade);
   if(dying)continue;
   drawActivity(target,e,v);
-  if(e.team>=0&&!unit){box(e.pos+sf::Vector2f(51,-38),{7,34},team);}
+
 
   if(!(world_.mission==10&&e.id==world_.archivist)&&(e.selected||(!alpha::resource(e.kind)&&(e.hp<e.maxHp||!unit)))){float w=unit?45.f:100.f;float y=unit?-60.f:-137.f;
    box(e.pos+sf::Vector2f(-w/2,y),{w,5},{17,25,27});box(e.pos+sf::Vector2f(-w/2,y),{w*std::max(0.f,e.hp)/e.maxHp,5},e.team<0?sf::Color(216,185,100):e.team==1?sf::Color(219,108,88):sf::Color(113,205,145));
