@@ -1,9 +1,9 @@
 # Progettazione della versione 2.0
 
-Data: 20 ottobre 2026. Stato: preproduzione, nessuna nuova meccanica implementata.
+Aggiornamento: 21 ottobre 2026. Stato: sviluppo avviato, incremento tecnico 2.0.0-dev.1.
 Base analizzata: `b68c51dfa3c5568195b798791c74d8f4358ed55b`.
 
-La versione 2.0 è un obiettivo di sviluppo, non una release già giocabile. Il gioco nei sorgenti è ancora la base 1.0; VERSION e gli installer non vengono presentati come 2.0.
+La versione completa 2.0 resta in sviluppo. Il primo incremento introduce griglie di mappa dinamiche, formato salvataggi 4 con lettura 1–3 e profili di anteprima isolati. Le missioni mantengono le disposizioni e gli artwork della 1.0. Non è un installer finale né una release stabile.
 
 ## Documenti
 
@@ -21,4 +21,4 @@ La versione 2.0 è un obiettivo di sviluppo, non una release già giocabile. Il 
 - **Da bilanciare:** quantità, durate, costi e formule non definitive.
 - **Esistente:** comportamento riscontrato nel codice della base, distinto dai progetti narrativi.
 
-I numeri proposti non sono promesse di bilanciamento. Nessuna feature di questo fascicolo è già disponibile nella 1.0. Il precedente file `lore/storia-rivista-v2.md` indica la seconda revisione della storia, non la versione 2.0 del gioco.
+I numeri proposti non sono promesse di bilanciamento. Nessuna feature progettata in questo fascicolo è retroattivamente disponibile nella release 1.0. Consultare il registro per distinguere implementazione e piano. Il precedente file `lore/storia-rivista-v2.md` indica la seconda revisione della storia, non la versione 2.0 del gioco.

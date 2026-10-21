@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-21",
+  "version": "2.0.0-dev.1",
+  "baseline": "5d75e92",
+  "milestone": "M1 first increment; not complete",
+  "build": "passed; native compiler retry required after initial LNK1101, succeeded sequentially",
+  "model_tests": {
+    "alpha_tests": "SUCCESS 41 checks",
+    "roster_tests": "SUCCESS 260 roster checks",
+    "mechanics_tests": "SUCCESS 30 economy and command mechanics checks",
+    "forest_tests": "SUCCESS 59 forest regression checks",
+    "progression_tests": "SUCCESS 34 progression and shared economy checks",
+    "campaign_tests": "SUCCESS 125 campaign maps objectives and saves checks",
+    "war_tests": "SUCCESS 118 late campaign and final war checks",
+    "cheat_tests": "SUCCESS 64 cheat simulation checks",
+    "campaign_slots_tests": "SUCCESS 70 faction campaign and save slot checks",
+    "map_foundation_tests": "SUCCESS 30 dynamic map and legacy save checks",
+    "final_battle_tests": "SUCCESS both human and dark final wars, paid economy only"
+  },
+  "native_tests": {
+    "display": "SUCCESS display toggle checks",
+    "control": "SUCCESS 10 interface checks",
+    "roster": "SUCCESS 84 roster interface checks",
+    "graphics": "SUCCESS 60 graphics checks",
+    "package": "SUCCESS 25 standalone package checks",
+    "forest": "SUCCESS 22 forest and camera interface checks",
+    "progress": "SUCCESS 121 guided interface checks",
+    "campaign": "SUCCESS 133 campaign interface and save checks",
+    "cheat": "SUCCESS 139 console and localization checks",
+    "presentation": "SUCCESS 39 illustration and bilingual frontend checks"
+  },
+  "large_map_test": {
+    "cols": 192,
+    "rows": 120,
+    "width": 7680,
+    "height": 4800,
+    "area_multiple_vs_1_0_missions": 4
+  },
+  "current_mission_layouts": "unchanged",
+  "save_writer": 4,
+  "save_readers": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "default_profile": "ChroniclesOfTheAbyss-2-preview",
+  "stable_release_changed": false,
+  "installer_published": false,
+  "performance_benchmark": "not yet measured on representative dense map"
+}

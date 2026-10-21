@@ -2,7 +2,7 @@
 namespace alpha {
 inline int World::enemyRemaining(bool buildings)const{int n=0;for(const auto& e:entities)if(e.hp>0&&e.team==1&&(!buildings||!mobile(e.kind)))++n;return n;}
 inline void World::startWarMission(int n){
- reset(0);mission=n;guided=false;entities.clear();shots.clear();effects.clear();zones.clear();nextId=1;cols=96;rows=60;terrain.fill(Terrain::Grass);explored={};sight={};navDirty=true;
+ reset(0);mission=n;guided=false;entities.clear();shots.clear();effects.clear();zones.clear();nextId=1;resizeMap(96,60);std::fill(terrain.begin(),terrain.end(),Terrain::Grass);clearVision();navDirty=true;
  gold=n==10?1600:1000;wood=n==10?1100:700;oil=0;enemyGold=n==10?2400:700+(n-5)*180;enemyWood=n==10?1600:450+(n-5)*100;enemyOil=0;wave=n==10?420.f:240.f;raidsEnabled=true;
  const sf::Vector2f bases[]={{420,1260},{420,1660},{420,920},{430,1780},{440,1660},{440,1720}};auto base=bases[n-5];sf::Vector2f enemy=n==6?sf::Vector2f(3180,470):n==7?sf::Vector2f(3020,550):n==9?sf::Vector2f(3300,500):sf::Vector2f(3100,500);
  auto road=missionRoad(n);auto segment=[](sf::Vector2f p,sf::Vector2f a,sf::Vector2f b){auto d=b-a;float l=d.x*d.x+d.y*d.y;float t=l?std::clamp(((p.x-a.x)*d.x+(p.y-a.y)*d.y)/l,0.f,1.f):0;return distance(p,a+d*t);};

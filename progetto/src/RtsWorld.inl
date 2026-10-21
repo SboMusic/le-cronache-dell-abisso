@@ -1,5 +1,22 @@
 #pragma once
 namespace alpha {
+inline void World::clearVision(){
+ for(auto* grid:{&explored,&sight})for(auto& team:*grid)team.assign(cols*rows,0);
+ visionTimer=0;
+}
+inline void World::resizeMap(int columns,int rowCount,bool preserve){
+ if(columns<64||columns>maxMapCols||rowCount<40||rowCount>maxMapRows)throw std::invalid_argument("Dimensioni mappa non valide");
+ const int size=columns*rowCount;
+ std::vector<Terrain> newTerrain(size,Terrain::Grass);
+ std::array<std::vector<unsigned char>,2> newExplored{std::vector<unsigned char>(size),std::vector<unsigned char>(size)},newSight=newExplored;
+ std::vector<unsigned char> newLand(size),newSea(size);
+ if(preserve)for(int y=0;y<std::min(rows,rowCount);++y)for(int x=0;x<std::min(cols,columns);++x){
+  int oldIndex=x+y*cols,newIndex=x+y*columns;newTerrain[newIndex]=terrain[oldIndex];
+  for(int team=0;team<2;++team){newExplored[team][newIndex]=explored[team][oldIndex];newSight[team][newIndex]=sight[team][oldIndex];}
+ }
+ terrain.swap(newTerrain);explored.swap(newExplored);sight.swap(newSight);landNav.swap(newLand);seaNav.swap(newSea);
+ cols=columns;rows=rowCount;navDirty=true;visionTimer=0;
+}
 inline Entity* World::get(int id){for(auto& e:entities)if(e.id==id&&e.hp>0)return &e;return nullptr;}
 inline const Entity* World::get(int id)const{for(const auto& e:entities)if(e.id==id&&e.hp>0)return &e;return nullptr;}
 inline int World::add(Kind k,int team,sf::Vector2f p){
@@ -10,7 +27,7 @@ inline int World::add(Kind k,int team,sf::Vector2f p){
 }
 inline void World::reset(int playerFaction){
  cheatsUsed=cheatGod=cheatFast=cheatFreeze=cheatFree=cheatUnlock=cheatSupply=false;
- cols=64;rows=40;terrain.fill(Terrain::Grass);mission=-1;missionStage=0;deliveredGold=deliveredWood=0;archivist=-1;secureTime=0;missionGuards.clear();for(int y=0;y<rows;++y)for(int x=0;x<cols;++x)terrain[x+y*cols]=y*cell>=coast?Terrain::Water:Terrain::Grass;guided=false;chapter=0;aiTimer=0;enemyGold=240;enemyWood=140;enemyOil=0;fogEnabled=true;explored={};sight={};visionTimer=0;entities.clear();shots.clear();effects.clear();zones.clear();nextId=1;accumulator=0;gold=240;wood=140;oil=0;result=0;time=wave=0;townLevel[0]=townLevel[1]=1;upgrades={};faction[0]=playerFaction;faction[1]=1-playerFaction;navDirty=true;raidsEnabled=true;
+ resizeMap(64,40);std::fill(terrain.begin(),terrain.end(),Terrain::Grass);mission=-1;missionStage=0;deliveredGold=deliveredWood=0;archivist=-1;secureTime=0;missionGuards.clear();for(int y=0;y<rows;++y)for(int x=0;x<cols;++x)terrain[x+y*cols]=y*cell>=coast?Terrain::Water:Terrain::Grass;guided=false;chapter=0;aiTimer=0;enemyGold=240;enemyWood=140;enemyOil=0;fogEnabled=true;clearVision();visionTimer=0;entities.clear();shots.clear();effects.clear();zones.clear();nextId=1;accumulator=0;gold=240;wood=140;oil=0;result=0;time=wave=0;townLevel[0]=townLevel[1]=1;upgrades={};faction[0]=playerFaction;faction[1]=1-playerFaction;navDirty=true;raidsEnabled=true;
  message="Sviluppa la citta, prepara le truppe e distruggi il comando nemico. F3-F6: cataloghi.";
  add(Kind::Hall,0,{280,750});add(Kind::Hall,1,{2210,750});
  add(Kind::Mine,-1,{470,500});add(Kind::Forest,-1,{470,1020});add(Kind::Mine,-1,{1980,500});add(Kind::Forest,-1,{1980,1020});
@@ -42,7 +59,7 @@ inline void World::prepareArsenal(){
 inline bool World::exploredAt(sf::Vector2f p,int team)const{int x=int(std::floor(p.x/cell)),y=int(std::floor(p.y/cell));if(x<0||y<0||x>=cols||y>=rows)return false;return !fogEnabled||explored[team][x+y*cols]!=0;}
 inline bool World::visibleAt(sf::Vector2f p,int team)const{int x=int(std::floor(p.x/cell)),y=int(std::floor(p.y/cell));if(x<0||y<0||x>=cols||y>=rows)return false;return !fogEnabled||sight[team][x+y*cols]!=0;}
 inline void World::refreshVision(){
- if(!fogEnabled){for(auto& cells:explored)cells.fill(1);for(auto& cells:sight)cells.fill(1);return;}for(auto& cells:sight)cells.fill(0);
+ if(!fogEnabled){for(auto& cells:explored)std::fill(cells.begin(),cells.end(),1);for(auto& cells:sight)std::fill(cells.begin(),cells.end(),1);return;}for(auto& cells:sight)std::fill(cells.begin(),cells.end(),0);
  for(const auto& e:entities)if(e.hp>0&&e.team>=0&&e.carrier<0){float r=e.reveal>0?640.f:(e.kind==Kind::Scout?520.f:(mobile(e.kind)?300.f:380.f));if(e.build>0)r=140;
   int left=std::max(0,int((e.pos.x-r)/cell)),right=std::min(cols-1,int((e.pos.x+r)/cell)),top=std::max(0,int((e.pos.y-r)/cell)),bottom=std::min(rows-1,int((e.pos.y+r)/cell));
   for(int y=top;y<=bottom;++y)for(int x=left;x<=right;++x){float dx=(x+.5f)*cell-e.pos.x,dy=(y+.5f)*cell-e.pos.y;if(dx*dx+dy*dy<r*r)sight[e.team][x+y*cols]=explored[e.team][x+y*cols]=1;}
@@ -66,7 +83,7 @@ inline bool World::path(Entity& e,sf::Vector2f destination,float stop){destinati
  auto domain=def(e.kind).domain;destination.x=std::clamp(destination.x,20.f,width()-20.f);destination.y=std::clamp(destination.y,20.f,height()-20.f);e.route.clear();e.goal=destination;
  if(domain==Domain::Air){e.route.push_back(destination);return true;}
  int sx=std::clamp(int(e.pos.x/cell),0,cols-1),sy=std::clamp(int(e.pos.y/cell),0,rows-1),start=sx+sy*cols,found=-1;
- std::array<int,maxCells> parent;parent.fill(-1);std::queue<int> q;q.push(start);parent[start]=start;
+ std::vector<int> parent(cols*rows,-1);std::queue<int> q;q.push(start);parent[start]=start;
  while(!q.empty()){int n=q.front();q.pop();int x=n%cols,y=n/cols;sf::Vector2f p{(x+.5f)*cell,(y+.5f)*cell};
   if((stop>0&&distance(p,destination)<=stop)||(stop==0&&x==int(destination.x/cell)&&y==int(destination.y/cell))){found=n;break;}
   const int dx[]={1,-1,0,0},dy[]={0,0,1,-1};for(int d=0;d<4;++d){int nx=x+dx[d],ny=y+dy[d];if(blocked(nx,ny,domain))continue;int m=nx+ny*cols;if(parent[m]<0){parent[m]=n;q.push(m);}}
@@ -147,7 +164,7 @@ inline bool World::returnCargo(Entity& e){
 inline bool World::plant(int worker,sf::Vector2f p){auto w=get(worker);if(!w||w->kind!=Kind::Worker||w->team!=0||result)return false;
  if(busy(*w)){message="Operaio impegnato nella costruzione.";return false;}
  if(upgrades[w->team][int(Research::Forestry)]==0){message="Ricerca Silvicoltura alla segheria per piantare alberi.";return false;}
- if(p.x<25||p.x>2535||p.y<25||water(p)){message="Pianta su terreno asciutto dentro la mappa.";return false;}
+ if(p.x<25||p.x>width()-25||p.y<25||p.y>height()-25||water(p)){message="Pianta su terreno asciutto dentro la mappa.";return false;}
  for(const auto& e:entities)if(e.hp>0&&!mobile(e.kind)&&distance(e.pos,p)<radius(e.kind)+25){message="Spazio occupato per l'albero.";return false;}
  if(!pay({10,0,0}))return false;int id=add(Kind::Forest,-1,p);get(id)->build=get(id)->buildTotal=12;message="Albero piantato: cresce in 12 secondi (10 oro).";return true;
 }

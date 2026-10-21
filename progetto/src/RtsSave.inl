@@ -5,7 +5,7 @@ namespace alpha {
 // Explicit, versioned fields: no pointer addresses, struct padding or binary memory dumps.
 #define FRONTIERE_ENTITY_FIELDS(e) e.id,e.team,e.target,e.objective,e.source,e.cargo,e.carrier,e.pos.x,e.pos.y,e.goal.x,e.goal.y,e.hp,e.maxHp,e.cooldown,e.build,e.buildTotal,e.production,e.productionTotal,e.work,e.mana,e.maxMana,e.spellCooldown,e.haste,e.rage,e.shield,e.reveal,e.lifetime,e.research,e.level,e.constructionWorker,e.paid.gold,e.paid.wood,e.paid.oil,e.selected
 inline bool World::save(std::ostream& out)const{
- out.imbue(std::locale::classic());out<<std::setprecision(std::numeric_limits<float>::max_digits10)<<"FRONTIERE_SAVE 3\n";
+ out.imbue(std::locale::classic());out<<std::setprecision(std::numeric_limits<float>::max_digits10)<<"FRONTIERE_SAVE 4\n";
  out<<cols<<' '<<rows<<'\n';
  out<<cheatsUsed<<' '<<cheatGod<<' '<<cheatFast<<' '<<cheatFreeze<<' '<<cheatFree<<' '<<cheatUnlock<<' '<<cheatSupply<<'\n';
  auto put=[&](auto... values){((out<<values<<' '),...);out<<'\n';};
@@ -19,8 +19,11 @@ inline bool World::save(std::ostream& out)const{
  put(zones.size());for(auto& z:zones)put(z.pos.x,z.pos.y,z.remaining,z.tick,z.team);out<<"END\n";return bool(out);
 }
 inline bool World::restore(std::istream& in){
- in.imbue(std::locale::classic());World w;std::string magic;int version=0;if(!(in>>magic>>version)||magic!="FRONTIERE_SAVE"||(version!=1&&version!=2&&version!=3))return false;
- if(version>=2&&(!(in>>w.cols>>w.rows)||w.cols<64||w.cols>96||w.rows<40||w.rows>60))return false;
+ in.imbue(std::locale::classic());World w;std::string magic;int version=0;if(!(in>>magic>>version)||magic!="FRONTIERE_SAVE"||(version<1||version>4))return false;
+ int columns=64,rowCount=40;
+ if(version>=2&&!(in>>columns>>rowCount))return false;
+ if(columns<64||rowCount<40||columns>(version<4?96:maxMapCols)||rowCount>(version<4?60:maxMapRows))return false;
+ w.resizeMap(columns,rowCount);
  if(version>=3&&!(in>>w.cheatsUsed>>w.cheatGod>>w.cheatFast>>w.cheatFreeze>>w.cheatFree>>w.cheatUnlock>>w.cheatSupply))return false;
  auto read=[&](auto&... values){return bool((in>>...>>values));};auto finite=[](float v){return std::isfinite(v)&&std::abs(v)<10000000.f;};auto position=[&](sf::Vector2f p){return finite(p.x)&&finite(p.y)&&p.x>=0&&p.x<=w.width()&&p.y>=0&&p.y<=w.height();};
  if(!read(w.mission,w.missionStage,w.deliveredGold,w.deliveredWood,w.archivist,w.secureTime,w.nextId,w.accumulator,w.gold,w.wood,w.oil,w.result,w.enemyGold,w.enemyWood,w.enemyOil,w.guided,w.chapter,w.aiTimer,w.time,w.wave,w.raidsEnabled,w.fogEnabled,w.visionTimer))return false;

@@ -1,5 +1,6 @@
 #pragma once
 #include "NGin.h"
+#include "Version.h"
 
 #include "CommandPanel.h"
 #include "AlphaSimulation.h"

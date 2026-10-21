@@ -1,8 +1,9 @@
 #include <windows.h>
+#include "src/Version.h"
 1 ICON "frontiere.ico"
 1 VERSIONINFO
-FILEVERSION 1,0,0,0
-PRODUCTVERSION 1,0,0,0
+FILEVERSION ABYSS_VERSION_NUMBERS
+PRODUCTVERSION ABYSS_VERSION_NUMBERS
 FILETYPE VFT_APP
 BEGIN
  BLOCK "StringFileInfo"
@@ -10,10 +11,10 @@ BEGIN
   BLOCK "040904b0"
   BEGIN
    VALUE "FileDescription", "Le Cronache dell Abisso - Real Time Strategy"
-   VALUE "FileVersion", "1.0.0"
+   VALUE "FileVersion", ABYSS_VERSION_TEXT
    VALUE "ProductName", "Le Cronache dell Abisso"
-   VALUE "ProductVersion", "1.0.0"
-   VALUE "OriginalFilename", "Frontiere.exe"
+   VALUE "ProductVersion", ABYSS_VERSION_TEXT
+   VALUE "OriginalFilename", "ChroniclesOfTheAbyss.exe"
   END
  END
  BLOCK "VarFileInfo"

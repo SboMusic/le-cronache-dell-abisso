@@ -21,4 +21,4 @@ Il nome ufficiale è Le Cronache dell’Abisso. L’avvio unico è Avvia Le Cron
 
 ## Sviluppo 2.0 separato
 
-Questa copia è di preproduzione. Consulta [documenti e registro](documentazione/v2/README.md). Usa Avvia Anteprima 2.0.cmd soltanto dopo la compilazione: i dati sono separati dalla 1.0. Non sono ancora presenti le nuove meccaniche.
+Questa copia è la prima build di sviluppo 2.0.0-dev.1. Consulta [documenti e registro](documentazione/v2/README.md). Usa Avvia Anteprima 2.0.cmd soltanto dopo la compilazione: i dati sono separati dalla 1.0. Sono presenti le fondamenta per mappe grandi; nuove unità, artwork e meccaniche tattiche arriveranno nei passi successivi.

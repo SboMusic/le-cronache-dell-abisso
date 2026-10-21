@@ -37,7 +37,7 @@ class World {
  int nextId=1;
  float accumulator=0;
  mutable bool navDirty=true;
- mutable std::array<unsigned char,5760> landNav{},seaNav{};
+ mutable std::vector<unsigned char> landNav=std::vector<unsigned char>(2560),seaNav=std::vector<unsigned char>(2560);
  void rebuildNav()const;
  void steer(Entity&,float);
  void economy(Entity&,float);
@@ -55,10 +55,12 @@ class World {
  bool assignTree(Entity&,sf::Vector2f,int exclude=-1);
  bool returnCargo(Entity&);
  float visionTimer=0;
- std::array<std::array<unsigned char,5760>,2> explored{},sight{};
+ std::array<std::vector<unsigned char>,2> explored{std::vector<unsigned char>(2560),std::vector<unsigned char>(2560)},sight{std::vector<unsigned char>(2560),std::vector<unsigned char>(2560)};
 public:
- static constexpr int maxCells=5760,cell=40,coast=1200;
+ static constexpr int maxMapCols=256,maxMapRows=256,maxCells=maxMapCols*maxMapRows,cell=40,coast=1200;
  int cols=64,rows=40;
+ void resizeMap(int columns,int rowCount,bool preserve=false);
+ void clearVision();
  float width()const{return float(cols*cell);}
  float height()const{return float(rows*cell);}
  void expandMap();
@@ -82,7 +84,7 @@ public:
  int mission=-1,missionStage=0,deliveredGold=0,deliveredWood=0,archivist=-1;
  float secureTime=0;
  std::vector<int> missionGuards;
- std::array<Terrain,5760> terrain{};
+ std::vector<Terrain> terrain=std::vector<Terrain>(2560,Terrain::Grass);
  bool factionAllows(Kind k,int team=0)const{return (k!=Kind::Mage||faction[team]==0)&&(k!=Kind::Warlock||faction[team]==1);}
  void startMission(int,int playerFaction=0);
  void startHumanMission(int);

@@ -4,7 +4,7 @@
 #include <sstream>
 #include <Windows.h>
 namespace campaignFiles {
-inline std::filesystem::path root(){wchar_t path[32768];DWORD n=GetEnvironmentVariableW(L"FRONTIERE_DATA_DIR",path,32768);if(n>0&&n<32768)return path;n=GetEnvironmentVariableW(L"LOCALAPPDATA",path,32768);if(!n||n>=32768)throw std::runtime_error("Cartella dati utente non disponibile");return std::filesystem::path(path)/L"Frontiere";}
+inline std::filesystem::path root(){wchar_t path[32768];DWORD n=GetEnvironmentVariableW(L"FRONTIERE_DATA_DIR",path,32768);if(n>0&&n<32768)return path;n=GetEnvironmentVariableW(L"LOCALAPPDATA",path,32768);if(!n||n>=32768)throw std::runtime_error("Cartella dati utente non disponibile");return std::filesystem::path(path)/L"ChroniclesOfTheAbyss-2-preview";}
 inline std::string& activeSlot(){static std::string id;return id;}
 inline bool select(const std::string& id){if(id.size()>64||!std::all_of(id.begin(),id.end(),[](char c){return (c>='0'&&c<='9')||(c>='a'&&c<='z')||c=='-'||c=='_';}))return false;activeSlot()=id;return true;}
 inline std::filesystem::path folder(const std::string& id){return id.empty()?root():root()/L"campagne"/id;}

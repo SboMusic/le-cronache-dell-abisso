@@ -33,6 +33,8 @@ Test profiles use isolated directories instead of player data.
 
 ## Create release packages
 
+On develop/2.0 packaging is intentionally blocked while the preview is under development. The instructions below describe the stable release process; do not remove the guard until installer identity, version and preview data policy are reviewed.
+
 Install Inno Setup 6 from https://jrsoftware.org/isinfo.php. The compiler is not bundled.
 The script checks strumenti/inno-setup/ISCC.exe and the standard Program Files location.
 
@@ -60,7 +62,9 @@ Generated runtime, release artifacts, local backups, old prototypes and test pro
 ## Compatibility
 
 The internal executable is ChroniclesOfTheAbyss.exe, the installer AppId is stable and saves remain under
-%LOCALAPPDATA%/Frontiere to support updates from earlier development versions.
+%LOCALAPPDATA%/ChroniclesOfTheAbyss-2-preview in this development branch. Stable 1.0 data in %LOCALAPPDATA%/Frontiere is not migrated or modified automatically.
 New campaigns use campagne/<id> folders. Global language and display settings stay at the root.
-The world save reader supports formats 1, 2 and 3; the current writer uses format 3.
+The world save reader supports formats 1, 2, 3 and 4; the current writer uses format 4. Stable 1.0 cannot read preview saves; import old campaigns only from copies.
 Do not silently discard player saves or change faction after load/restart.
+
+The first 2.0 increment adds dynamic map buffers with validated dimensions. map_foundation_tests exercises a 192×120 map, extended land/sea/air routes, exploration, legacy saves and failed-load rollback. Native campaign regression also saves a camera position beyond the original mission boundary. Current campaign layouts remain unchanged.

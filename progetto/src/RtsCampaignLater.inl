@@ -2,7 +2,7 @@
 namespace alpha {
 inline void World::startLaterMission(int n){
  reset(0);mission=n;guided=false;missionStage=0;entities.clear();shots.clear();effects.clear();zones.clear();nextId=1;
- terrain.fill(Terrain::Grass);explored={};sight={};navDirty=true;raidsEnabled=true;gold=700;wood=500;oil=0;enemyGold=400;enemyWood=260;enemyOil=0;
+ std::fill(terrain.begin(),terrain.end(),Terrain::Grass);clearVision();navDirty=true;raidsEnabled=true;gold=700;wood=500;oil=0;enemyGold=400;enemyWood=260;enemyOil=0;
  sf::Vector2f base=n==3?sf::Vector2f(350,1050):sf::Vector2f(350,920);
  add(Kind::Hall,0,base);for(int i=0;i<5;++i)add(Kind::Worker,0,base+sf::Vector2f(140.f,float(i*38-85)));
  add(Kind::Farm,0,base+sf::Vector2f(-160,-190));add(Kind::Farm,0,base+sf::Vector2f(-160,0));
@@ -36,7 +36,7 @@ inline void World::startLaterMission(int n){
 }
 inline void World::expandMap(){
  // Preserve the tested mission core; add explorable terrain and finite reserves around it.
- auto old=terrain;cols=96;rows=60;terrain.fill(Terrain::Grass);
+ auto old=terrain;resizeMap(96,60);std::fill(terrain.begin(),terrain.end(),Terrain::Grass);
  for(int y=0;y<rows;++y)for(int x=0;x<cols;++x){auto& tile=terrain[x+y*cols];if(x<64&&y<40)tile=old[x+y*64];else if(mission==4&&y>=30)tile=(x>=72&&x<=88&&y>=46&&y<=55)?Terrain::Grass:Terrain::Water;else if((x>68&&x<73&&(y<15||(y>23&&y<30)))||(x>77&&x<83&&y>42))tile=Terrain::Rock;}
  navDirty=true;
  for(auto p:{sf::Vector2f(2900,620),sf::Vector2f(3450,1040),sf::Vector2f(1280,2020)})if(!water(p)&&!blocked(int(p.x/cell),int(p.y/cell)))add(Kind::Mine,-1,p);

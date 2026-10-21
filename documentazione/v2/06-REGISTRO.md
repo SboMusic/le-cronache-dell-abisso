@@ -36,3 +36,20 @@ Una voce per intervento con ID, data, commit di partenza, file/area, motivo, eff
 ## Modello per i prossimi interventi
 
 ID e data; milestone; commit iniziale; requisiti Dxx/decisioni; modifica effettiva; differenza visibile; sorgenti e asset coinvolti; dati/salvataggi; test eseguiti ed esito; prova giocata; problemi residui; stato (proposto/in corso/completato). Usare CHANGELOG per riepiloghi di release e questo file per lo sviluppo della 2.0.
+
+## V2-001 — 21 ottobre 2026 — Fondamenta delle mappe e salvataggi
+
+- Base: 5d75e92, sviluppo autorizzato dall'utente dopo la progettazione.
+- Milestone: prima parte di M1; M1 non ancora completata.
+- Requisiti: D02, D03 (fluidità futura), D04 (confini raccolta), isolamento e persistenza del piano.
+- Terreno, navigazione ed esplorazione passano da array fissi a contenitori dimensionati sulla mappa. Ridimensionamento validato prima dell'allocazione e conservazione opzionale per coordinate.
+- La ricerca di percorso usa memoria proporzionale alla mappa; algoritmo BFS ancora presente, ottimizzazioni e benchmark realistici rinviati al prossimo incremento.
+- Formato mondo 4, lettura dei formati 1–3 mantenuta con i limiti delle rispettive versioni. Ripristino in un mondo temporaneo e rifiuto dei dati incompleti restano attivi. Camera e scoperta profilo accettano coordinate oltre i vecchi bordi.
+- Corretta la piantumazione: limiti basati sulla dimensione effettiva anche in verticale, non più x=2535 fisso.
+- Versione sviluppo in Version.h, titolo e risorsa Windows coerenti; VERSION=2.0.0-dev.1. L'eseguibile usa il profilo ChroniclesOfTheAbyss-2-preview anche senza wrapper.
+- Disposizione, obiettivi e dimensioni delle missioni esistenti restano invariati. Il supporto tecnico a mappe grandi non equivale a nuove mappe già progettate.
+- Aggiunta suite map_foundation_tests e regressioni native di salvataggio camera/profilo su 192×120. Esiti nel rapporto VERIFICA-M1-001.json aggiornato al termine della verifica.
+- Nessuna modifica su main, release/1.x, tag o pacchetti 1.0; nessuna migrazione automatica dei salvataggi personali. La 1.0 non può aprire i nuovi file formato 4.
+- Limiti residui: tetto entità/file, costo di scansioni e percorsi, identità/controllo per rinnegati, nuova economia e mappe di missione ancora da implementare. Nessun installer 2.0 pubblicato.
+
+Esito V2-001: compilazione riuscita, undici suite modello (831 controlli numerati più guerre finali), dieci modalità native riuscite; 133 controlli campagna inclusi due nuovi per camera e profilo. Il primo collegamento ha restituito LNK1101 nell’ambiente di compilazione; ripetuto in sequenza è riuscito. Nessun installer creato. CI estesa al ramo develop/2.0.

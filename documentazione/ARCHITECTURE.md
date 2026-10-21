@@ -29,3 +29,7 @@ falls back to the other valid slot of the same campaign; a failed load does not 
 
 Known scope: single-player Windows only; no network mode, editor, audio system or independent Dark Kin
 campaign maps/story. The first public release deliberately retains legacy technical names for compatibility.
+
+## Development branch 2.0.0-dev.1
+
+Map grids now use buffers sized to cols×rows, with validated resizeMap and optional coordinate-preserving copy. Path search scratch storage is dynamic. Save writer emits world format 4 and the reader retains formats 1–3 under their original bounds. Preview profiles default to ChroniclesOfTheAbyss-2-preview. This is the first part of M1; identity/relationships, scalable queries and full 2.0 gameplay are still pending.
