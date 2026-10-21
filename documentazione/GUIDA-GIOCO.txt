@@ -1,3 +1,5 @@
+ANTEPRIMA 2.0.0-dev.3: mappe ricostruite; nuova campagna o ricomincia missione per applicarle.
+
 LE CRONACHE DELL'ABISSO / CHRONICLES OF THE ABYSS - 1.0.0
 
 LINGUA / LANGUAGE
@@ -14,7 +16,7 @@ Inizia nuova campagna: scegli Umani oppure Stirpe oscura. Entrambe sono giocabil
 Riprendi campagna: scegli una delle partite salvate, riconoscibile da stirpe, missione e data. Il salvataggio della versione precedente rimane disponibile. Opzioni: lingua e schermo intero/finestra. Prologo: partita guidata con scelta della stirpe. Esci: chiude il gioco.
 
 MISSIONI
-1. Un posto da chiamare casa - Valle dei Mulini: due fattorie completate, consegna di 120 oro e 80 legno, poi raggiungi il cortile del villaggio segnalato. Il contatore considera i carichi consegnati, non il denaro iniziale. Nessun nemico.
+1. Un posto da chiamare casa - Valle dei Mulini: due fattorie completate, consegna di 120 oro e 80 legno, poi raggiungi il cortile del villaggio segnalato. Il contatore considera i carichi consegnati, non il denaro iniziale. Campo rivale separato con tre lavoratori: battaglia facoltativa, nessun soldato e nessun assalto iniziale.
 2. La strada di Velmora - Passo delle Sentinelle: completa la caserma, porta i soldati a tre, elimina tre sentinelle e raggiungi la fine della strada a nord-est. Nessuna ondata o assalto automatico alla base.
 3. I custodi delle carte - Bosco dei Custodi: completa la segheria, ricerca Caserma II e addestra due arcieri. Libera l archivio e presidialo per dieci secondi. Seren Dhal raggiunge poi automaticamente il tuo comando: proteggila. La sua morte dopo il recupero o la perdita del comando causano la sconfitta.
 4. Il prezzo dell obbedienza - Gola delle Braci: proteggi il rifugio dei profughi demoniaci. Ricerca Comando II, completa una scuderia, addestra due cavalieri e costruisci una torre di guardia. Hai poi 20 secondi di preavviso prima degli assalti. Porta truppe al passo dorato: servono 90 secondi complessivi con truppe alleate presenti e nessun nemico vicino. Durante gli scontri il conteggio si ferma. Infine distruggi la caserma segnalata a nord-est. Perdi se cade il comando o il rifugio.

@@ -31,11 +31,18 @@ documentazione/v2/04-PIANO-E-VERSIONI.md
 documentazione/v2/05-LORE-2.0.md
 documentazione/v2/06-REGISTRO.md
 documentazione/v2/anteprima-inizio-dev2.png
+documentazione/v2/base-dev3-1.png
+documentazione/v2/mappa-dev3-1.png
+documentazione/v2/mappa-dev3-11.png
+documentazione/v2/mappa-dev3-5.png
+documentazione/v2/mappa-dev3-8.png
 documentazione/v2/MAPPE-PROGRESSIVE.md
+documentazione/v2/MAPPE-RICOSTRUITE.md
 documentazione/v2/README.md
 documentazione/v2/VERIFICA-M1-001.json
 documentazione/v2/VERIFICA-PREPRODUZIONE.json
 documentazione/v2/VERIFICA-REGIONI-002.json
+documentazione/v2/VERIFICA-RICOSTRUZIONE-003.json
 grafica/campagna-v1/prompt-pietra.md
 grafica/demoni-v1/prompt-artwork.md
 grafica/forest-v1/PROMPTS.md
@@ -116,6 +123,7 @@ progetto/src/RtsCampaign.inl
 progetto/src/RtsCampaignLater.inl
 progetto/src/RtsCatalog.h
 progetto/src/RtsCheats.inl
+progetto/src/RtsLegacyRegions.inl
 progetto/src/RtsProgression.inl
 progetto/src/RtsRegions.inl
 progetto/src/RtsSave.inl
@@ -123,7 +131,9 @@ progetto/src/RtsWarCampaign.inl
 progetto/src/RtsWarEconomy.inl
 progetto/src/RtsWorld.inl
 progetto/src/Version.h
+progetto/src/WorkerAnimation.h
 progetto/tests/alpha_tests.cpp
+progetto/tests/authored_maps_tests.cpp
 progetto/tests/campaign_slots_tests.cpp
 progetto/tests/campaign_tests.cpp
 progetto/tests/cheat_tests.cpp

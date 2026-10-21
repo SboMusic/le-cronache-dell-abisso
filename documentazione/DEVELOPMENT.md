@@ -68,3 +68,7 @@ The world save reader supports formats 1, 2, 3 and 4; the current writer uses fo
 Do not silently discard player saves or change faction after load/restart.
 
 The first 2.0 increment adds dynamic map buffers with validated dimensions. map_foundation_tests exercises a 192×120 map, extended land/sea/air routes, exploration, legacy saves and failed-load rollback. Native campaign regression also saves a camera position beyond the original mission boundary. Since dev.2, new campaign maps grow from 112×70 to 192×120, with regional resources and forests; the first village is relocated. Existing saves retain their layout.
+
+## Authored map validation (dev.3)
+
+The authored_maps_tests suite runs the actual new layouts for both factions, checks land and sea access, terrain placement, forest connectivity, worker collection/combat and v5 saves. First-mission completion uses paid economy; advanced objective states are controlled fixtures. Existing coordinate-based tests explicitly use startLegacyMission, including paid final-war simulations. They do not establish full-campaign balance on the rebuilt advanced layouts.

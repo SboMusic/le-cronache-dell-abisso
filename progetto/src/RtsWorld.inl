@@ -27,7 +27,7 @@ inline int World::add(Kind k,int team,sf::Vector2f p){
 }
 inline void World::reset(int playerFaction){
  cheatsUsed=cheatGod=cheatFast=cheatFreeze=cheatFree=cheatUnlock=cheatSupply=false;
- resizeMap(64,40);std::fill(terrain.begin(),terrain.end(),Terrain::Grass);mission=-1;missionStage=0;deliveredGold=deliveredWood=0;archivist=-1;secureTime=0;missionGuards.clear();for(int y=0;y<rows;++y)for(int x=0;x<cols;++x)terrain[x+y*cols]=y*cell>=coast?Terrain::Water:Terrain::Grass;guided=false;chapter=0;aiTimer=0;enemyGold=240;enemyWood=140;enemyOil=0;fogEnabled=true;clearVision();visionTimer=0;entities.clear();shots.clear();effects.clear();zones.clear();nextId=1;accumulator=0;gold=240;wood=140;oil=0;result=0;time=wave=0;townLevel[0]=townLevel[1]=1;upgrades={};faction[0]=playerFaction;faction[1]=1-playerFaction;navDirty=true;raidsEnabled=true;
+ layoutVersion=0;mapGoal={};resizeMap(64,40);std::fill(terrain.begin(),terrain.end(),Terrain::Grass);mission=-1;missionStage=0;deliveredGold=deliveredWood=0;archivist=-1;secureTime=0;missionGuards.clear();for(int y=0;y<rows;++y)for(int x=0;x<cols;++x)terrain[x+y*cols]=y*cell>=coast?Terrain::Water:Terrain::Grass;guided=false;chapter=0;aiTimer=0;enemyGold=240;enemyWood=140;enemyOil=0;fogEnabled=true;clearVision();visionTimer=0;entities.clear();shots.clear();effects.clear();zones.clear();nextId=1;accumulator=0;gold=240;wood=140;oil=0;result=0;time=wave=0;townLevel[0]=townLevel[1]=1;upgrades={};faction[0]=playerFaction;faction[1]=1-playerFaction;navDirty=true;raidsEnabled=true;
  message="Sviluppa la citta, prepara le truppe e distruggi il comando nemico. F3-F6: cataloghi.";
  add(Kind::Hall,0,{280,750});add(Kind::Hall,1,{2210,750});
  add(Kind::Mine,-1,{470,500});add(Kind::Forest,-1,{470,1020});add(Kind::Mine,-1,{1980,500});add(Kind::Forest,-1,{1980,1020});
@@ -83,10 +83,12 @@ inline bool World::path(Entity& e,sf::Vector2f destination,float stop){destinati
  auto domain=def(e.kind).domain;destination.x=std::clamp(destination.x,20.f,width()-20.f);destination.y=std::clamp(destination.y,20.f,height()-20.f);e.route.clear();e.goal=destination;
  if(domain==Domain::Air){e.route.push_back(destination);return true;}
  int sx=std::clamp(int(e.pos.x/cell),0,cols-1),sy=std::clamp(int(e.pos.y/cell),0,rows-1),start=sx+sy*cols,found=-1;
- std::vector<int> parent(cols*rows,-1);std::queue<int> q;q.push(start);parent[start]=start;
- while(!q.empty()){int n=q.front();q.pop();int x=n%cols,y=n/cols;sf::Vector2f p{(x+.5f)*cell,(y+.5f)*cell};
+ std::vector<int> parent(cols*rows,-1),cost(cols*rows,1000000);std::vector<unsigned char> closed(cols*rows);
+ auto estimate=[&](int n){float dx=(n%cols+.5f)*cell-destination.x,dy=(n/cols+.5f)*cell-destination.y;return std::max(0.f,(std::sqrt(dx*dx+dy*dy)-stop)/cell);};
+ using Entry=std::pair<float,int>;std::priority_queue<Entry,std::vector<Entry>,std::greater<Entry>> open;open.push({estimate(start),start});parent[start]=start;cost[start]=0;
+ while(!open.empty()){int n=open.top().second;open.pop();if(closed[n])continue;closed[n]=1;int x=n%cols,y=n/cols;sf::Vector2f p{(x+.5f)*cell,(y+.5f)*cell};
   if((stop>0&&distance(p,destination)<=stop)||(stop==0&&x==int(destination.x/cell)&&y==int(destination.y/cell))){found=n;break;}
-  const int dx[]={1,-1,0,0},dy[]={0,0,1,-1};for(int d=0;d<4;++d){int nx=x+dx[d],ny=y+dy[d];if(blocked(nx,ny,domain))continue;int m=nx+ny*cols;if(parent[m]<0){parent[m]=n;q.push(m);}}
+  const int dx[]={1,-1,0,0},dy[]={0,0,1,-1};for(int d=0;d<4;++d){int nx=x+dx[d],ny=y+dy[d];if(blocked(nx,ny,domain))continue;int m=nx+ny*cols;if(cost[n]+1<cost[m]){cost[m]=cost[n]+1;parent[m]=n;open.push({float(cost[m])+estimate(m),m});}}
  }
  if(found<0)return false;for(int n=found;n!=start;n=parent[n])e.route.push_back({(n%cols+.5f)*cell,(n/cols+.5f)*cell});std::reverse(e.route.begin(),e.route.end());
  if(stop==0&&!blocked(int(destination.x/cell),int(destination.y/cell),domain))e.route.push_back(destination);return true;
@@ -99,7 +101,7 @@ inline void World::gather(Entity& e,int id){if(busy(e)){message="Operaio impegna
  e.source=id;e.objective=-1;
  if(e.cargo>0){returnCargo(e);return;}
  if(s->kind==Kind::Forest){if(assignTree(e,s->pos))message="Taglio legna: l'operaio raggiunge il bordo accessibile della foresta.";else message="Nessun albero raggiungibile in questa foresta.";return;}
- e.target=id;e.work=0;e.order=Order::Gather;if(!path(e,s->pos,radius(s->kind)+65)){e.order=Order::Idle;message="Risorsa irraggiungibile.";}else message=e.kind==Kind::Worker?"Raccolta oro avviata.":"Raccolta petrolio avviata.";
+ e.target=id;e.work=0;e.order=Order::Gather;if(!approachResource(e,s->pos,radius(s->kind)+18,radius(s->kind)+80)){e.order=Order::Idle;message="Risorsa irraggiungibile.";}else message=e.kind==Kind::Worker?"Raccolta oro avviata.":"Raccolta petrolio avviata.";
 }
 inline void World::repair(Entity& e,int id){if(busy(e)){message="Operaio impegnato nella costruzione.";return;}auto b=get(id);if(e.kind!=Kind::Worker||!b||b->team!=e.team||mobile(b->kind)||resource(b->kind))return;if(b->build>0){auto owner=get(b->constructionWorker);if(owner&&busy(*owner)){message="Cantiere gia assegnato a un operaio.";return;}if(!path(e,b->pos,radius(b->kind)+65)){message="Cantiere irraggiungibile.";return;}b->constructionWorker=e.id;e.target=id;e.order=Order::Build;return;}e.target=id;e.work=0;e.order=Order::Repair;path(e,b->pos,110);}
 inline void World::board(Entity& e,int id){if(busy(e)){message="Operaio impegnato nella costruzione.";return;}auto ship=get(id);if(!ship||ship->kind!=Kind::Transport||ship->team!=e.team||!mobile(e.kind)||def(e.kind).domain!=Domain::Land)return;int count=0;for(const auto& p:entities)if(p.hp>0&&p.carrier==id)++count;if(count>=6){message="Trasporto pieno (6 posti).";return;}e.target=id;e.order=Order::Board;if(!path(e,ship->pos,140)){e.order=Order::Idle;message="Avvicina il trasporto alla costa per imbarcare.";}}
@@ -146,18 +148,27 @@ inline std::string World::placementIssue(sf::Vector2f p,Kind kind)const{
  for(const auto& e:entities)if(e.hp>0&&!mobile(e.kind)&&!resource(e.kind)&&distance(e.pos,p)<radius(e.kind)+r+8)return "Spazio occupato da un'altra struttura.";
  return "";
 }
+inline bool World::approachResource(Entity& worker,sf::Vector2f center,float inner,float outer){
+ struct Slot{sf::Vector2f p;float score;};std::vector<Slot> slots;std::unordered_set<int> cells;
+ for(float r=inner+10;r<=outer;r+=16)for(int i=0;i<24;++i){float a=i*6.2831853f/24;auto raw=center+sf::Vector2f(std::cos(a)*r,std::sin(a)*r);int x=int(raw.x/cell),y=int(raw.y/cell);if(blocked(x,y,def(worker.kind).domain))continue;int index=x+y*cols;if(!cells.insert(index).second)continue;sf::Vector2f p{(x+.5f)*cell,(y+.5f)*cell};float reach=distance(p,center);if(reach<inner||reach>outer)continue;
+  float score=distance(worker.pos,p);for(const auto& other:entities)if(other.hp>0&&other.id!=worker.id&&mobile(other.kind)&&other.carrier<0){if(distance(other.pos,p)<30)score+=500;if((other.order==Order::Gather||other.order==Order::Return||other.order==Order::Build)&&distance(other.goal,p)<25)score+=250;}
+  slots.push_back({p,score});
+ }
+ std::stable_sort(slots.begin(),slots.end(),[](auto a,auto b){return a.score<b.score;});
+ for(auto slot:slots)if(path(worker,slot.p))return true;return false;
+}
 inline bool World::assignTree(Entity& worker,sf::Vector2f preferred,int exclude){
  struct Candidate {int id;float score;};std::vector<Candidate> trees;std::vector<int> occupied;
  for(const auto& e:entities)if(e.id!=worker.id&&e.hp>0&&e.order==Order::Gather)occupied.push_back(e.target);
- for(const auto& e:entities)if(e.id!=exclude&&e.hp>0&&e.build<=0&&e.kind==Kind::Forest&&distance(preferred,e.pos)<360){float score=distance(preferred,e.pos)+distance(worker.pos,e.pos)*.08f;for(int target:occupied)if(target==e.id)score+=60;trees.push_back({e.id,score});}
+ for(const auto& e:entities)if(e.id!=exclude&&e.hp>0&&e.build<=0&&e.kind==Kind::Forest&&distance(preferred,e.pos)<900){float score=distance(preferred,e.pos)*.25f+distance(worker.pos,e.pos)*.75f;for(int target:occupied)if(target==e.id)score+=60;trees.push_back({e.id,score});}
  std::stable_sort(trees.begin(),trees.end(),[](const auto& a,const auto& b){return a.score<b.score;});
- for(const auto& candidate:trees){auto tree=get(candidate.id);if(path(worker,tree->pos,radius(Kind::Forest)+48)){worker.source=worker.target=candidate.id;worker.objective=-1;worker.work=0;worker.order=Order::Gather;return true;}}
+ int attempts=0;for(const auto& candidate:trees){if(++attempts>64)break;auto tree=get(candidate.id);if(approachResource(worker,tree->pos,radius(Kind::Forest)+18,radius(Kind::Forest)+56)){worker.source=worker.target=candidate.id;worker.objective=-1;worker.work=0;worker.order=Order::Gather;return true;}}
  worker.route.clear();worker.order=Order::Idle;return false;
 }
 inline bool World::returnCargo(Entity& e){
  std::vector<int> depots;for(const auto& b:entities)if(b.hp>0&&b.team==e.team&&b.build<=0&&((e.kind==Kind::Tanker&&b.kind==Kind::Shipyard)||(e.kind==Kind::Worker&&(b.kind==Kind::Hall||(e.cargoKind==Kind::Forest&&b.kind==Kind::LumberMill)))))depots.push_back(b.id);
  std::sort(depots.begin(),depots.end(),[&](int a,int b){return distance(e.pos,get(a)->pos)<distance(e.pos,get(b)->pos);});
- for(int id:depots)if(path(e,get(id)->pos,e.kind==Kind::Tanker?170.f:110.f)){e.target=id;e.work=0;e.order=Order::Return;return true;}
+ for(int id:depots)if(approachResource(e,get(id)->pos,e.kind==Kind::Tanker?130.f:radius(get(id)->kind)+18,e.kind==Kind::Tanker?180.f:125.f)){e.target=id;e.work=0;e.order=Order::Return;return true;}
  e.route.clear();e.order=Order::Idle;message="Nessun deposito raggiungibile: il carico resta all'operaio.";return false;
 }
 inline bool World::plant(int worker,sf::Vector2f p){auto w=get(worker);if(!w||w->kind!=Kind::Worker||w->team!=0||result)return false;
@@ -249,7 +260,7 @@ inline void World::economy(Entity& e,float dt){
   e.cargo=0;auto source=get(e.source);if(source)gather(e,source->id);else {sf::Vector2f preferred=e.pos;for(const auto& dead:entities)if(dead.id==e.source){preferred=dead.pos;break;}if(e.cargoKind!=Kind::Forest||!assignTree(e,preferred)){e.order=Order::Idle;message="Risorsa esaurita: assegna un nuovo giacimento o ripianta gli alberi.";}}
  }
 }
-inline void World::combat(Entity& e,float){if(busy(e))return;
+inline void World::combat(Entity& e,float){if(busy(e))return;if(layoutVersion&&mission==0&&e.team==1&&e.kind==Kind::Worker){for(const auto& attacker:entities)if(attacker.hp>0&&attacker.team==0&&attacker.order==Order::Attack&&attacker.target==e.id&&distance(e.pos,attacker.pos)<240){e.target=e.objective=attacker.id;e.order=Order::Attack;break;}}
  const auto& d=def(e.kind);if(d.damage<=0||e.build>0)return;
  if(raidsEnabled&&missionRaidReady()&&(mission!=4||def(e.kind).domain==Domain::Sea)&&(!guided||(chapter>=4&&time>=600))&&e.team==1&&time>=120&&e.kind!=Kind::Worker&&mobile(e.kind)&&e.order==Order::Idle){int target=-1;if(mission==3&&get(archivist))target=archivist;else for(const auto& t:entities)if(t.team==0&&t.hp>0&&t.kind==(def(e.kind).domain==Domain::Sea?Kind::Shipyard:Kind::Hall)){target=t.id;break;}if(target>=0)attack(e,target);}
  if(e.order==Order::Idle||!mobile(e.kind)){int id=-1;float best=mobile(e.kind)?std::max(220.f,d.range):d.range+40;for(const auto& t:entities)if(canHit(e,t)&&distance(e.pos,t.pos)<best){best=distance(e.pos,t.pos);id=t.id;}if(id>=0){e.target=e.objective=id;e.order=Order::Attack;}}

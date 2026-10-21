@@ -42,6 +42,6 @@ int main(){try{
  check(old.restore(v1)&&snapshot(old)==modern,"version 1 imports with original dimensions");
  auto fake= saved;fake.replace(0,fake.find('\n'),"FRONTIERE_SAVE 3");std::istringstream badLegacy(fake);
  check(!copy.restore(badLegacy),"legacy format cannot claim v4 dimensions");
- copy.reset();check(copy.cols==64&&copy.rows==40&&copy.terrain.size()==2560,"reset shrinks all map storage safely");copy.startMission(10);check(copy.cols==192&&copy.rows==120,"final mission reaches intended maximum campaign size");
+ copy.reset();check(copy.cols==64&&copy.rows==40&&copy.terrain.size()==2560,"reset shrinks all map storage safely");copy.startLegacyMission(10);check(copy.cols==192&&copy.rows==120,"final mission reaches intended maximum campaign size");
  std::cout<<"SUCCESS "<<checks<<" dynamic map and legacy save checks\n";return 0;
  }catch(const std::exception& e){std::cerr<<"FAIL "<<e.what()<<'\n';return 1;}}

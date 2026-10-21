@@ -10,8 +10,8 @@ void Gameplay::draw(sf::RenderTarget& target,sf::RenderStates states)const{
  std::vector<const alpha::Entity*> ordered;
  for(const auto& e:world_.entities){if(e.carrier>=0||!world_.detected(e,0)||!knownEntity(e))continue;bool covered=false;if(e.kind==alpha::Kind::Oil)for(auto& b:world_.entities)if(b.kind==alpha::Kind::OilRig&&b.hp>0&&alpha::distance(e.pos,b.pos)<70)covered=true;if(covered)continue;auto v=visuals_.find(e.id);if(e.hp>0||(v!=visuals_.end()&&v->second.death<.65f))ordered.push_back(&e);}
  std::stable_sort(ordered.begin(),ordered.end(),[](auto a,auto b){return a->pos.y<b->pos.y;});
- for(auto ptr:ordered){const auto& e=*ptr;bool unit=alpha::mobile(e.kind);float r=alpha::radius(e.kind);
-  auto vi=visuals_.find(e.id);Visual v;if(vi!=visuals_.end())v=vi->second;
+ for(auto ptr:ordered){auto e=*ptr;bool unit=alpha::mobile(e.kind);float r=alpha::radius(e.kind);
+  auto vi=visuals_.find(e.id);Visual v;if(vi!=visuals_.end())v=vi->second;if(unit&&v.initialized)e.pos=v.display;
   bool dying=e.hp<=0;float fade=dying?std::max(0.f,1-v.death/.65f):1;
   sf::Color team=e.team==0?sf::Color(65,207,220):sf::Color(233,99,73);
   float shadowRadius=unit?22.f:(e.kind==alpha::Kind::Forest?18.f:58.f);sf::CircleShape shadow(shadowRadius,32);shadow.setOrigin(shadowRadius,shadowRadius);shadow.setPosition(e.pos+sf::Vector2f(0,unit?20.f:(e.kind==alpha::Kind::Forest?2.f:28.f)));shadow.setScale(1,.38f);shadow.setFillColor({0,0,0,static_cast<sf::Uint8>(85*fade)});target.draw(shadow);
@@ -20,7 +20,7 @@ void Gameplay::draw(sf::RenderTarget& target,sf::RenderStates states)const{
   if(dying)continue;
   drawActivity(target,e,v);
   if(e.team>=0&&!unit){box(e.pos+sf::Vector2f(51,-38),{7,34},team);}
-  if(e.kind==alpha::Kind::Worker&&e.cargo>0){sf::CircleShape cargo(5,6);cargo.setPosition(e.pos+sf::Vector2f(14,-4));cargo.setFillColor(e.cargoKind==alpha::Kind::Mine?sf::Color(241,195,83):sf::Color(131,181,91));target.draw(cargo);}
+
   if(!(world_.mission==10&&e.id==world_.archivist)&&(e.selected||(!alpha::resource(e.kind)&&(e.hp<e.maxHp||!unit)))){float w=unit?45.f:100.f;float y=unit?-60.f:-137.f;
    box(e.pos+sf::Vector2f(-w/2,y),{w,5},{17,25,27});box(e.pos+sf::Vector2f(-w/2,y),{w*std::max(0.f,e.hp)/e.maxHp,5},e.team<0?sf::Color(216,185,100):e.team==1?sf::Color(219,108,88):sf::Color(113,205,145));
   }

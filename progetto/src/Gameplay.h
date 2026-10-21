@@ -1,6 +1,7 @@
 #pragma once
 #include "NGin.h"
 #include "Version.h"
+#include "WorkerAnimation.h"
 
 #include "CommandPanel.h"
 #include "AlphaSimulation.h"
@@ -60,7 +61,8 @@ private:
  void loadDemonArt();
  int demonTile(alpha::Kind)const;
  bool groundReady_=false;
- struct Visual { sf::Vector2f last; int direction=0; float phase=0,death=0; bool initialized=false; };
+ struct Visual { sf::Vector2f last,display; int direction=0; float phase=0,death=0,stride=0,speed=0; bool initialized=false; };
+ bool legacyFixture_=false;
  std::unordered_map<int,Visual> visuals_;
  void drawActivity(sf::RenderTarget&,const alpha::Entity&,const Visual&)const;
  bool dragging_=false,placing_=false,paused_=false;

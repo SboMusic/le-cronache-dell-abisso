@@ -1,7 +1,7 @@
 # Le Cronache dell’Abisso — Chronicles of the Abyss
 
-> **2.0 development branch — 2.0.0-dev.2.** First technical increment: dynamic map storage, large-map save format and isolated preview profiles. New campaigns now grow progressively from 4480×2800 to 7680×4800, with regional forests and reserves. Existing artwork and late objective cores remain provisional. See the [2.0 design and development log](documentazione/v2/README.md).
-> **Ramo 2.0 in sviluppo:** mappe progressive, villaggio iniziale più distante e reclutamento libero entro la capacità; nuove unità, grafica e meccaniche ancora in lavorazione. La release stabile 1.0 rimane disponibile separatamente.
+> **2.0 development branch — 2.0.0-dev.3.** First technical increment: dynamic map storage, large-map save format and isolated preview profiles. New campaigns have eleven rebuilt layouts, coherent woodlands and relocated settlements/objectives, from 4480×2800 to 7680×4800. Mission 1 has an optional rival worker camp. Worker actions and rendering are revised; full new-map balance remains under development. See the [2.0 design and development log](documentazione/v2/README.md).
+> **Ramo 2.0 in sviluppo:** mappe ricostruite, campo rivale facoltativo nel primo livello e azioni dei lavoratori migliorate; nuove unità, grafica e meccaniche ancora in lavorazione. La release stabile 1.0 rimane disponibile separatamente.
 
 A single-player fantasy real-time strategy game for Windows, inspired by **Warcraft II**, written in C++17 with SFML.
 

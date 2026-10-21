@@ -5,7 +5,7 @@ namespace alpha {
 // Explicit, versioned fields: no pointer addresses, struct padding or binary memory dumps.
 #define FRONTIERE_ENTITY_FIELDS(e) e.id,e.team,e.target,e.objective,e.source,e.cargo,e.carrier,e.pos.x,e.pos.y,e.goal.x,e.goal.y,e.hp,e.maxHp,e.cooldown,e.build,e.buildTotal,e.production,e.productionTotal,e.work,e.mana,e.maxMana,e.spellCooldown,e.haste,e.rage,e.shield,e.reveal,e.lifetime,e.research,e.level,e.constructionWorker,e.paid.gold,e.paid.wood,e.paid.oil,e.selected
 inline bool World::save(std::ostream& out)const{
- out.imbue(std::locale::classic());out<<std::setprecision(std::numeric_limits<float>::max_digits10)<<"FRONTIERE_SAVE 4\n";
+ out.imbue(std::locale::classic());out<<std::setprecision(std::numeric_limits<float>::max_digits10)<<"FRONTIERE_SAVE "<<(layoutVersion?5:4)<<'\n';
  out<<cols<<' '<<rows<<'\n';
  out<<cheatsUsed<<' '<<cheatGod<<' '<<cheatFast<<' '<<cheatFreeze<<' '<<cheatFree<<' '<<cheatUnlock<<' '<<cheatSupply<<'\n';
  auto put=[&](auto... values){((out<<values<<' '),...);out<<'\n';};
@@ -16,10 +16,10 @@ inline bool World::save(std::ostream& out)const{
  for(const auto& e:entities){put(int(e.kind),int(e.training),int(e.cargoKind),int(e.upgradeKind),int(e.order));put(FRONTIERE_ENTITY_FIELDS(e));put(e.route.size());for(auto p:e.route)put(p.x,p.y);}
  put(shots.size());for(auto& s:shots)put(s.pos.x,s.pos.y,s.target,s.team,s.damage,s.splash,s.remaining,int(s.source));
  put(effects.size());for(auto& e:effects)put(e.pos.x,e.pos.y,e.radius,e.remaining,e.total,e.type,e.team);
- put(zones.size());for(auto& z:zones)put(z.pos.x,z.pos.y,z.remaining,z.tick,z.team);out<<"END\n";return bool(out);
+ put(zones.size());for(auto& z:zones)put(z.pos.x,z.pos.y,z.remaining,z.tick,z.team);if(layoutVersion)put("LAYOUT",layoutVersion,mapGoal.x,mapGoal.y);out<<"END\n";return bool(out);
 }
 inline bool World::restore(std::istream& in){
- in.imbue(std::locale::classic());World w;std::string magic;int version=0;if(!(in>>magic>>version)||magic!="FRONTIERE_SAVE"||(version<1||version>4))return false;
+ in.imbue(std::locale::classic());World w;std::string magic;int version=0;if(!(in>>magic>>version)||magic!="FRONTIERE_SAVE"||(version<1||version>5))return false;
  int columns=64,rowCount=40;
  if(version>=2&&!(in>>columns>>rowCount))return false;
  if(columns<64||rowCount<40||columns>(version<4?96:maxMapCols)||rowCount>(version<4?60:maxMapRows))return false;
@@ -46,7 +46,7 @@ inline bool World::restore(std::istream& in){
  if(!read(count)||count<0||count>10000)return false;for(int i=0;i<count;++i){Shot s;int source;if(!read(s.pos.x,s.pos.y,s.target,s.team,s.damage,s.splash,s.remaining,source)||!position(s.pos)||s.team<0||s.team>1||source<0||source>=int(Kind::Count)||!finite(s.damage)||!finite(s.splash)||!finite(s.remaining))return false;s.source=Kind(source);w.shots.push_back(s);}
  if(!read(count)||count<0||count>10000)return false;for(int i=0;i<count;++i){Effect e;if(!read(e.pos.x,e.pos.y,e.radius,e.remaining,e.total,e.type,e.team)||!position(e.pos)||!finite(e.radius)||!finite(e.remaining)||!finite(e.total)||e.total<=0||e.team < -1||e.team>1)return false;w.effects.push_back(e);}
  if(!read(count)||count<0||count>10000)return false;for(int i=0;i<count;++i){Zone z;if(!read(z.pos.x,z.pos.y,z.remaining,z.tick,z.team)||!position(z.pos)||!finite(z.remaining)||!finite(z.tick)||z.team<0||z.team>1)return false;w.zones.push_back(z);}
- if(!(in>>magic)||magic!="END")return false;in>>std::ws;if(!in.eof())return false;w.navDirty=true;*this=std::move(w);return true;
+ if(version>=5){if(!(in>>magic)||magic!="LAYOUT"||!read(w.layoutVersion,w.mapGoal.x,w.mapGoal.y)||w.layoutVersion!=1||!position(w.mapGoal))return false;}if(!(in>>magic)||magic!="END")return false;in>>std::ws;if(!in.eof())return false;w.navDirty=true;*this=std::move(w);return true;
 }
 #undef FRONTIERE_ENTITY_FIELDS
 }

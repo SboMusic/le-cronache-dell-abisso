@@ -1,9 +1,9 @@
 # Progettazione della versione 2.0
 
-Aggiornamento: 21 ottobre 2026. Stato: sviluppo avviato, incremento tecnico 2.0.0-dev.2.
+Aggiornamento: 21 ottobre 2026. Stato: sviluppo avviato, incremento tecnico 2.0.0-dev.3.
 Base analizzata: `b68c51dfa3c5568195b798791c74d8f4358ed55b`.
 
-La versione completa 2.0 resta in sviluppo. Il primo incremento introduce griglie di mappa dinamiche, formato salvataggi 4 con lettura 1–3 e profili di anteprima isolati. Le nuove partite usano dimensioni crescenti, nuove regioni e un villaggio iniziale più distante; artwork e nuclei degli obiettivi avanzati restano provvisori. Non è un installer finale né una release stabile.
+La versione completa 2.0 resta in sviluppo. Il primo incremento introduce griglie di mappa dinamiche, formato salvataggi 4, ora 5 per i layout ricostruiti, con lettura 1–4 e profili di anteprima isolati. Le nuove partite usano undici layout ricostruiti, con boschi continui, nuovi insediamenti e obiettivi ridistribuiti. Il primo livello offre uno scontro facoltativo fra lavoratori. Animazioni riviste riutilizzando gli artwork. Non è un installer finale né una release stabile.
 
 ## Documenti
 
@@ -14,6 +14,8 @@ La versione completa 2.0 resta in sviluppo. Il primo incremento introduce grigli
 5. [Integrazione narrativa](05-LORE-2.0.md).
 6. [Registro delle modifiche e decisioni](06-REGISTRO.md).
 7. [Dimensioni effettive e regole delle mappe progressive](MAPPE-PROGRESSIVE.md).
+
+8. [Ricostruzione dei livelli e nuove azioni dei lavoratori](MAPPE-RICOSTRUITE.md).
 
 ## Convenzioni
 

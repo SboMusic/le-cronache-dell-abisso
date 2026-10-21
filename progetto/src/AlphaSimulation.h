@@ -59,12 +59,16 @@ class World {
 public:
  static constexpr int maxMapCols=256,maxMapRows=256,maxCells=maxMapCols*maxMapRows,cell=40,coast=1200;
  int cols=64,rows=40;
+ int layoutVersion=0;sf::Vector2f mapGoal;
  void resizeMap(int columns,int rowCount,bool preserve=false);
  void clearVision();
  float width()const{return float(cols*cell);}
  float height()const{return float(rows*cell);}
  void expandMap();
  void prepareCampaignRegion();
+ void prepareLegacyRegion();
+ void startLegacyMission(int n,int playerFaction=0);
+ bool approachResource(Entity&,sf::Vector2f,float,float);
  std::vector<Entity> entities;
  std::vector<Shot> shots;
  std::vector<Effect> effects;
@@ -151,6 +155,7 @@ public:
 #include "RtsCampaignLater.inl"
 #include "RtsWarCampaign.inl"
 #include "RtsWarEconomy.inl"
+#include "RtsLegacyRegions.inl"
 #include "RtsRegions.inl"
 #include "RtsCheats.inl"
 #include "RtsSave.inl"

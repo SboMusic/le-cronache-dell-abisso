@@ -12,11 +12,11 @@ La cartella 2.0 è un worktree Git: i file di lavoro sono separati, ma il databa
 
 ## Avvio e dati
 
-Nessun eseguibile viene copiato o presentato come 2.0 giocabile in questo step. Il nuovo avvio di anteprima indirizza i dati a `%LOCALAPPDATA%/ChroniclesOfTheAbyss-2-preview`; non legge i profili 1.0 per impostazione predefinita. Anche l'avvio ufficiale nella sola copia 2.0 rinvia a questo avvio protetto. Dal 21 ottobre 2026 il primo incremento modifica World e introduce il formato 4, conservando la lettura dei formati 1–3.
+La progettazione iniziale non includeva un eseguibile. Ora è disponibile l’anteprima locale 2.0.0-dev.3. Il nuovo avvio di anteprima indirizza i dati a `%LOCALAPPDATA%/ChroniclesOfTheAbyss-2-preview`; non legge i profili 1.0 per impostazione predefinita. Anche l'avvio ufficiale nella sola copia 2.0 rinvia a questo avvio protetto. Dal 21 ottobre 2026 il primo incremento modifica World e introduce il formato 4, conservando la lettura dei formati 1–3.
 
 Anche avviato direttamente, l'eseguibile di sviluppo usa ora il percorso di anteprima; FRONTIERE_DATA_DIR continua a consentire directory esplicite per i test. Gli script di test già impostano directory dedicate. Nessun accesso ai salvataggi personali è necessario alla progettazione.
 
-La creazione di pacchetti della copia 2.0 è bloccata finché versione, metadati e isolamento dei dati non vengono aggiornati insieme. Il gioco di sviluppo dichiara 2.0.0-dev.1; lo stato del ramo è sviluppo iniziale e non deve produrre un falso installer 2.0 né sovrascrivere pacchetti 1.0.
+La creazione di pacchetti della copia 2.0 è bloccata finché versione, metadati e isolamento dei dati non vengono aggiornati insieme. Il gioco di sviluppo dichiara 2.0.0-dev.3; lo stato del ramo è sviluppo iniziale e non deve produrre un falso installer 2.0 né sovrascrivere pacchetti 1.0.
 
 ## Milestone e condizioni di uscita
 
@@ -47,3 +47,5 @@ Ripristino storia da bundle: clonare `prima-della-2.0.bundle` in una nuova direc
 M0 completata. M1 avviata, non completata: griglie dinamiche e salvataggi per mappe grandi disponibili; identità/controllo delle unità, misure di scala e schema futuro degli effetti ancora da sviluppare. Nessuna missione è stata ingrandita artificialmente. Prima prova tecnica 192×120 celle (7680×4800); limite di sicurezza attuale 256×256, non promessa di fluidità su tale dimensione. Il limite di 4096 entità e 4 MiB dei file campagna resta da riesaminare con foreste e percorsi reali.
 
 V2-002 avvia anche una prima parte di M2: nuove partite a dimensioni progressive e regioni popolate, villaggio ridistribuito e accessi liberi. La riprogettazione completa degli obiettivi avanzati e la nuova grafica restano da fare. Versione corrente 2.0.0-dev.2.
+
+V2-003 ricostruisce tutti gli undici layout, aggiorna obiettivi e IA, introduce A*, approcci di lavoro separati e una prima revisione delle animazioni. Nuovi mondi in formato 5, lettura 1–4 preservata. M2 avanzata, M5 avviata tramite riuso degli artwork; bilanciamento delle mappe avanzate ancora da verificare con partite complete. Versione corrente 2.0.0-dev.3.

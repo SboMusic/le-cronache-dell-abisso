@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-21",
+  "version": "2.0.0-dev.3",
+  "base": "c65af69",
+  "build": "passed",
+  "model_suites": {
+    "alpha_tests": "SUCCESS 41 checks",
+    "authored_maps_tests": "SUCCESS 1255 authored maps, worker activity and navigation checks",
+    "campaign_slots_tests": "SUCCESS 70 faction campaign and save slot checks",
+    "campaign_tests": "SUCCESS 125 campaign maps objectives and saves checks",
+    "cheat_tests": "SUCCESS 64 cheat simulation checks",
+    "final_battle_tests": "SUCCESS both human and dark final wars, paid economy only",
+    "forest_tests": "SUCCESS 59 forest regression checks",
+    "map_foundation_tests": "SUCCESS 30 dynamic map and legacy save checks",
+    "mechanics_tests": "SUCCESS 30 economy and command mechanics checks",
+    "progression_tests": "SUCCESS 36 progression and shared economy checks",
+    "region_tests": "SUCCESS 78 progressive regions and free economy checks",
+    "roster_tests": "SUCCESS 260 roster checks",
+    "war_tests": "SUCCESS 118 late campaign and final war checks"
+  },
+  "native_modes": {
+    "display": "SUCCESS display toggle checks",
+    "control": "SUCCESS 10 interface checks",
+    "roster": "SUCCESS 84 roster interface checks",
+    "graphics": "SUCCESS 60 graphics checks",
+    "package": "SUCCESS 25 standalone package checks",
+    "forest": "SUCCESS 22 forest and camera interface checks",
+    "progress": "SUCCESS 121 guided interface checks",
+    "campaign": "SUCCESS 177 campaign interface and save checks",
+    "cheat": "SUCCESS 139 console and localization checks",
+    "presentation": "SUCCESS 39 illustration and bilingual frontend checks"
+  },
+  "model_numbered_checks": 2166,
+  "authored_map_validation": "Both factions, eleven maps, land placement and access, connected forests, finite reserves, v5 round trips, multi-worker collection, optional worker combat, paid completion of mission 1 and real naval landings.",
+  "validation_scope": "Advanced new-map objectives use controlled fixtures. Full paid final-war regression uses the historical layout, not the rebuilt finale. Full playthrough balance on advanced authored maps is still pending.",
+  "full_legacy_wars": [
+    "SUCCESS full final war faction 0: 253 paid units, 23 paid buildings, 32 spells, 1980 simulated seconds, no free resources",
+    "SUCCESS full final war faction 1: 219 paid units, 23 paid buildings, 26 spells, 1774 simulated seconds, no free resources",
+    "SUCCESS both human and dark final wars, paid economy only"
+  ],
+  "visual_qa": [
+    "base-dev3-1.png",
+    "mappa-dev3-1.png",
+    "mappa-dev3-5.png",
+    "mappa-dev3-8.png",
+    "mappa-dev3-11.png"
+  ],
+  "repairs_during_validation": [
+    "Opened landing paths through forest to lighthouse.",
+    "Updated full English mission-1 briefing after native localization failure.",
+    "Replaced legacy road rendering on authored maps with saved terrain road rendering."
+  ],
+  "animation_scope": "Existing artwork reused with interpolated movement, distance-driven steps, activity poses, tools and cargo. Not a new full hand-painted atlas.",
+  "stable_refs_unchanged": {
+    "main": "b68c51dfa3c5568195b798791c74d8f4358ed55b",
+    "release/1.x": "b68c51dfa3c5568195b798791c74d8f4358ed55b",
+    "v1.0.0": "49779c18f8911e33a9c981dbb338baeafdaf8e00"
+  },
+  "installer_created": false
+}

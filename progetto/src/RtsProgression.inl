@@ -23,11 +23,12 @@ inline void World::updateProgression(){int previous=chapter;int soldiers=0;for(c
 inline void World::enemyEconomy(){
  if(mission>=5){warEnemyEconomy();return;}if(mission>=3){laterEnemyEconomy();return;}if(mission>=0&&mission!=2)return;if(guided&&chapter<4)return;std::string saved=message;
  int worker=-1,barracks=-1;bool constructing=false;for(const auto& e:entities)if(e.hp>0&&e.team==1){if(e.kind==Kind::Worker&&!busy(e))worker=e.id;if(e.kind==Kind::Barracks&&e.build<=0)barracks=e.id;if(e.build>0)constructing=true;}
+ sf::Vector2f anchor;for(const auto& e:entities)if(e.hp>0&&e.team==1&&e.kind==Kind::Hall)anchor=e.pos;
  if(worker>=0&&!constructing){
-  if(!has(1,Kind::Farm))build(worker,{2350,850},Kind::Farm);
-  else if(barracks<0)build(worker,{1980,800},Kind::Barracks);
+  if(!has(1,Kind::Farm))build(worker,layoutVersion?anchor+sf::Vector2f(180,360):sf::Vector2f(2350,850),Kind::Farm);
+  else if(barracks<0)build(worker,layoutVersion?anchor+sf::Vector2f(-260,240):sf::Vector2f(1980,800),Kind::Barracks);
   else if(population(1)+1>capacity(1)){
-   bool placed=false;for(int y=650;y<=850&&!placed;y+=160)for(int x=1770;x<=2440&&!placed;x+=160)if(placementIssue({float(x),float(y)},Kind::Farm).empty())placed=build(worker,{float(x),float(y)},Kind::Farm);
+   bool placed=false;for(int y=650;y<=850&&!placed;y+=160)for(int x=1770;x<=2440&&!placed;x+=160){sf::Vector2f p=layoutVersion?anchor+sf::Vector2f(float(x-2110),float(y-600)):sf::Vector2f(float(x),float(y));if(placementIssue(p,Kind::Farm).empty())placed=build(worker,p,Kind::Farm);}
   }
  }
  for(auto& e:entities)if(e.hp>0&&e.team==1&&e.kind==Kind::Worker&&!busy(e)&&e.order==Order::Idle){int source=-1;float nearest=1e9;Kind wanted=(e.id%2)?Kind::Mine:Kind::Forest;for(const auto& n:entities)if(n.hp>0&&n.kind==wanted&&distance(n.pos,e.pos)<nearest){nearest=distance(n.pos,e.pos);source=n.id;}if(source>=0)gather(e,source);}

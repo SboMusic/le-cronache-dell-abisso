@@ -48,7 +48,7 @@ inline void World::laterEnemyEconomy(){
  std::string saved=message;int hall=-1,worker=-1,barracks=-1,port=-1,tanker=-1,rig=-1;int workers=0,troops=0;bool constructing=false;
  for(const auto& e:entities)if(e.hp>0&&e.team==1){if(e.kind==Kind::Hall&&e.build<=0)hall=e.id;if(e.kind==Kind::Worker){++workers;if(!busy(e))worker=e.id;}else if(mobile(e.kind)&&e.kind!=Kind::Tanker)++troops;if(e.kind==Kind::Barracks&&e.build<=0)barracks=e.id;if(e.kind==Kind::Shipyard&&e.build<=0)port=e.id;if(e.kind==Kind::Tanker)tanker=e.id;if(e.kind==Kind::OilRig)rig=e.id;if(e.build>0)constructing=true;}
  if(hall<0)return;
- auto construct=[&](Kind k){if(worker<0||constructing)return false;auto center=get(hall)->pos;for(int y=120;y<=1000;y+=140)for(int x=1770;x<=2440;x+=140){sf::Vector2f p{float(x),float(y)};if(distance(center,p)>700||!placementIssue(p,k).empty())continue;if(build(worker,p,k))return true;}return false;};
+ auto construct=[&](Kind k){if(worker<0||constructing)return false;auto center=get(hall)->pos;for(int y=120;y<=1000;y+=140)for(int x=1770;x<=2440;x+=140){sf::Vector2f p=layoutVersion?center+sf::Vector2f(float(x-2110),float(y-400)):sf::Vector2f(float(x),float(y));if(distance(center,p)>700||!placementIssue(p,k).empty())continue;if(build(worker,p,k))return true;}return false;};
  if(!has(1,Kind::Farm))construct(Kind::Farm);
  else if(barracks<0)construct(Kind::Barracks);
  else if(population(1)+2>capacity(1))construct(Kind::Farm);
@@ -58,7 +58,7 @@ inline void World::laterEnemyEconomy(){
  if(barracks>=0&&get(barracks)->production<=0){if(get(barracks)->level<2&&has(1,Kind::LumberMill))research(barracks,Research::Barracks2);else if(troops<8)train(barracks,(get(barracks)->level>=2&&troops%3==0)?Kind::Archer:Kind::Soldier);}
  for(auto& e:entities)if(e.hp>0&&e.team==1&&e.kind==Kind::Worker&&!busy(e)&&e.order==Order::Idle){int source=-1;float nearest=1e9;Kind wanted=e.id%2?Kind::Mine:Kind::Forest;for(const auto& node:entities)if(node.hp>0&&node.kind==wanted&&distance(node.pos,e.pos)<nearest){nearest=distance(node.pos,e.pos);source=node.id;}if(source>=0)gather(e,source);}
  if(mission==4&&port>=0){if(tanker<0&&get(port)->production<=0)train(port,Kind::Tanker);
-  else if(tanker>=0){if(rig<0&&!busy(*get(tanker)))build(tanker,{2110,1310},Kind::OilRig);else if(rig>=0&&get(rig)->build<=0&&get(tanker)->order==Order::Idle)gather(*get(tanker),rig);}
+  else if(tanker>=0){if(rig<0&&!busy(*get(tanker)))build(tanker,layoutVersion?[&](){sf::Vector2f best{2110,1310};float nearest=1e9;for(const auto& e:entities)if(e.kind==Kind::Oil&&distance(e.pos,get(tanker)->pos)<nearest){nearest=distance(e.pos,get(tanker)->pos);best=e.pos;}return best;}():sf::Vector2f(2110,1310),Kind::OilRig);else if(rig>=0&&get(rig)->build<=0&&get(tanker)->order==Order::Idle)gather(*get(tanker),rig);}
   int ships=0;for(const auto& e:entities)if(e.hp>0&&e.team==1&&e.kind==Kind::Destroyer)++ships;if(tanker>=0&&ships<1&&get(port)->production<=0)train(port,Kind::Destroyer);
  }
  message=saved;
@@ -75,13 +75,13 @@ inline void World::updateLaterMission(float dt){
  if(mission==3){
   if(!get(archivist)){result=-1;message="SCONFITTA: il rifugio dei profughi e stato distrutto.";return;}
   if(missionStage==0&&townLevel[0]>=2&&has(0,Kind::Stable)&&count(Kind::Knight)>=2&&has(0,Kind::GuardTower)){missionStage=1;secureTime=0;wave=time+20;}
-  else if(missionStage==1){bool ally=false,enemy=false;for(const auto& e:entities)if(e.hp>0&&e.carrier<0&&mobile(e.kind)&&e.kind!=Kind::Worker&&distance(e.pos,{1350,800})<260){if(e.team==0)ally=true;if(e.team==1)enemy=true;}if(ally&&!enemy)secureTime+=dt;if(secureTime>=90)missionStage=2;}
+  else if(missionStage==1){bool ally=false,enemy=false;for(const auto& e:entities)if(e.hp>0&&e.carrier<0&&mobile(e.kind)&&e.kind!=Kind::Worker&&distance(e.pos,layoutVersion?missionTarget():sf::Vector2f(1350,800))<260){if(e.team==0)ally=true;if(e.team==1)enemy=true;}if(ally&&!enemy)secureTime+=dt;if(secureTime>=90)missionStage=2;}
   else if(missionStage==2){bool barracks=false;for(int id:missionGuards)if(get(id))barracks=true;if(!barracks)result=1;}
  }
  if(mission==4){
   if(missionStage==0&&has(0,Kind::Shipyard)&&has(0,Kind::OilRig)&&oil>=60)missionStage=1;
   else if(missionStage==1&&count(Kind::Transport)>0&&count(Kind::Destroyer)>0)missionStage=2;
-  else if(missionStage==2){int troops=0;bool enemy=false;for(const auto& e:entities)if(e.hp>0&&e.carrier<0&&distance(e.pos,{2020,1480})<220){if(e.team==1)enemy=true;if(e.team==0&&mobile(e.kind)&&e.kind!=Kind::Worker&&def(e.kind).domain==Domain::Land&&def(e.kind).damage>0)++troops;}secureTime=troops>=3&&!enemy?secureTime+dt:0;if(secureTime>=20)result=1;}
+  else if(missionStage==2){int troops=0;bool enemy=false;for(const auto& e:entities)if(e.hp>0&&e.carrier<0&&distance(e.pos,layoutVersion?missionTarget():sf::Vector2f(2020,1480))<220){if(e.team==1)enemy=true;if(e.team==0&&mobile(e.kind)&&e.kind!=Kind::Worker&&def(e.kind).domain==Domain::Land&&def(e.kind).damage>0)++troops;}secureTime=troops>=3&&!enemy?secureTime+dt:0;if(secureTime>=20)result=1;}
  }
 }
 }

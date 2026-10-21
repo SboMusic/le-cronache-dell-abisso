@@ -1,5 +1,7 @@
 # Mappe progressive — 2.0.0-dev.2
 
+Documento storico dev.2: i layout sono sostituiti da [MAPPE-RICOSTRUITE.md](MAPPE-RICOSTRUITE.md) nella dev.3; le dimensioni restano valide.
+
 Dimensioni effettive delle nuove partite. I salvataggi mantengono la propria disposizione: ricominciare la missione o creare una nuova campagna per applicare la generazione aggiornata.
 
 | Missione | Larghezza | Altezza |
