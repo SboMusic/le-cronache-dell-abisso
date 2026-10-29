@@ -100,3 +100,11 @@ Esito V2-004: compilazione riuscita, tredici suite modello superate (2166 contro
 - Rimosse le grandi aste schematiche dell’impalcatura. Piccola catasta di tavole con facce, venature e ombra, presente solo durante il cantiere; conservata la costruzione trasparente progressiva.
 - Utensili più piccoli: manico delineato e impugnatura, martello metallico sfaccettato con luce/ombra, piccone e ascia con profilo distinto. Aggiunta la mano sull’impugnatura; nessun nuovo artwork esterno.
 - Versione 2.0.0-dev.5. Compilazione e controlli nativi di grafica (143 con cattura), comandi (10) e avvio autonomo (25) superati. Controllato il fotogramma dimostrativo aggiornato. Nessuna modifica alle regole o ai salvataggi; non è necessario ricominciare la partita. La 1.0 resta invariata.
+
+## V2-006 — 29 ottobre 2026 — Passo e carichi dei lavoratori
+
+- Ridotto il rimbalzo del busto, appoggio del passo più regolare; griglia articolata più fine con flessione del ginocchio e movimento contrapposto delle spalle. Riutilizzo dei fotogrammi esistenti, nessun nuovo atlante bitmap completo.
+- Sostituiti i rettangoli della legna con tre tronchetti cilindrici: corteccia sfumata, venature, estremità con anelli, corde e ombra. Sacco d’oro con sagoma asimmetrica, facce illuminate, pieghe, cuciture e apertura legata con pepite visibili.
+- Carichi aderenti al fianco e oscillazione lieve legata al passo. Stessa rappresentazione per operai e imp.
+- Build 2.0.0-dev.6 compilata; 145 controlli grafici nativi superati, inclusi 25 della cattura opzionale e nuovi controlli sui carichi distinti per le due fazioni. Fotogramma 12 controllato visivamente. Non rieseguite le suite economiche: nessuna modifica alle regole della simulazione. Salvataggi invariati; non serve ricominciare la campagna.
+- Anteprima dimostrativa controllata in carichi-dev6.gif; non rappresenta una partita reale. La versione 1.0 resta invariata.

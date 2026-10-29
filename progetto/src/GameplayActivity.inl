@@ -4,9 +4,35 @@ void Gameplay::drawActivity(sf::RenderTarget& target,const alpha::Entity& e,cons
  if(e.kind==alpha::Kind::Worker){
   using A=presentation::WorkerAction;auto action=presentation::workerAction(world_,e,v.speed>5);auto pose=presentation::workerPose(action,v.phase+e.id*.07f,v.stride,e.cooldown,alpha::def(e.kind).cooldown/(e.haste>0?1.4f:1.f));
   float facing=(v.direction==1||v.direction==2)?-1.f:1.f;
-  if(e.cargo>0){sf::Vector2f load=e.pos+sf::Vector2f(-facing*13,-13+pose.bob);
-   if(e.cargoKind==alpha::Kind::Forest){for(int j=0;j<3;++j){line(load+sf::Vector2f(-12,j*4.f),load+sf::Vector2f(13,j*4.f),{130,83,43},5);sf::CircleShape cut(2.5f,10);cut.setPosition(load+sf::Vector2f(11,j*4.f-2));cut.setFillColor({202,164,99});target.draw(cut);}line(load+sf::Vector2f(-2,-1),load+sf::Vector2f(-2,12),{185,166,118},2);}
-   else{sf::CircleShape sack(9,9);sack.setScale(1,.8f);sack.setPosition(load);sack.setFillColor({151,115,61});sack.setOutlineColor({86,63,35});sack.setOutlineThickness(1);target.draw(sack);for(int j=0;j<3;++j){sf::CircleShape nugget(3,5);nugget.setPosition(load+sf::Vector2f(2+j*4.f,1+(j%2)*3.f));nugget.setFillColor({239,192,66});target.draw(nugget);}}
+  if(e.cargo>0){
+   // Cargo shares the worker's body motion and sits against the near hip, not beside the feet.
+   float sway=v.speed>5?std::sin(v.stride*3.14159265f)*.8f:0;
+   sf::Vector2f load=e.pos+sf::Vector2f(-facing*12+sway,-17+pose.bob);
+   auto oval=[&](sf::Vector2f p,sf::Vector2f scale,float radius,sf::Color color){sf::CircleShape shape(radius,24);shape.setOrigin(radius,radius);shape.setScale(scale);shape.setPosition(p);shape.setFillColor(color);target.draw(shape);};
+   auto polygon=[&](std::initializer_list<sf::Vector2f> points,sf::Color color){sf::ConvexShape shape(points.size());int i=0;for(auto p:points)shape.setPoint(i++,load+p);shape.setFillColor(color);target.draw(shape);};
+   if(e.cargoKind==alpha::Kind::Forest){
+    oval(load+sf::Vector2f(0,5),{1.5f,.45f},9,{33,25,16,100});
+    for(int j=0;j<3;++j){sf::Vector2f p=load+sf::Vector2f(j==2?-1.f:0.f,j==2?-5.f:j*6.f-1);
+     line(p+sf::Vector2f(-12,-2),p+sf::Vector2f(10,0),{65,43,27},7);
+     line(p+sf::Vector2f(-11,-3),p+sf::Vector2f(10,-1),{119,79,42},4);
+     line(p+sf::Vector2f(-10,-4),p+sf::Vector2f(7,-2.5f),{165,115,64},1.2f);
+     line(p+sf::Vector2f(-8,0),p+sf::Vector2f(5,1),{82,53,29},.7f);
+     oval(p+sf::Vector2f(10,0),{.55f,1},3.7f,{74,48,28});oval(p+sf::Vector2f(10,0),{.52f,1},2.8f,{202,159,96});
+     sf::CircleShape ring(1.65f,16);ring.setOrigin(1.65f,1.65f);ring.setScale(.52f,1);ring.setPosition(p+sf::Vector2f(10,0));ring.setFillColor(sf::Color::Transparent);ring.setOutlineThickness(.55f);ring.setOutlineColor({143,98,53});target.draw(ring);
+    }
+    for(float x:{-6.f,3.f}){line(load+sf::Vector2f(x,-9),load+sf::Vector2f(x-1,8),{75,61,39},2.5f);line(load+sf::Vector2f(x+.6f,-9),load+sf::Vector2f(x-.4f,8),{192,167,112},1.1f);}
+   }else{
+    // Stitched leather pouch: asymmetric silhouette, folds, cinched neck and a few visible nuggets.
+    oval(load+sf::Vector2f(1,7),{1,.35f},9,{38,28,17,85});
+    polygon({{-5,-8},{3,-9},{7,-3},{9,4},{6,10},{0,12},{-7,9},{-10,3},{-8,-3}}, {71,47,28});
+    polygon({{-4,-7},{2,-8},{6,-2},{7,4},{4,9},{-2,10},{-7,6},{-8,1}}, {133,94,50});
+    polygon({{-4,-5},{-1,-6},{1,-1},{0,7},{-4,6},{-6,2}}, {171,126,67});
+    line(load+sf::Vector2f(3,-3),load+sf::Vector2f(4,6),{91,59,32},1);
+    for(int j=0;j<4;++j)line(load+sf::Vector2f(-5+j*2.f,8),load+sf::Vector2f(-4+j*2.f,8.5f),{205,169,107},.6f);
+    oval(load+sf::Vector2f(-1,-7),{1,.4f},4.5f,{48,36,22});
+    for(int j=0;j<3;++j){sf::Vector2f n=load+sf::Vector2f(-3+j*2.7f,-8-(j%2)*2.f);oval(n,{1,.75f},2.1f,{143,98,24});oval(n+sf::Vector2f(-.5f,-.7f),{1,.65f},1.5f,{242,199,74});}
+    line(load+sf::Vector2f(-5,-5),load+sf::Vector2f(4,-5),{197,167,108},1.4f);line(load+sf::Vector2f(2,-5),load+sf::Vector2f(5,0),{190,154,94},1);
+   }
   }
   bool tool=action==A::Mine||action==A::Chop||action==A::Build||action==A::Repair||action==A::Fight;
   if(tool){float stroke=pose.stroke,angle=-1.1f+stroke*1.15f;sf::Vector2f grip=e.pos+sf::Vector2f(facing*13,-22+pose.bob),tip=grip+sf::Vector2f(facing*std::cos(angle)*28,std::sin(angle)*28);

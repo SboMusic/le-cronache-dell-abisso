@@ -35,6 +35,8 @@ documentazione/v2/animazioni-dev4.gif
 documentazione/v2/animazioni-dev4.png
 documentazione/v2/anteprima-inizio-dev2.png
 documentazione/v2/base-dev3-1.png
+documentazione/v2/carichi-dev6.gif
+documentazione/v2/carichi-dev6.png
 documentazione/v2/mappa-dev3-1.png
 documentazione/v2/mappa-dev3-11.png
 documentazione/v2/mappa-dev3-5.png

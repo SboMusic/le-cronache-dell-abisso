@@ -24,17 +24,18 @@
   if(role==4||role==6){e.order=alpha::Order::Attack;e.target=enemy;e.cooldown=alpha::def(e.kind).cooldown*(1-std::fmod(time,.95f));}return e;};
  for(int faction=0;faction<2;++faction){world_.faction[0]=faction;for(int role=0;role<7;++role){Visual a;a.initialized=true;a.phase=.07f;a.stride=.15f;a.speed=role==0||role==5?70.f:0.f;Visual b=a;b.phase=.33f;b.stride=1.3f;
   require(different(snapshot(actor(role,.07f),a),snapshot(actor(role,.33f),b)),"worker and soldier actions change native pixels for both factions");}
+  {auto loaded=actor(0,0);Visual v;v.initialized=true;v.speed=70;v.stride=.6f;auto empty=snapshot(loaded,v);loaded.cargo=20;loaded.cargoKind=alpha::Kind::Forest;auto wood=snapshot(loaded,v);loaded.cargoKind=alpha::Kind::Mine;auto gold=snapshot(loaded,v);require(different(empty,wood)&&different(wood,gold),"wood and gold cargo render distinct detailed silhouettes for both factions");}
   auto idle=actor(5,0);idle.order=alpha::Order::Idle;Visual a;a.initialized=true;Visual b=a;b.stride=1.3f;require(!different(snapshot(idle,a),snapshot(idle,b)),"stopped soldier does not march in place");
  }
  require(presentation::combatPose(.95f,1).impact&&!presentation::combatPose(.3f,1).impact,"attack trail is limited to real impact and fades during recovery");
  if(std::getenv("FRONTIERE_ANIMATION_CAPTURE")){
   sf::RenderTexture demo;require(demo.create(1200,850),"animation showcase framebuffer initializes");
-  const char* roles[]={"Cammino","Taglio legna","Estrazione oro","Costruzione","Attacco operaio","Passo soldato","Attacco soldato"};
+  const char* roles[]={"Trasporto legna","Taglio legna","Estrazione oro","Costruzione","Attacco operaio","Trasporto oro","Attacco soldato"};
   for(int frame=0;frame<24;++frame){float t=frame*.08f,progress=frame/23.f;demo.clear({23,38,42});text(demo,"Anteprima animazioni | " ABYSS_VERSION_TEXT,{24,15},25);
    for(int faction=0;faction<2;++faction){world_.faction[0]=faction;float row=faction?360.f:90.f;text(demo,faction?"STIRPE OSCURA":"UMANI",{24,row-20},19);
     for(int col=0;col<4;++col){alpha::Entity building;building.kind=col%2?alpha::Kind::Barracks:alpha::Kind::Hall;building.pos={200+col*290.f,row+120};building.buildTotal=20;float p=col<2?progress:std::clamp(progress+.3f,0.f,1.f);building.build=20*(1-p);Visual v;v.initialized=true;v.buildProgress=p;drawArt(demo,building,v,1);text(demo,std::to_string(int(p*100))+"%",building.pos+sf::Vector2f(-20,70),19);}
    }
-   for(int faction=0;faction<2;++faction){world_.faction[0]=faction;for(int role=0;role<7;++role){auto e=actor(role,t);e.pos={80+role*170.f,690+faction*105.f};Visual v;v.initialized=true;v.phase=t;v.stride=t*3;v.speed=role==0||role==5?70.f:0.f;drawArt(demo,e,v,1);drawActivity(demo,e,v);if(!faction)text(demo,roles[role],{20+role*170.f,710},15);}}
+   for(int faction=0;faction<2;++faction){world_.faction[0]=faction;for(int role=0;role<7;++role){auto e=actor(role,t);if(role==0||role==5){e.kind=alpha::Kind::Worker;e.cargo=20;e.cargoKind=role==0?alpha::Kind::Forest:alpha::Kind::Mine;}e.pos={80+role*170.f,690+faction*105.f};Visual v;v.initialized=true;v.phase=t;v.stride=t*3;v.speed=role==0||role==5?70.f:0.f;drawArt(demo,e,v,1);drawActivity(demo,e,v);if(!faction)text(demo,roles[role],{20+role*170.f,710},15);}}
    demo.display();require(demo.getTexture().copyToImage().saveToFile("animation-frame-"+std::to_string(frame)+".png"),"animation showcase frame saved");
   }
  }

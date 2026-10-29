@@ -14,7 +14,7 @@ struct WorkerPose {int frame=0;float lean=0,bob=0,reach=0,cycle=0,stroke=0;};
 inline WorkerPose workerPose(WorkerAction action,float phase,float stride,float cooldown=0,float total=1){
  WorkerPose p;float rate=action==WorkerAction::Chop?1.6f:action==WorkerAction::Mine?1.9f:action==WorkerAction::Build?2.6f:2.2f;
  p.cycle=std::fmod(phase*rate,1.f);
- if(action==WorkerAction::Walk||action==WorkerAction::Carry){p.frame=1+(int(stride)%2);p.bob=std::sin(stride*3.14159265f)*(action==WorkerAction::Carry?1.f:1.8f);p.lean=action==WorkerAction::Carry?3.f:std::sin(stride*3.14159265f)*1.5f;return p;}
+ if(action==WorkerAction::Walk||action==WorkerAction::Carry){p.frame=1+(int(stride)%2);p.bob=-std::abs(std::sin(stride*3.14159265f))*(action==WorkerAction::Carry?.7f:1.1f);p.lean=action==WorkerAction::Carry?2.f+std::sin(stride*3.14159265f)*.5f:std::sin(stride*3.14159265f)*.9f;return p;}
  if(action==WorkerAction::Idle){p.bob=std::sin(phase*2)*.4f;return p;}
  if(action==WorkerAction::Fight){p.cycle=std::clamp(1-cooldown/std::max(.01f,total),0.f,1.f);float recover=std::max(0.f,1-p.cycle/.42f);p.stroke=recover;p.frame=0;p.lean=recover*6;p.reach=recover*5;return p;}
  // Deliberate lift, quick impact, then recovery; avoids a continuously oscillating tool.
