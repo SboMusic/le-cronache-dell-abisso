@@ -108,3 +108,9 @@ Esito V2-004: compilazione riuscita, tredici suite modello superate (2166 contro
 - Carichi aderenti al fianco e oscillazione lieve legata al passo. Stessa rappresentazione per operai e imp.
 - Build 2.0.0-dev.6 compilata; 145 controlli grafici nativi superati, inclusi 25 della cattura opzionale e nuovi controlli sui carichi distinti per le due fazioni. Fotogramma 12 controllato visivamente. Non rieseguite le suite economiche: nessuna modifica alle regole della simulazione. Salvataggi invariati; non serve ricominciare la campagna.
 - Anteprima dimostrativa controllata in carichi-dev6.gif; non rappresenta una partita reale. La versione 1.0 resta invariata.
+
+## V2-007 — 29 ottobre 2026 — Utensili della stirpe oscura
+
+- Varianti dedicate per gli imp, selezionate dalla fazione dell’entità e non da quella del giocatore: martello cornuto in metallo annerito con nucleo rosso, piccone ricurvo d’ossidiana con bordo violetto e legatura rossa. Manico scuro e mano coerente con il colore dell’imp.
+- Utensili umani e tempi delle animazioni conservati; nessuna modifica a regole o salvataggi. Disegni procedurali, nessun nuovo atlante bitmap.
+- Build 2.0.0-dev.7 compilata; 147 controlli grafici nativi superati (25 relativi alla cattura opzionale), compresi confronti dei soli utensili fra le due fazioni. Fotogramma dimostrativo 12 controllato visivamente. Nessun installer finale o modifica alla 1.0.

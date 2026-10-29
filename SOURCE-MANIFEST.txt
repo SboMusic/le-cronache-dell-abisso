@@ -45,6 +45,7 @@ documentazione/v2/MAPPE-PROGRESSIVE.md
 documentazione/v2/MAPPE-RICOSTRUITE.md
 documentazione/v2/README.md
 documentazione/v2/utensili-dev5.png
+documentazione/v2/utensili-oscuri-dev7.png
 documentazione/v2/VERIFICA-ANIMAZIONI-004.json
 documentazione/v2/VERIFICA-M1-001.json
 documentazione/v2/VERIFICA-PREPRODUZIONE.json

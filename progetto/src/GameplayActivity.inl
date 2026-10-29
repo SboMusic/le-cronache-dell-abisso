@@ -4,6 +4,7 @@ void Gameplay::drawActivity(sf::RenderTarget& target,const alpha::Entity& e,cons
  if(e.kind==alpha::Kind::Worker){
   using A=presentation::WorkerAction;auto action=presentation::workerAction(world_,e,v.speed>5);auto pose=presentation::workerPose(action,v.phase+e.id*.07f,v.stride,e.cooldown,alpha::def(e.kind).cooldown/(e.haste>0?1.4f:1.f));
   float facing=(v.direction==1||v.direction==2)?-1.f:1.f;
+  const bool dark=e.team>=0&&world_.faction[e.team]==1;
   if(e.cargo>0){
    // Cargo shares the worker's body motion and sits against the near hip, not beside the feet.
    float sway=v.speed>5?std::sin(v.stride*3.14159265f)*.8f:0;
@@ -38,18 +39,33 @@ void Gameplay::drawActivity(sf::RenderTarget& target,const alpha::Entity& e,cons
   if(tool){float stroke=pose.stroke,angle=-1.1f+stroke*1.15f;sf::Vector2f grip=e.pos+sf::Vector2f(facing*13,-22+pose.bob),tip=grip+sf::Vector2f(facing*std::cos(angle)*28,std::sin(angle)*28);
    // Compact timber handle with a wrapped grip and a forged, bevelled tool head.
    tip=grip+sf::Vector2f(facing*std::cos(angle)*22,std::sin(angle)*22);
-   line(grip,tip,{65,43,27},3.6f);line(grip+sf::Vector2f(0,-.7f),tip+sf::Vector2f(0,-.7f),{169,120,64},1.8f);
+   line(grip,tip,dark?sf::Color(29,23,36):sf::Color(65,43,27),3.6f);line(grip+sf::Vector2f(0,-.7f),tip+sf::Vector2f(0,-.7f),dark?sf::Color(100,71,104):sf::Color(169,120,64),1.8f);
    auto shaft=tip-grip;line(grip,grip+shaft*.24f,{92,64,43},4);
    sf::Transform toolTransform;toolTransform.translate(tip).rotate(facing*angle*180/3.14159265f+90);
    auto facet=[&](std::initializer_list<sf::Vector2f> points,sf::Color color){sf::ConvexShape shape(points.size());int i=0;for(auto point:points)shape.setPoint(i++,toolTransform.transformPoint(point));shape.setFillColor(color);target.draw(shape);};
-   if(action==A::Mine){facet({{-12,1},{-9,-2},{0,-4},{8,-2},{12,2},{4,0},{-4,0}}, {67,78,81});facet({{-10,-1},{0,-3},{8,-1},{3,-1},{-4,0}}, {183,194,193});}
+   if(dark&&action==A::Mine){
+    // Hooked obsidian pick, red binding and a cold violet cutting edge.
+    facet({{-15,6},{-11,-3},{-4,-6},{3,-5},{10,-1},{13,7},{7,2},{1,-1},{-5,-2},{-10,1}}, {27,22,38});
+    facet({{-15,6},{-11,-3},{-4,-6},{3,-5},{10,-1},{8,0},{1,-3},{-5,-3},{-10,0}}, {122,103,154});
+    facet({{-3,-4},{2,-4},{3,1},{-2,2}}, {131,39,40});
+    facet({{-1,-4},{1,-4},{1,0},{0,1}}, {245,113,62});
+   }else if(dark&&(action==A::Build||action==A::Repair)){
+    // Horned forge hammer: heavier silhouette than the human steel mallet.
+    facet({{-10,-5},{-6,-6},{6,-6},{10,-3},{9,4},{5,7},{-7,5},{-11,2}}, {29,25,37});
+    facet({{-10,-5},{-6,-6},{6,-6},{10,-3},{-5,-2}}, {110,89,121});
+    facet({{-5,-2},{10,-3},{9,4},{5,7},{-5,4}}, {63,47,66});
+    facet({{-10,-5},{-13,-9},{-11,-1},{-9,1}}, {157,142,161});
+    facet({{7,-5},{12,-8},{10,-1}}, {157,142,161});
+    facet({{-3,-2},{1,-4},{5,-1},{4,3},{0,5},{-3,2}}, {132,28,37});
+    facet({{0,-2},{2,-1},{2,2},{0,3},{-1,1}}, {255,125,61});
+   }else if(action==A::Mine){facet({{-12,1},{-9,-2},{0,-4},{8,-2},{12,2},{4,0},{-4,0}}, {67,78,81});facet({{-10,-1},{0,-3},{8,-1},{3,-1},{-4,0}}, {183,194,193});}
    else if(action==A::Build||action==A::Repair){
     facet({{-7,-3},{5,-3},{8,-1},{8,3},{5,5},{-7,4},{-9,2},{-9,-1}}, {55,66,70});
     facet({{-7,-3},{5,-3},{8,-1},{-5,0},{-9,-1}}, {202,211,207});
     facet({{-5,0},{8,-1},{8,3},{5,4},{-5,3}}, {119,137,141});
     facet({{-9,-1},{-5,0},{-5,3},{-8,3}}, {226,229,214});
    }else{facet({{-3,-4},{5,-5},{11,-1},{10,6},{3,5},{-3,2}}, {66,80,83});facet({{5,-4},{10,-1},{9,5},{6,4}}, {211,220,214});facet({{-2,-3},{5,-4},{6,3},{-2,1}}, {132,153,155});}
-   sf::CircleShape hand(2.5f,9);hand.setOrigin(2.5f,2.5f);hand.setPosition(grip);hand.setFillColor({174,133,91});target.draw(hand);
+   sf::CircleShape hand(2.5f,9);hand.setOrigin(2.5f,2.5f);hand.setPosition(grip);hand.setFillColor(dark?sf::Color(133,57,47):sf::Color(174,133,91));target.draw(hand);
    if(action!=A::Fight&&pose.cycle>.60f&&pose.cycle<.82f){for(int j=0;j<4;++j){float age=(pose.cycle-.60f)/.22f;sf::CircleShape chip(action==A::Chop?2.4f:1.8f,action==A::Chop?3:5);chip.setPosition(tip+sf::Vector2f(facing*(age*22+j*3),-age*(28+j*5)+age*age*36));chip.setFillColor(action==A::Chop?sf::Color(195,151,88,190):action==A::Mine?sf::Color(246,211,111,200):sf::Color(215,196,162,150));target.draw(chip);}}
    if(action==A::Build||action==A::Repair){sf::CircleShape dust(8+pose.cycle*12,16);dust.setScale(1,.35f);dust.setPosition(e.pos+sf::Vector2f(facing*18,0));dust.setFillColor({182,155,115,static_cast<sf::Uint8>((1-pose.cycle)*55)});target.draw(dust);}
   }

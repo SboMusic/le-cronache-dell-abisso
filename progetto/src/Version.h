@@ -1,5 +1,5 @@
 #ifndef ABYSS_VERSION_H
 #define ABYSS_VERSION_H
-#define ABYSS_VERSION_TEXT "2.0.0-dev.6"
-#define ABYSS_VERSION_NUMBERS 2,0,0,6
+#define ABYSS_VERSION_TEXT "2.0.0-dev.7"
+#define ABYSS_VERSION_NUMBERS 2,0,0,7
 #endif

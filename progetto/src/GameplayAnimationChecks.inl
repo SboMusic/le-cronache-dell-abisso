@@ -27,6 +27,11 @@
   {auto loaded=actor(0,0);Visual v;v.initialized=true;v.speed=70;v.stride=.6f;auto empty=snapshot(loaded,v);loaded.cargo=20;loaded.cargoKind=alpha::Kind::Forest;auto wood=snapshot(loaded,v);loaded.cargoKind=alpha::Kind::Mine;auto gold=snapshot(loaded,v);require(different(empty,wood)&&different(wood,gold),"wood and gold cargo render distinct detailed silhouettes for both factions");}
   auto idle=actor(5,0);idle.order=alpha::Order::Idle;Visual a;a.initialized=true;Visual b=a;b.stride=1.3f;require(!different(snapshot(idle,a),snapshot(idle,b)),"stopped soldier does not march in place");
  }
+ for(int role:{2,3}){auto e=actor(role,.24f);Visual v;v.phase=.24f;v.initialized=true;
+  world_.faction[0]=0;canvas.clear(sf::Color::Transparent);drawActivity(canvas,e,v);canvas.display();auto human=canvas.getTexture().copyToImage();
+  world_.faction[0]=1;canvas.clear(sf::Color::Transparent);drawActivity(canvas,e,v);canvas.display();auto dark=canvas.getTexture().copyToImage();
+  require(different(human,dark),"dark hammer and pick have independent rendered silhouettes and materials");
+ }
  require(presentation::combatPose(.95f,1).impact&&!presentation::combatPose(.3f,1).impact,"attack trail is limited to real impact and fades during recovery");
  if(std::getenv("FRONTIERE_ANIMATION_CAPTURE")){
   sf::RenderTexture demo;require(demo.create(1200,850),"animation showcase framebuffer initializes");
