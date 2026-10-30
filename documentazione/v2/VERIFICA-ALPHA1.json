@@ -91,5 +91,6 @@
     "progetto/src/RtsCatalog.h": "3b1b28e21f034c7ee761d160ba319d3979b90244bfe3f0784e265443cbdbeb3e",
     "progetto/assets/abisso-v2/roster-v2.png": "5f9e79baf0cd59c210e06eae1da5ac096ac7217f548a807862ac4ede402279b2",
     "documentazione/v2/Guida-completa-2.0-alpha1.pdf": "ddd29e31841688b5f6b22cddcb2823ff1cb6ef2eed481266362ca6072564de96"
-  }
+  },
+  "guide_git_storage": "PDF byte-for-byte verified against the committed blob; explicit binary attribute avoids text diff and whitespace processing."
 }

@@ -10,3 +10,5 @@
 *.zip binary
 *.dll binary
 *.lib binary
+
+*.pdf binary
