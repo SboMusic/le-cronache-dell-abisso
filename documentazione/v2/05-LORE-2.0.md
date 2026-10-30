@@ -34,3 +34,7 @@ Percorso umano possibile: Liora protegge insediamenti e affronta chi vuole ricos
 ## Decisioni narrative aperte
 
 Finale canonico della 1.0; rapporto fra nomi della Pietra; origine precisa dei cristalli; natura degli angeli minori; legame fra stirpi; conseguenze durature della corruzione; protagonisti e numero delle nuove missioni. Nessuna decisione deve retconare silenziosamente i testi precedenti: registrare motivazione, approvazione e punti aggiornati.
+
+## Integrazione nella build alpha 1
+
+I briefing della campagna condivisa introducono i cristalli nel Bosco dei Custodi, rune e steli negli archivi dei Cinque, quindi vincoli, barriere e trasfigurazione attorno alla memoria della Pietra. Sono spiegazioni opzionali delle tecnologie, non una nuova campagna ambientata necessariamente dopo il finale precedente. Gli angeli minori vengono trattati come manifestazioni limitate dei doni dei santuari: i Cinque non tornano in vita. La trasfigurazione è attraversamento delle correnti e la cura è stabilizzazione della volontà, per entrambe le stirpi. La vittoria conserva la Pietra. Le trame autonome, nuove scene dialogate e conseguenze politiche rimangono da sviluppare; non sono descritte come eventi già giocabili.

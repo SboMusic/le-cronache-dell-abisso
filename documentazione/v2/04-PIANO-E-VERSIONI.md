@@ -51,3 +51,7 @@ V2-002 avvia anche una prima parte di M2: nuove partite a dimensioni progressive
 V2-003 ricostruisce tutti gli undici layout, aggiorna obiettivi e IA, introduce A*, approcci di lavoro separati e una prima revisione delle animazioni. Nuovi mondi in formato 5, lettura 1–4 preservata. M2 avanzata, M5 avviata tramite riuso degli artwork; bilanciamento delle mappe avanzate ancora da verificare con partite complete. Versione corrente 2.0.0-dev.4.
 
 V2-004 estende M5 con costruzione progressiva trasparente, movimenti articolati degli operai e passo/attacco dei soldati. Sono ancora usati gli artwork esistenti; atlanti completi e rifacimento artistico restano da sviluppare.
+
+## Integrazione del 30 ottobre 2026
+
+Build 2.0.0-alpha.1. M3 e M4 integrate; M6, M7 e M8 hanno implementazioni funzionali con prove specifiche. M1 include identità di origine e stato tattico nel formato 6; resta la misura di scala. M2 dispone dei nuovi layout. M5 usa nuovi artwork e animazioni procedurali, ma non tutti gli atlanti direzionali e le quattro architetture complete. M9 aggiunge briefing delle tecnologie alla campagna condivisa, senza campagna oscura autonoma. M10 resta aperta: bilanciamento giocato, prestazioni, revisione finale delle lingue e distribuzione stabile. Nessun tag o installer 2.0 finale creato. Consultare la guida corrente per i valori implementati, distinti dalle proposte originarie.

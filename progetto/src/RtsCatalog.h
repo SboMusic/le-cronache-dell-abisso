@@ -8,11 +8,11 @@ enum class Kind { Worker, Soldier, Hall, Barracks, Mine, Forest,
  Archer, Ranger, Knight, Guardian, Siege, Demolition, Mage, Warlock, Healer,
  Scout, Warbird, Tanker, Transport, Destroyer, Battleship, Submarine, Spirit,
  Farm, LumberMill, Forge, Stable, Sanctuary, Academy, Workshop, Aviary,
- WatchTower, GuardTower, CannonTower, Shipyard, Foundry, Refinery, OilRig, Wall, Oil, Count };
+ WatchTower, GuardTower, CannonTower, Shipyard, Foundry, Refinery, OilRig, Wall, Oil, CrystalCave, CrystalMiner, Reliquary, Stele, BarrierAltar, RuneForge, Transfiguration, FreedomObelisk, Hippogriff, SpiritKnight, Angel, Paladin, AirArk, RuneBreaker, Binder, Dragon, AbyssBeast, MinorDemon, Count };
 enum class Domain { Land, Sea, Air };
-enum class Research { Town2, Town3, Weapons, Armor, Archery, ShipGuns, ShipArmor, Elite, Arcana, Barracks2, Barracks3, Forestry, Count };
+enum class Research { Town2, Town3, Weapons, Armor, Archery, ShipGuns, ShipArmor, Elite, Arcana, Barracks2, Barracks3, Forestry, Town4, Count };
 enum class Spell { Heal, Firestorm, Haste, Rage, Shield, Reveal, Raise, Storm, Count };
-struct Cost { int gold=0,wood=0,oil=0; };
+struct Cost { int gold=0,wood=0,oil=0,crystals=0; };
 struct Definition {
  const char* name="",*clanName="",*role="";
  bool unit=false,node=false,antiAir=false;
@@ -80,6 +80,27 @@ inline const std::array<Definition,static_cast<int>(Kind::Count)>& catalog(){
    {Kind::Hall,"Cittadella infernale"},{Kind::Barracks,"Caserma delle fauci"},{Kind::Farm,"Nido demoniaco"},{Kind::LumberMill,"Segheria infernale"},{Kind::Forge,"Forgia delle braci"},{Kind::Stable,"Serraglio infernale"},{Kind::Sanctuary,"Altare dell abisso"},{Kind::Academy,"Torre degli evocatori"},{Kind::Workshop,"Officina dei tormenti"},{Kind::Aviary,"Nido delle viverne"},{Kind::WatchTower,"Torre del teschio"},{Kind::GuardTower,"Torre delle spine"},{Kind::CannonTower,"Torre del fuoco"},{Kind::Shipyard,"Cantiere dei dannati"},{Kind::Foundry,"Fonderia abissale"},{Kind::Refinery,"Raffineria infernale"},{Kind::OilRig,"Trivella infernale"},{Kind::Wall,"Muro delle corna"}};
   for(const auto& item:darkNames)d[int(item.first)].clanName=item.second;
   d[int(Kind::Forest)].name=d[int(Kind::Forest)].clanName="Albero";d[int(Kind::Forest)].hp=80;d[int(Kind::Forest)].radius=16;
+  auto named=[&](Kind k,const char* dark){d[int(k)].clanName=dark;};
+  d[int(Kind::CrystalCave)].node=true;d[int(Kind::CrystalCave)].name=d[int(Kind::CrystalCave)].clanName="Caverna di cristalli";d[int(Kind::CrystalCave)].hp=2400;d[int(Kind::CrystalCave)].radius=42;
+  unit(Kind::CrystalMiner,"Minatore dell Aurora","Estrae cristalli e li consegna al reliquiario",Kind::Reliquary,{75,20,0},90,0,0,100,8,1,Kind::Count,-1);named(Kind::CrystalMiner,"Scavatore dell Abisso");
+  building(Kind::Reliquary,"Reliquiario dell Aurora","Deposito cristalli e minatori specializzati",{160,100,0},550,14,1,Kind::LumberMill,-1);named(Kind::Reliquary,"Reliquiario dell Abisso");
+  building(Kind::Stele,"Stele sacra","Aura locale: forza e consegne; non cumulabile",{160,100,0,30},500,14,2,Kind::Reliquary,-1);named(Kind::Stele,"Stele dell Abisso");
+  building(Kind::BarrierAltar,"Altare della Protezione","Barriera locale di 10 s, ricarica condivisa 90 s",{220,140,0,50},600,18,3,Kind::Reliquary,-1);named(Kind::BarrierAltar,"Altare del Velo Abissale");
+  building(Kind::RuneForge,"Laboratorio delle Rune","Produce rune consumabili per le truppe",{190,130,0,30},550,16,2,Kind::Reliquary,-1);named(Kind::RuneForge,"Forgia dei Sigilli");
+  building(Kind::Transfiguration,"Santuario della Trasfigurazione","Potenzia, contiene e cura la corruzione",{230,160,0},700,20,3,Kind::Reliquary,-1);named(Kind::Transfiguration,"Altare della Trasfigurazione");
+  building(Kind::FreedomObelisk,"Obelisco della Liberta","Immunita locale alla paralisi",{180,120,0,40},550,15,2,Kind::Reliquary,-1);named(Kind::FreedomObelisk,"Pilastro della Volonta");
+  unit(Kind::Hippogriff,"Domatore di ipogrifi","Intercettore volante veloce",Kind::Aviary,{230,100,0,35},230,30,240,185,18,3,Kind::Reliquary,-1,Domain::Air,true);named(Kind::Hippogriff,"Cacciatore alato");
+  unit(Kind::SpiritKnight,"Cavaliere dell Aurora","Cavalleria spirituale veloce",Kind::Stable,{230,80,0,45},340,35,48,185,18,3,Kind::Reliquary,-1);named(Kind::SpiritKnight,"Cavaliere del Velo");
+  unit(Kind::Angel,"Angelo minore","Supporto aereo, cura e rivelazione",Kind::Sanctuary,{200,90,0,45},190,12,240,145,18,3,Kind::Reliquary,-1,Domain::Air,true);named(Kind::Angel,"Angelo caduto");
+  unit(Kind::Paladin,"Paladino","Fanteria pesante, scudo e cura",Kind::Sanctuary,{210,80,0,35},360,30,45,105,16,3,Kind::Forge,-1);named(Kind::Paladin,"Paladino del Velo");
+  unit(Kind::AirArk,"Arca dell Aurora","Trasporto aereo: sei posti, sbarco su terra libera",Kind::Aviary,{320,180,0,80},420,0,0,90,26,4,Kind::Reliquary,-1,Domain::Air);named(Kind::AirArk,"Vascello dell Abisso");
+  unit(Kind::RuneBreaker,"Spezzarune","Dissolve barriere e rune con rituale interrompibile",Kind::RuneForge,{160,65,0,30},170,16,190,110,14,2,Kind::Count,-1);named(Kind::RuneBreaker,"Profanatore del Velo");
+  unit(Kind::Binder,"Vincolatore runico","Paralisi di gruppo annunciata, mana e ricarica",Kind::RuneForge,{180,80,0,40},120,16,260,105,16,3,Kind::Count,-1,Domain::Land,true);named(Kind::Binder,"Carceriere dell Abisso");
+  unit(Kind::Dragon,"Drago demoniaco","Volante pesante da assedio",Kind::Aviary,{310,150,0,70},440,52,290,105,26,4,Kind::Reliquary,-1,Domain::Air,true);named(Kind::Dragon,"Drago demoniaco");
+  unit(Kind::AbyssBeast,"Predatore su bestia dell Abisso","Cavalleria da sfondamento",Kind::Stable,{240,90,0,45},390,42,48,155,20,3,Kind::Reliquary,-1);named(Kind::AbyssBeast,"Predatore su bestia dell Abisso");
+  unit(Kind::MinorDemon,"Demone minore","Fanteria aggressiva",Kind::Barracks,{120,35,0,15},190,26,43,135,10,2,Kind::Reliquary,-1);named(Kind::MinorDemon,"Demone minore");
+  for(auto k:{Kind::SpiritKnight,Kind::Paladin,Kind::AbyssBeast}){d[int(k)].armor=5;d[int(k)].supply=2;}
+  d[int(Kind::Dragon)].splash=65;d[int(Kind::Dragon)].supply=3;d[int(Kind::AirArk)].supply=3;
   return d;}();return data;
 }
 inline const Definition& def(Kind k){return catalog().at(static_cast<int>(k));}
@@ -98,7 +119,7 @@ inline const std::array<ResearchDef,int(Research::Count)>& researchCatalog(){sta
  {"Corazze navali",Kind::Foundry,{130,100,40},14,2,2},{"Dottrina veterana",Kind::Sanctuary,{180,120,0},16,2,1},
  {"Sapienza arcana",Kind::Academy,{160,100,0},16,3,2},
  {"Caserma II",Kind::Barracks,{120,80,0},12,1,1},{"Caserma III",Kind::Barracks,{180,120,0},16,2,1},
- {"Silvicoltura",Kind::LumberMill,{140,80,0},18,2,1}}};return v;}
+ {"Silvicoltura",Kind::LumberMill,{140,80,0},18,2,1},{"Comando IV",Kind::Hall,{450,300,0,100},30,3,1}}};return v;}
 inline const char* spellName(Spell s){static const char* names[]={"Cura","Pioggia di fuoco","Celerita","Furia","Scudo","Rivelazione","Richiamo degli spiriti","Vortice"};return names[int(s)];}
 inline int spellCost(Spell s){static const int costs[]={25,60,30,30,35,20,55,75};return costs[int(s)];}
 }

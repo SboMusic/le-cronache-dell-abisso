@@ -31,6 +31,7 @@ void Gameplay::loadArt(){
  if(!rockArt_.loadFromFile("assets/mappe-v1/rocce-v1.png"))throw std::runtime_error("Artwork rocce mancante");rockArt_.setSmooth(true);
  sf::Image terrain;if(!terrain.loadFromFile("assets/mappe-v2/terreni-v2.png"))throw std::runtime_error("Texture terreno mancanti");auto extent=terrain.getSize();for(int i=0;i<4;++i){int w=extent.x/2,h=extent.y/2;if(!terrainArt_[i].loadFromImage(terrain,{(i%2)*w,(i/2)*h,w,h}))throw std::runtime_error("Texture terreno non valida");terrainArt_[i].setRepeated(true);terrainArt_[i].setSmooth(true);}
  if(!crystalArt_.loadFromFile("assets/campagna-v1/pietra-del-mondo.png"))throw std::runtime_error("Artwork Pietra mancante");crystalArt_.setSmooth(true);
+ if(!v2Art_.loadFromFile("assets/abisso-v2/roster-v2.png"))throw std::runtime_error("Artwork 2.0 mancante");v2Art_.setSmooth(true);
  loadDemonArt();
 }
 void Gameplay::updateVisuals(float dt){
@@ -47,14 +48,18 @@ bool Gameplay::hitEntity(const alpha::Entity& e,sf::Vector2f p)const{
  if(textureFor(e.kind))return alpha::distance(e.pos+sf::Vector2f(0,alpha::mobile(e.kind)?-12.f:-30.f),p)<(alpha::mobile(e.kind)?32.f:75.f);
  return alpha::distance(e.pos,p)<alpha::radius(e.kind)+8;
 }
+sf::IntRect Gameplay::v2Rect(alpha::Kind kind,int faction)const{
+ using K=alpha::Kind;static const K order[]={K::CrystalCave,K::Reliquary,K::Stele,K::BarrierAltar,K::RuneForge,K::Transfiguration,K::FreedomObelisk,K::CrystalMiner,K::Hippogriff,K::SpiritKnight,K::Angel,K::Paladin,K::AirArk,K::RuneBreaker,K::Binder,K::Dragon,K::AbyssBeast,K::MinorDemon};int index=0;for(int i=0;i<18;++i)if(order[i]==kind)index=i;index+=faction*18;auto size=v2Art_.getSize();int col=index%6,row=index/6;return {int(col*size.x/6),int(row*size.y/6),int((col+1)*size.x/6-col*size.x/6),int((row+1)*size.y/6-row*size.y/6)};
+}
 const sf::Texture* Gameplay::textureFor(alpha::Kind kind,int faction)const{
+ if(int(kind)>=int(alpha::Kind::CrystalCave)&&kind!=alpha::Kind::Count)return &v2Art_;
  if(faction==1&&demonTile(kind)>=0&&demonReady_[alpha::mobile(kind)?0:1])return &demonArt_[alpha::mobile(kind)?0:1];
  if(kind==alpha::Kind::Forest&&treeReady_)return &treeArt_;
  int old=alpha::legacyArt(kind);if(old>=0&&old<6&&artReady_[old])return &art_[old];
  int sheet=alpha::mobile(kind)?0:1;if(alpha::def(kind).atlas>=0&&rosterReady_[sheet])return &rosterArt_[sheet];return nullptr;
 }
 void Gameplay::drawArt(sf::RenderTarget& target,const alpha::Entity& e,const Visual& v,float fade)const{
- const bool worker=e.kind==alpha::Kind::Worker;
+ const bool worker=e.kind==alpha::Kind::Worker||e.kind==alpha::Kind::CrystalMiner;
  auto motion=presentation::workerAction(world_,e,v.speed>5);auto pose=presentation::workerPose(motion,v.phase+e.id*.07f,v.stride,e.cooldown,alpha::def(e.kind).cooldown/(e.haste>0?1.4f:1.f));
  float facing=(v.direction==1||v.direction==2)?-1.f:1.f;bool moving=v.speed>5;
  bool striking=e.order==alpha::Order::Attack&&e.route.empty()&&e.cooldown>0;
@@ -70,7 +75,7 @@ void Gameplay::drawArt(sf::RenderTarget& target,const alpha::Entity& e,const Vis
   if(alpha::mobile(e.kind)&&e.hp>0&&alpha::def(e.kind).domain==alpha::Domain::Land){float work=worker?pose.stroke:striking?combat.reach/8:0;presentation::drawActor(target,sprite,v.stride,moving,work,facing);return;}
   target.draw(sprite);
  };
- bool humanArchivist=world_.mission==2&&e.id==world_.archivist;const auto* tex=textureFor(e.kind,humanArchivist?0:e.team>=0?world_.faction[e.team]:0);bool unit=alpha::mobile(e.kind);
+ bool humanArchivist=world_.mission==2&&e.id==world_.archivist;const auto* tex=textureFor(e.kind,humanArchivist?0:e.team>=0?(world_.faction[e.team]^(e.form?1:0)):0);bool unit=alpha::mobile(e.kind);
  if(world_.mission==10&&e.id==world_.archivist){float pulse=.5f+.5f*std::sin(world_.time*1.8f);sf::CircleShape aura(95+pulse*8,64);aura.setOrigin(aura.getRadius(),aura.getRadius());aura.setScale(1,.5f);aura.setPosition(e.pos);aura.setFillColor({71,226,206,static_cast<sf::Uint8>(22+pulse*22)});aura.setOutlineThickness(2);aura.setOutlineColor({171,239,216,static_cast<sf::Uint8>(110+pulse*50)});target.draw(aura);sf::Sprite stone(crystalArt_);auto size=crystalArt_.getSize();float scale=250.f/size.y;stone.setOrigin(size.x*.5f,size.y*.84f);stone.setScale(scale,scale);stone.setPosition(e.pos);target.draw(stone);for(int i=0;i<7;++i){float t=std::fmod(world_.time*.3f+i*.14f,1.f);sf::CircleShape spark(2.f,5);spark.setPosition(e.pos+sf::Vector2f(std::sin(i*2.f+world_.time)*50,-40-t*130));spark.setFillColor({210,246,202,static_cast<sf::Uint8>((1-t)*180)});target.draw(spark);}return;}
 
  if(e.kind==alpha::Kind::Forest){
@@ -79,7 +84,10 @@ void Gameplay::drawArt(sf::RenderTarget& target,const alpha::Entity& e,const Vis
   sf::RectangleShape trunk({7*growth,22*growth});trunk.setPosition(e.pos+sf::Vector2f(-3*growth,-7*growth));trunk.setFillColor({105,72,43,static_cast<sf::Uint8>(255*fade)});target.draw(trunk);
   for(int layer=0;layer<3;++layer){float width=(24-layer*5)*growth*variation;sf::ConvexShape crown(3);crown.setPoint(0,{-width,0});crown.setPoint(1,{0,-37*growth});crown.setPoint(2,{width,0});crown.setPosition(e.pos+sf::Vector2f(0,(-4-layer*14)*growth));crown.setFillColor(sf::Color(39+layer*8,91+layer*13+(e.id%3)*7,62+layer*6,static_cast<sf::Uint8>(255*fade)));crown.setOutlineThickness(1);crown.setOutlineColor({35,65,43,static_cast<sf::Uint8>(200*fade)});target.draw(crown);}return;
  }
- if(!humanArchivist&&e.team>=0&&world_.faction[e.team]==1&&demonTile(e.kind)>=0&&demonReady_[unit?0:1]){
+ if(int(e.kind)>=int(alpha::Kind::CrystalCave)){
+  int faction=e.team>=0?world_.faction[e.team]:world_.faction[0];if(e.form)faction=1-faction;auto rect=v2Rect(e.kind,faction);sf::Sprite sprite(v2Art_,rect);float extent=unit?(e.kind==alpha::Kind::AirArk||e.kind==alpha::Kind::Dragon?145.f:worker?86.f:110.f):e.kind==alpha::Kind::CrystalCave?160.f:190.f;float scale=extent/std::max(rect.width,rect.height);sprite.setOrigin(rect.width*.5f,rect.height*.85f);sprite.setScale(scale,scale);if(unit&&(v.direction==1||v.direction==2))sprite.setScale(-scale,scale);sprite.setPosition(e.pos);sprite.setColor({255,255,255,static_cast<sf::Uint8>(fade*255)});if(unit&&alpha::def(e.kind).domain==alpha::Domain::Air)sprite.move(0,std::sin(v.phase*4)*3);applyPose(sprite);paint(sprite);return;
+ }
+ if(!humanArchivist&&e.team>=0&&(world_.faction[e.team]^(e.form?1:0))==1&&demonTile(e.kind)>=0&&demonReady_[unit?0:1]){
   sf::Sprite sprite(*tex);auto rect=demonRects_[int(e.kind)];sprite.setTextureRect(rect);float extent=unit?(worker?84.f:alpha::def(e.kind).domain==alpha::Domain::Sea?118.f:98.f):e.kind==alpha::Kind::Wall?72.f:195.f;float scale=extent/std::max(rect.width,rect.height);sprite.setOrigin(rect.width*.5f,rect.height*.83f);sprite.setScale(scale,scale);
   if(unit&&(v.direction==1||v.direction==2))sprite.setScale(-scale,scale);sprite.setPosition(e.pos);sf::Uint8 opacity=static_cast<sf::Uint8>(255*fade);sprite.setColor({255,255,255,opacity});
   if(unit&&alpha::def(e.kind).domain==alpha::Domain::Air)sprite.move(0,std::sin(v.phase*5)*4);
@@ -155,14 +163,14 @@ void Gameplay::handleEvents(const sf::Event& ev,CommandPanel&){
   if(ev.key.code==sf::Keyboard::Escape&&hasOverlay()){catalogMode_=-1;casting_=placing_=planting_=false;cursorOrder_=0;commandBuild_=false;return;}
   if(catalogMode_>=0){catalogEvent(ev,{});return;}
   if(ev.key.code==sf::Keyboard::C){for(auto& e:world_.entities)if(e.selected&&world_.cancel(e.id))break;return;}
-  if(ev.key.code==sf::Keyboard::U){for(auto& e:world_.entities)if(e.selected&&e.kind==alpha::Kind::Transport){cursorOrder_=5;world_.message="Clic sulla costa vicino al trasporto per sbarcare. Destro annulla.";break;}return;}
+  if(ev.key.code==sf::Keyboard::U){for(auto& e:world_.entities)if(e.selected&&(e.kind==alpha::Kind::Transport||e.kind==alpha::Kind::AirArk)){cursorOrder_=5;world_.message="Clic sulla costa vicino al trasporto per sbarcare. Destro annulla.";break;}return;}
   if(ev.key.code==sf::Keyboard::R){restart();return;}
   if(ev.key.code==sf::Keyboard::P){action(3);return;}
   if(ev.key.code==sf::Keyboard::O)action(0);
   if(ev.key.code==sf::Keyboard::T)action(1);
   if(ev.key.code==sf::Keyboard::B)action(2);
-  if(ev.key.code==sf::Keyboard::Space) {view_.setCenter(712,800);constrainCamera();}
-  if(ev.key.code==sf::Keyboard::H)for(auto& e:world_.entities)if(e.team==0)e.selected=e.hp>0&&e.carrier<0&&alpha::mobile(e.kind)&&e.id!=world_.archivist&&e.kind!=alpha::Kind::Worker&&(alpha::def(e.kind).damage>0||e.kind==alpha::Kind::Healer);
+  if(ev.key.code==sf::Keyboard::Space) {sf::Vector2f home{712,800};for(const auto& e:world_.entities)if(e.hp>0&&e.team==0&&e.kind==alpha::Kind::Hall){home=e.pos;break;}view_.setCenter(home);constrainCamera();}
+  if(ev.key.code==sf::Keyboard::H)for(auto& e:world_.entities)if(e.team==0)e.selected=e.hp>0&&e.form!=3&&e.carrier<0&&alpha::mobile(e.kind)&&e.id!=world_.archivist&&e.kind!=alpha::Kind::Worker&&(alpha::def(e.kind).damage>0||e.kind==alpha::Kind::Healer);
  }
  auto pixel=sf::Mouse::getPosition(*ng::Main::getWindowPtr());
  if(ev.type==sf::Event::MouseButtonPressed||ev.type==sf::Event::MouseButtonReleased)pixel={ev.mouseButton.x,ev.mouseButton.y};
@@ -187,7 +195,8 @@ void Gameplay::handleEvents(const sf::Event& ev,CommandPanel&){
    if(!inside||paused_||world_.result)return;
    if(planting_&&world_.fogEnabled&&!world_.exploredAt(mouseWorld_)){world_.message="Esplora prima questa zona.";return;}
    if(planting_){if(world_.plant(builder_,mouseWorld_))planting_=false;return;}
-   if(cursorOrder_){int mode=cursorOrder_;cursorOrder_=0;int id=pickEntity(mouseWorld_,mode==2);for(auto& e:world_.entities)if(e.selected&&e.team==0&&alpha::mobile(e.kind)){if(mode==1)world_.move(e,mouseWorld_);else if(mode==2)world_.gather(e,id);else if(mode==3)world_.attack(e,id);else if(mode==4)world_.repair(e,id);else if(mode==5&&e.kind==alpha::Kind::Transport)world_.unload(e.id,mouseWorld_);}return;}
+   if(cursorOrder_>=20){int mode=cursorOrder_;cursorOrder_=0;if(mode==23){int target=pickEntity(mouseWorld_);auto t=world_.get(target);if(t&&t->team==0)world_.tactical(target,12,mouseWorld_);}else for(auto& e:world_.entities)if(e.selected&&e.team==0){if(mode==20)world_.setDuty(e.id,3,mouseWorld_);else world_.tactical(e.id,mode==21?13:14,mouseWorld_);}return;}
+   if(cursorOrder_){int mode=cursorOrder_;cursorOrder_=0;int id=pickEntity(mouseWorld_,mode==2);for(auto& e:world_.entities)if(e.selected&&e.team==0&&alpha::mobile(e.kind)){e.duty=0;if(mode==1)world_.move(e,mouseWorld_);else if(mode==2)world_.gather(e,id);else if(mode==3)world_.attack(e,id);else if(mode==4)world_.repair(e,id);else if(mode==5&&(e.kind==alpha::Kind::Transport||e.kind==alpha::Kind::AirArk))world_.unload(e.id,mouseWorld_);}return;}
    if(casting_){for(const auto& e:world_.entities)if(e.selected&&e.team==0&&world_.supports(e.kind,pendingSpell_)){world_.cast(e.id,pendingSpell_,mouseWorld_);break;}casting_=false;return;}
    if(placing_&&world_.fogEnabled&&!world_.exploredAt(mouseWorld_)){world_.message="Esplora prima questa zona per costruire.";return;}
    if(placing_){if(world_.build(builder_,mouseWorld_,placingKind_)){
@@ -202,12 +211,12 @@ void Gameplay::handleEvents(const sf::Event& ev,CommandPanel&){
    int target=pickEntity(mouseWorld_);
    auto oilTarget=world_.get(target);if(oilTarget&&oilTarget->kind==alpha::Kind::Oil){for(const auto& e:world_.entities)if(e.selected&&e.team==0&&e.kind==alpha::Kind::Tanker){world_.build(e.id,oilTarget->pos,alpha::Kind::OilRig);return;}}
    int i=0;for(auto& e:world_.entities)if(e.selected&&e.team==0&&alpha::mobile(e.kind)&&e.hp>0){
-    auto t=world_.get(target);
-    if(t&&((alpha::resource(t->kind)&&e.kind==alpha::Kind::Worker)||(t->kind==alpha::Kind::OilRig&&e.kind==alpha::Kind::Tanker)))world_.gather(e,t->id);
-    else if(t&&t->team==0&&t->kind==alpha::Kind::Transport&&alpha::def(e.kind).domain==alpha::Domain::Land)world_.board(e,t->id);
-    else if(t&&t->team==0&&!alpha::mobile(t->kind)&&!alpha::resource(t->kind)&&e.kind==alpha::Kind::Worker)world_.repair(e,t->id);
+    auto t=world_.get(target);e.duty=0;e.channel=0;
+    if(t&&((alpha::resource(t->kind)&&(e.kind==alpha::Kind::Worker||e.kind==alpha::Kind::CrystalMiner))||(t->kind==alpha::Kind::OilRig&&e.kind==alpha::Kind::Tanker)))world_.gather(e,t->id);
+    else if(t&&t->team==0&&(t->kind==alpha::Kind::Transport||t->kind==alpha::Kind::AirArk)&&alpha::def(e.kind).domain==alpha::Domain::Land)world_.board(e,t->id);
+    else if(t&&t->team==0&&!alpha::mobile(t->kind)&&!alpha::resource(t->kind)&&(e.kind==alpha::Kind::Worker||e.kind==alpha::Kind::CrystalMiner))world_.repair(e,t->id);
     else if(t&&t->team==1)world_.attack(e,t->id);
-    else if(e.kind==alpha::Kind::Transport&&!world_.water(mouseWorld_))world_.unload(e.id,mouseWorld_);
+    else if((e.kind==alpha::Kind::Transport||e.kind==alpha::Kind::AirArk)&&!world_.water(mouseWorld_))world_.unload(e.id,mouseWorld_);
     else {auto destination=world_.mission==0&&t&&t->team<0&&t->kind==alpha::Kind::Farm?world_.missionTarget():mouseWorld_;world_.move(e,destination+sf::Vector2f((i%4)*35.f,(i/4)*35.f));++i;}
    }
   }
@@ -217,8 +226,8 @@ void Gameplay::handleEvents(const sf::Event& ev,CommandPanel&){
   bool click=alpha::distance(dragStart_,mouseWorld_)<10;
   if(click&&!sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)&&selectedWorkersGather(pickEntity(mouseWorld_)))return;
   if(!sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))for(auto& e:world_.entities)e.selected=false;
-  if(click){for(auto& e:world_.entities)if(e.hp>0&&e.carrier<0&&e.team==0&&e.id!=world_.archivist&&hitEntity(e,mouseWorld_)){e.selected=true;break;}}
-  else for(auto& e:world_.entities)if(e.hp>0&&e.carrier<0&&e.team==0&&e.id!=world_.archivist&&alpha::mobile(e.kind)&&box.contains(e.pos))e.selected=true;
+  if(click){for(auto& e:world_.entities)if(e.hp>0&&e.form!=3&&e.carrier<0&&e.team==0&&e.id!=world_.archivist&&hitEntity(e,mouseWorld_)){e.selected=true;break;}}
+  else for(auto& e:world_.entities)if(e.hp>0&&e.form!=3&&e.carrier<0&&e.team==0&&e.id!=world_.archivist&&alpha::mobile(e.kind)&&box.contains(e.pos))e.selected=true;
  }
 }
 void Gameplay::update(){

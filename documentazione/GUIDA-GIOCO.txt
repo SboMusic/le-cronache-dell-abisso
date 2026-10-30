@@ -1,3 +1,6 @@
+GUIDA CORRENTE 2.0.0-alpha.1: Guida-completa-2.0-alpha1.pdf e GUIDA-COMPLETA-ALPHA1.md accanto al gioco; nel progetto sono in documentazione/v2.
+Le note seguenti descrivono il percorso di base; i nuovi sistemi sono nella guida completa.
+
 ANTEPRIMA 2.0.0-dev.3: mappe ricostruite; nuova campagna o ricomincia missione per applicarle.
 
 LE CRONACHE DELL'ABISSO / CHRONICLES OF THE ABYSS - 1.0.0

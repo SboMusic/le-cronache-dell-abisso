@@ -1,0 +1,12 @@
+// New V2 commands exercised through the same dispatch used by icon clicks.
+for(int f=0;f<2;++f){
+ currentMission_=10;factionChoice_=f;restart();world_.raidsEnabled=false;world_.gold=world_.wood=world_.oil=world_.crystals=10000;
+ sf::Vector2f home;int worker=-1;for(const auto& e:world_.entities)if(e.team==0){if(e.kind==alpha::Kind::Hall)home=e.pos;if(e.kind==alpha::Kind::Worker)worker=e.id;}
+ int relic=world_.add(alpha::Kind::Reliquary,0,home+sf::Vector2f(500,0));for(auto& e:world_.entities)e.selected=e.id==relic;
+ auto list=commands();auto miner=std::find_if(list.begin(),list.end(),[](const Command& c){return c.type==1&&c.item==int(alpha::Kind::CrystalMiner);});require(miner!=list.end(),"V2 reliquary exposes specialist icon");executeCommand(*miner);require(world_.get(relic)->production>0,"V2 icon starts paid specialist production");
+ int forge=world_.add(alpha::Kind::RuneForge,0,home+sf::Vector2f(300,-300));for(auto& e:world_.entities)e.selected=e.id==forge;list=commands();auto rune=std::find_if(list.begin(),list.end(),[](const Command& c){return c.type==22&&c.item==2;});require(rune!=list.end(),"V2 rune forge exposes crafting command");executeCommand(*rune);for(int i=0;i<190;++i)world_.step(.05f);require(world_.runes[0][1]==1,"V2 rune crafting produces real stock");
+ int soldier=world_.add(alpha::Kind::Soldier,0,home+sf::Vector2f(200,0));for(auto& e:world_.entities)e.selected=e.id==soldier;list=commands();auto apply=std::find_if(list.begin(),list.end(),[](const Command& c){return c.type==22&&c.item==7;});require(apply!=list.end(),"V2 unit exposes available runes");executeCommand(*apply);require(world_.get(soldier)->rune==1&&world_.runes[0][1]==0,"V2 apply command consumes stock");
+ for(auto& e:world_.entities)e.selected=e.id==worker;executeCommand(Command{21,1,alpha::Kind::Forge,"",""});require(world_.get(worker)->duty==1,"V2 auto repair command assigns role");executeCommand(Command{21,0,alpha::Kind::Forge,"",""});require(world_.get(worker)->duty==0,"V2 manual command cancels role");
+ int altar=world_.add(alpha::Kind::BarrierAltar,0,home);for(auto& e:world_.entities)e.selected=e.id==altar;executeCommand(Command{22,0,alpha::Kind::BarrierAltar,"",""});require(world_.barrierTime[0]==10,"V2 barrier icon activates protection");
+ require(saveCampaign(campaignFiles::savePath().wstring())&&loadCampaign(campaignFiles::savePath().wstring())&&world_.get(soldier)->rune==1&&world_.barrierTime[0]==10,"V2 native save preserves tactical effects");
+}

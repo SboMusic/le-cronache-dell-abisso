@@ -1,11 +1,7 @@
-Frontiere - Demo alfa 1.0.0
+Le Cronache dell Abisso 2.0.0-alpha.1
 
-Installazione per l'utente corrente su Windows 10/11. Non servono Visual Studio o connessione Internet per giocare. Sono inclusi i componenti runtime necessari e l'archivio dei sorgenti.
+Anteprima locale per Windows. Avvia Avvia Anteprima 2.0.cmd nella cartella della copia 2.0. Oppure avvia gioco/ChroniclesOfTheAbyss.exe. Mantieni insieme eseguibile, DLL e cartella assets. Non serve una connessione Internet per giocare.
 
-Questa e' una versione alfa giocabile: contiene dieci missioni umane piu una battaglia finale con salvataggi locali; la campagna demoniaca, multiplayer e audio restano da sviluppare. Il gioco e' ispirato al genere RTS fantasy e usa le risorse grafiche originali di Frontiere.
+Questa build non sostituisce la release 1.0 e non comprende un nuovo installer stabile. I dati sono separati in %LOCALAPPDATA%/ChroniclesOfTheAbyss-2-preview. Le versioni precedenti non possono leggere i nuovi salvataggi mondo 6. Per i sorgenti e gli strumenti necessari alla compilazione consulta DEVELOPMENT.md.
 
-Il programma di installazione crea una cartella Frontiere e un collegamento nel menu Start. Il collegamento sul desktop e' facoltativo. La disinstallazione e' disponibile nelle App di Windows e nel menu Start.
-
-
-Italiano / English: scelta nel menu principale e di pausa del gioco.
-English guide included: GUIDE-ENGLISH.txt.
+Guida completa: v2/Guida-completa-2.0-alpha1.pdf. Testo modificabile: v2/GUIDA-COMPLETA-ALPHA1.md. Italiano e inglese si selezionano nelle opzioni. Le mappe ricostruite e le nuove meccaniche richiedono ancora bilanciamento con partite complete; la build serve a queste prove.

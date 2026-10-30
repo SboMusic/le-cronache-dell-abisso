@@ -1,3 +1,15 @@
+CURRENT PREVIEW 2.0.0-alpha.1
+
+New campaign systems: finite crystal caves and specialist miners trained at a reliquary; building levels I-IV; local steles; automatic repair, guard, patrol and camp defence. Use contextual icons and their details for costs and prerequisites. The first specialist and reliquary require gold and wood only.
+
+Protection altar: 20 crystals for a 10-second local barrier; shared 90-second cooldown. Runebreakers can interrupt protection through a 2-second ritual. Rune crafting costs 45 gold and 12 crystals, takes 8 base seconds and stores up to eight of each type; one rune per valid unit lasts 30 seconds.
+
+Binders: 60 mana, 1.5-second announced ritual, up to 10 seconds paralysis, 45-second cooldown. Freedom obelisks clear paralysis and protect nearby units. Transfiguration: 15 crystals near the sanctuary; 25 seconds of power and 10 seconds warning before corruption. Treatment costs 60 gold and 40 wood, takes 18 seconds at the facility, and starts a 240-second individual recovery. A hostile corrupted unit needs two nearby escorts and the recovery command from a sanctuary.
+
+New armies and flying arks use real producers and population. Arks carry six ground units and unload on free land. Saves use world schema 6 and read previous versions; use a new campaign for the full test experience. Campaign maps/objectives are still shared between factions. Balance and complete animation sets are under review. The full Italian guide is included under documentazione/v2.
+
+BASE GAME REFERENCE
+
 PREVIEW 2.0.0-dev.3: rebuilt maps; start a new campaign or restart the mission to use them. Mission 1 has an optional rival worker camp, without soldiers or raids.
 
 CHRONICLES OF THE ABYSS - VERSION 1.0.0

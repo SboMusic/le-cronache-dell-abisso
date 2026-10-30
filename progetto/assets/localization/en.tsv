@@ -601,3 +601,142 @@ Comando sconosciuto.	Unknown command.
 Lavoratori rivali in un campo separato: scontro facoltativo.	Rival workers in a separate camp: fighting them is optional.
 Puoi evitare il campo dei lavoratori rivali.	You can avoid the rival workers camp.
 Raggiungi il villaggio segnalato con un operaio. Puoi evitare il campo dei lavoratori rivali.	Reach the marked village with a worker. Fighting the rival camp is optional.
+
+Caverna di cristalli	Crystal cavern
+Minatore dell Aurora	Dawn miner
+Scavatore dell Abisso	Abyss digger
+Reliquiario dell Aurora	Dawn reliquary
+Reliquiario dell Abisso	Abyss reliquary
+Stele sacra	Sacred stele
+Stele dell Abisso	Abyss stele
+Altare della Protezione	Altar of Protection
+Altare del Velo Abissale	Altar of the Abyssal Veil
+Laboratorio delle Rune	Rune laboratory
+Forgia dei Sigilli	Sigil forge
+Santuario della Trasfigurazione	Sanctuary of Transfiguration
+Altare della Trasfigurazione	Altar of Transfiguration
+Obelisco della Liberta	Obelisk of Freedom
+Pilastro della Volonta	Pillar of Will
+Domatore di ipogrifi	Hippogriff tamer
+Cacciatore alato	Winged hunter
+Cavaliere dell Aurora	Dawn rider
+Cavaliere del Velo	Veil rider
+Angelo minore	Lesser angel
+Angelo caduto	Fallen angel
+Paladino del Velo	Veil paladin
+Paladino	Paladin
+Arca dell Aurora	Ark of Dawn
+Vascello dell Abisso	Abyss vessel
+Spezzarune	Runebreaker
+Profanatore del Velo	Veil defiler
+Vincolatore runico	Rune binder
+Carceriere dell Abisso	Abyss jailer
+Drago demoniaco	Demonic dragon
+Predatore su bestia dell Abisso	Abyss beast rider
+Demone minore	Lesser demon
+Estrae cristalli e li consegna al reliquiario	Mines crystals and delivers them to the reliquary
+Deposito cristalli e minatori specializzati	Crystal depot and specialist miners
+Aura locale: forza e consegne; non cumulabile	Local strength and gathering aura; does not stack
+Barriera locale di 10 s, ricarica condivisa 90 s	Local 10-second barrier; shared 90-second cooldown
+Produce rune consumabili per le truppe	Produces consumable runes for troops
+Potenzia, contiene e cura la corruzione	Empowers, contains and treats corruption
+Immunita locale alla paralisi	Local immunity to paralysis
+Intercettore volante veloce	Fast airborne interceptor
+Cavalleria spirituale veloce	Fast spirit cavalry
+Supporto aereo, cura e rivelazione	Airborne support, healing and reveal
+Fanteria pesante, scudo e cura	Heavy infantry, shield and healing
+Trasporto aereo: sei posti, sbarco su terra libera	Air transport: six passengers, unload on clear land
+Dissolve barriere e rune con rituale interrompibile	Dispels barriers and runes with an interruptible ritual
+Paralisi di gruppo annunciata, mana e ricarica	Telegraphed group paralysis, mana and cooldown
+Volante pesante da assedio	Heavy flying siege creature
+Cavalleria da sfondamento	Shock cavalry
+Fanteria aggressiva	Aggressive infantry
+Comando IV	Command Hall IV
+CRISTALLI	CRYSTALS
+Cristalli	Crystals
+cristalli	crystals
+Cristalli insufficienti.	Insufficient crystals.
+Sviluppa prima il Comando e la campagna.	Develop your command hall and advance the campaign first.
+Potenziamento edificio avviato.	Building upgrade started.
+Riparatore automatico: zona locale, riserva minima 30 oro e legno.	Automatic repair: local area, minimum reserve of 30 gold and wood.
+Presidio assegnato.	Guard post assigned.
+Pattuglia fra la posizione attuale e il punto indicato.	Patrol between the current location and the selected point.
+Riserva difensiva: risponde alle torri vicine.	Defence reserve: responds to nearby towers.
+Ruolo automatico disattivato.	Automatic role disabled.
+Barriera attiva per 10 secondi.	Barrier active for 10 seconds.
+Runa in preparazione.	Rune preparation started.
+Runa assegnata: durata 30 secondi.	Rune applied: lasts 30 seconds.
+Trasfigurazione: 25 s di potere, poi instabilita. Cura al santuario!	Transfiguration: 25 seconds of power, then instability. Seek sanctuary treatment!
+Servono due combattenti vicini per contenere il corrotto.	Two nearby fighters are required to contain the corrupted unit.
+Contenimento e cura: 18 s presso la struttura, poi 240 s di recupero.	Containment and treatment: 18 seconds at the facility, then 240 seconds of recovery.
+Rituale annunciato: movimento, danni e paralisi lo interrompono.	Ritual announced: movement, damage and paralysis interrupt it.
+Unita corrotta ostile! Due scorte e un santuario possono recuperarla.	Corrupted unit is hostile! Two escorts and a sanctuary can recover it.
+Unita guarita: recupero di 240 secondi.	Unit cured: 240-second recovery.
+In trattamento	Under treatment
+Azioni sospese	Actions suspended
+Estrai cristalli	Mine crystals
+Scegli una caverna; deposito al Reliquiario	Choose a cavern; delivery to the reliquary
+Riparatore auto	Auto repairer
+Zona 480; riparazioni pagate; riserva 30 oro/legno	480 range; paid repairs; 30 gold/wood reserve
+Presidia	Guard
+Difende la posizione e ritorna al posto	Defends the position and returns to the post
+Pattuglia	Patrol
+Clic sul secondo punto della pattuglia	Click the second patrol point
+Difendi campo	Defend camp
+Risponde agli allarmi delle torri della zona	Responds to local tower alarms
+Ruolo manuale	Manual role
+Disattiva il ruolo automatico	Disables the automatic role
+Runa rapidita	Speed rune
+Runa forza	Strength rune
+Runa vigore	Vigour rune
+Runa luce	Light rune
+Runa abissale	Abyss rune
+Consuma una runa per unita valida; durata 30 s	Consumes one rune per eligible unit; lasts 30 s
+Paralizza	Paralyse
+60 mana | 1.5 s rituale | Durata 10 s | Ricarica 45 s	60 mana | 1.5 s ritual | 10 s effect | 45 s cooldown
+Spezza sigilli	Break seals
+2 s rituale interrompibile | Ricarica 30 s	2 s interruptible ritual | 30 s cooldown
+Trasfigura	Transfigure
+Vicino al santuario | 15 cristalli | 25 s + 10 s rischio	Near sanctuary | 15 crystals | 25 s + 10 s risk
+Purifica	Purify
+Vicino al santuario | 60 oro, 40 legno | 18 s cura	Near sanctuary | 60 gold, 40 wood | 18 s treatment
+Richiede Comando e tecnologia adeguati	Requires the appropriate command hall and technology
+Barriera 10 s	Barrier 10 s
+20 cristalli | Ricarica condivisa 90 s | Raggio 320	20 crystals | Shared 90 s cooldown | 320 radius
+Crea rapidita	Craft speed
+Crea forza	Craft strength
+Crea vigore	Craft vigour
+Crea luce	Craft light
+Crea abissale	Craft abyss
+45 oro, 12 cristalli | 8 s | Max 8 per tipo	45 gold, 12 crystals | 8 s | Max 8 per type
+Recupera corrotto	Recover corrupted
+Clic sul corrotto: due scorte vicine, struttura entro 360	Click corrupted unit: two nearby escorts, facility within 360
+Azione non disponibile: controlla risorse, distanza, stato e ricarica.	Action unavailable: check resources, distance, status and cooldown.
+Unita riservata all altra fazione.	Unit reserved for the other faction.
+Richiede Comando III e Reliquiario.	Requires Command Hall III and a reliquary.
+La caverna occupa ancora questo spazio.	The cavern still occupies this space.
+Deposito: Reliquiario	Depot: Reliquary
+Trasfigurazione	Transfiguration
+PARALISI	PARALYSIS
+RISCHIO	RISK
+RITUALE	RITUAL
+RUNA	RUNE
+
+Nella 2.0 puoi scegliere liberamente l ordine dei lavori.\nIl campo rivale e facoltativo; nessun assalto iniziale.	In 2.0 you can choose your work order freely.\nThe rival camp is optional; there are no early raids.
+Nuovo: Presidia, Pattuglia e Difendi campo nei comandi.\nLe torri richiamano soltanto la riserva difensiva locale.	New: Guard, Patrol and Defend Camp commands.\nTowers call only the local defence reserve.
+Seren studia le vene di cristallo sotto gli archivi.\nCostruisci un Reliquiario e addestra minatori specializzati.\nLa caverna e finita: esplora per trovare altre riserve.	Seren studies crystal veins beneath the archives.\nBuild a reliquary and train specialist miners.\nCaverns are finite: explore to locate more reserves.
+Comando II accelera raccolta e cantieri.\nGli operai possono diventare riparatori automatici.	Command Hall II speeds up gathering and construction.\nWorkers can become automatic repairers.
+Il mare collega approdi, isole e risorse contendibili.\nScorta i trasporti e libera una spiaggia per lo sbarco.	The sea connects landings, islands and contested resources.\nEscort transports and clear a beach for landing.
+Le steli sostengono la forza e la raccolta locale.\nPrepara rune nel laboratorio e assegnale alle truppe.\nLo Spezzarune contrasta le protezioni avversarie.	Steles support local strength and gathering.\nCraft runes in the laboratory and apply them to troops.\nRunebreakers counter enemy protections.
+Armi e cristalli alimentano la corsa agli armamenti.\nSfrutta pattuglie e riserve; colpisci miniere e depositi.	Weapons and crystals fuel the arms race.\nUse patrols and reserves; strike mines and depots.
+I convogli nemici possono sbarcare reparti sulle coste.\nControlla le rotte e proteggi i porti con flotte miste.	Enemy convoys can land troops on the coast.\nControl the routes and protect ports with mixed fleets.
+La Pietra rivela barriere, vincoli e trasfigurazione.\nCura le unita prima che il potere le renda ostili.\nDue scorte possono contenere un corrotto presso il santuario.	The Stone reveals barriers, bindings and transfiguration.\nTreat units before power makes them hostile.\nTwo escorts can contain a corrupted unit near a sanctuary.
+Le due stirpi schierano nuovi reparti specializzati.\nCavalleria spirituale, bestie, ipogrifi e angeli ampliano il fronte.	Both peoples deploy new specialist troops.\nSpirit cavalry, beasts, hippogriffs and angels widen the front.
+Comando IV sblocca arche volanti e draghi demoniaci.\nPrepara difese contro paralisi e barriere, poi assedia i campi.\nLa Pietra deve restare intatta.	Command Hall IV unlocks flying arks and demonic dragons.\nPrepare counters to paralysis and barriers, then besiege the camps.\nThe Stone must remain intact.
+
+CORROTTO	CORRUPTED
+IN CURA	IN TREATMENT
+INSTABILE	UNSTABLE
+TRASFIGURATO	TRANSFIGURED
+Instabile	Unstable
+Trasfigurato	Transfigured

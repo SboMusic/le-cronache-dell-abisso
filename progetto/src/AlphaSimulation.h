@@ -23,12 +23,14 @@ struct Entity {
  float hp=80,maxHp=80,cooldown=0,build=0,buildTotal=0,production=0,productionTotal=0,work=0;
  float mana=0,maxMana=0,spellCooldown=0,haste=0,rage=0,shield=0,reveal=0,lifetime=0;
  int research=-1,level=1,constructionWorker=-1;
+ int duty=0,rune=-1,originTeam=-1,form=0;sf::Vector2f anchor,patrol,abilityTarget;
+ float dutyTimer=0,abilityCooldown=0,stun=0,stunImmunity=0,runeTime=0,transTime=0,recovery=0,channel=0;
  Cost paid;
  Order order=Order::Idle;
  std::vector<sf::Vector2f> route;
  bool selected=false;
 };
-struct Shot {sf::Vector2f pos;int target,team;float damage,splash,remaining;Kind source;};
+struct Shot {sf::Vector2f pos;int target,team;float damage,splash,remaining;Kind source;bool rogue=false;};
 struct Effect {sf::Vector2f pos;float radius,remaining,total;int type,team;};
 struct Zone {sf::Vector2f pos;float remaining,tick;int team;};
 inline float distance(sf::Vector2f a,sf::Vector2f b){auto d=a-b;return std::sqrt(d.x*d.x+d.y*d.y);}
@@ -73,6 +75,13 @@ public:
  std::vector<Shot> shots;
  std::vector<Effect> effects;
  std::vector<Zone> zones;
+ int crystals=0,enemyCrystals=0;std::array<std::array<int,5>,2> runes{};
+ float v2AiTimer=0;float barrierTime[2]={0,0},barrierCooldown[2]={0,0};sf::Vector2f barrierCenter[2];
+ bool modern()const{return layoutVersion>0;}
+ void seedV2();void updateV2(float);bool specialEconomy(Entity&,float);
+ bool levelUp(int);bool setDuty(int,int,sf::Vector2f);bool tactical(int,int,sf::Vector2f);
+ float localBonus(int,sf::Vector2f)const;float buildingRate(int)const;
+ bool newKindAllows(Kind)const;bool newFactionAllows(Kind,int)const;
  int gold=240,wood=140,oil=0,result=0;
  int enemyGold=240,enemyWood=140,enemyOil=0;
  bool guided=false;int chapter=0;float aiTimer=0;
@@ -90,7 +99,7 @@ public:
  float secureTime=0;
  std::vector<int> missionGuards;
  std::vector<Terrain> terrain=std::vector<Terrain>(2560,Terrain::Grass);
- bool factionAllows(Kind k,int team=0)const{return (k!=Kind::Mage||faction[team]==0)&&(k!=Kind::Warlock||faction[team]==1);}
+ bool factionAllows(Kind k,int team=0)const{return newFactionAllows(k,team)&&(k!=Kind::Mage||faction[team]==0)&&(k!=Kind::Warlock||faction[team]==1);}
  void startMission(int,int playerFaction=0);
  void startHumanMission(int);
  void startLaterMission(int);
@@ -158,6 +167,7 @@ public:
 #include "RtsLegacyRegions.inl"
 #include "RtsRegions.inl"
 #include "RtsCheats.inl"
+#include "RtsV2.inl"
 #include "RtsSave.inl"
 
 

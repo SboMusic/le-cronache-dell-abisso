@@ -49,7 +49,8 @@ private:
  ng::FontPtr font_=std::make_shared<sf::Font>();
  std::array<sf::Texture,6> art_;
  std::array<bool,6> artReady_{};
- sf::Texture ground_,treeArt_,rockArt_,crystalArt_;
+ sf::Texture ground_,treeArt_,rockArt_,crystalArt_,v2Art_;
+ sf::IntRect v2Rect(alpha::Kind,int)const;
  std::array<sf::Texture,4> terrainArt_;
  void drawTerrain(sf::RenderTarget&)const;
 
@@ -77,7 +78,7 @@ private:
  void executeCommandImpl(const Command&);
  std::string commandNotice_;
  float noticeTime_=0;
- bool knownEntity(const alpha::Entity& e)const{return e.team==0||(e.team==1?world_.visibleAt(e.pos):world_.exploredAt(e.pos));}
+ bool knownEntity(const alpha::Entity& e)const{if(e.form==3)return world_.visibleAt(e.pos);return e.team==0||(e.team==1?world_.visibleAt(e.pos):world_.exploredAt(e.pos));}
  int researchProducer(alpha::Research)const;
  void drawCommands(sf::RenderTarget&)const;
  void drawIcon(sf::RenderTarget&,alpha::Kind,sf::FloatRect)const;

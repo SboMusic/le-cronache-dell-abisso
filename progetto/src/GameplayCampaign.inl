@@ -34,8 +34,17 @@ void Gameplay::regressionCampaignControls(){
  campaignFiles::Record mapRecord;require(campaignFiles::inspect(campaignFiles::savePath(),mapRecord),"v2 large map is discoverable in campaign profiles");
  legacyFixture_=false;
  for(int faction=0;faction<2;++faction){factionChoice_=faction;for(int n=0;n<alpha::missionCount;++n){currentMission_=n;restart();require(world_.layoutVersion==1,"native campaign uses rebuilt authored maps");require(saveCampaign(campaignFiles::savePath().wstring())&&loadCampaign(campaignFiles::savePath().wstring())&&world_.layoutVersion==1,"native authored v5 campaign save loads with new objectives");}}
+ #include "GameplayV2Checks.inl"
  factionChoice_=0;
  const char* preview=std::getenv("FRONTIERE_MAP_PREVIEW");currentMission_=preview?std::clamp(std::atoi(preview),0,alpha::missionCount-1):0;restart();if(preview){world_.fogEnabled=false;world_.refreshVision();zoom_=1.4f;view_.setSize(1423*zoom_,976*zoom_);sf::Vector2f focus=world_.missionTarget();if(currentMission_<5)for(const auto& e:world_.entities)if(e.team==0&&e.kind==alpha::Kind::Hall){focus=e.pos+sf::Vector2f(450,0);break;}view_.setCenter(focus);constrainCamera();}if(std::getenv("FRONTIERE_OVERVIEW")){world_.fogEnabled=false;world_.refreshVision();float aspect=1423.f/976.f;float height=std::max(world_.height()*1.06f,world_.width()*1.06f/aspect);view_.setSize(height*aspect,height);view_.setCenter(world_.width()/2,world_.height()/2);}updateVisuals(.8f);
+ if(std::getenv("FRONTIERE_V2_PREVIEW")){
+  factionChoice_=std::getenv("FRONTIERE_DARK")?1:0;currentMission_=10;restart();world_.raidsEnabled=false;world_.fogEnabled=false;world_.gold=world_.wood=world_.oil=world_.crystals=5000;world_.townLevel[0]=4;
+  sf::Vector2f home;for(auto& e:world_.entities)if(e.team==0&&e.kind==alpha::Kind::Hall){home=e.pos;e.level=4;}
+  for(auto& e:world_.entities)if(e.kind==alpha::Kind::Forest&&alpha::distance(e.pos,home)<1100)e.hp=0;
+  int n=0;for(auto k:{alpha::Kind::Reliquary,alpha::Kind::Stele,alpha::Kind::BarrierAltar,alpha::Kind::RuneForge,alpha::Kind::Transfiguration,alpha::Kind::FreedomObelisk}){int id=world_.add(k,0,home+sf::Vector2f(250+(n%3)*240.f,-350+(n/3)*270.f));world_.get(id)->level=2+(n%3);++n;}
+  n=0;for(int k=int(alpha::Kind::CrystalMiner);k<int(alpha::Kind::Count);++k)if(alpha::mobile(alpha::Kind(k))&&world_.factionAllows(alpha::Kind(k))){world_.add(alpha::Kind(k),0,home+sf::Vector2f(80+(n%5)*130.f,280+(n/5)*120.f));++n;}
+  world_.resizeMap(world_.cols,world_.rows,true);world_.refreshVision();view_.setSize(1700,1166);view_.setCenter(home+sf::Vector2f(330,20));constrainCamera();visuals_.clear();updateVisuals(.1f);
+ }
  std::cout<<"SUCCESS "<<checks<<" campaign interface and save checks"<<std::endl;
 }
 

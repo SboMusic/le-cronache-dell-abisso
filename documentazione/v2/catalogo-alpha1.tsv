@@ -1,0 +1,58 @@
+0	Operaio	Imp lavoratore	Raccoglie oro/legno, costruisce e ripara	1	0	Comando	50	0	0	0	1	80	5	100	5	0	1	1
+1	Soldato	Diavolo guerriero	Fanteria da mischia	1	0	Caserma	80	0	0	0	1	130	19	115	7	0	1	1
+2	Comando	Cittadella infernale	Deposito, operai e sviluppo della citta	0	0	Nessuno	300	200	0	0	1	1000	0	0	18	0	1	1
+3	Caserma	Caserma delle fauci	Soldati; potenzia per arcieri e veterani	0	0	Nessuno	120	80	0	0	1	500	0	0	10	0	1	1
+4	Miniera	Miniera		0	1	Nessuno	0	0	0	0	1	6000	0	0	10	0	1	1
+5	Albero	Albero		0	1	Nessuno	0	0	0	0	1	80	0	0	10	0	1	1
+6	Arciere	Arciere infernale	Tiro a distanza e difesa antiaerea	1	0	Caserma	75	25	0	0	1	85	14	108	8	0	1	1
+7	Esploratore veterano	Predatore abissale	Tiratore rapido, ampia gittata	1	0	Caserma	105	35	0	0	2	105	20	120	10	0	1	1
+8	Cavaliere	Cavaliere infernale	Mischia veloce e corazzata	1	0	Scuderia	150	35	0	0	2	240	28	160	12	0	1	1
+9	Custode	Custode dell abisso	Cavaliere sacro, cura e protezione	1	0	Santuario	190	60	0	0	3	290	32	150	14	0	1	1
+10	Balista	Balista demoniaca	Assedio a lunga gittata e danni ad area	1	0	Officina	180	100	0	0	2	160	65	65	16	0	1	1
+11	Guastatore	Imp dinamitardo	Esplosione ravvicinata, monouso	1	0	Officina	100	65	0	0	2	85	180	125	10	0	1	1
+12	Arcanista	Piromante infernale	Magie offensive e controllo	1	0	Accademia arcana	190	60	0	0	3	100	20	100	14	0	1	0
+13	Evocatore	Evocatore dell abisso	Spiriti, tempesta e furia	1	0	Accademia arcana	190	60	0	0	3	100	20	100	14	0	0	1
+14	Guaritore	Sacerdote oscuro	Cura automatica e magia di supporto	1	0	Santuario	120	50	0	0	2	95	0	105	11	0	1	1
+15	Aeronave da ricognizione	Occhio alato	Volo e rilevamento dei sommergibili	1	0	Officina	110	60	0	0	2	130	0	160	12	2	1	1
+16	Roc da guerra	Viverna infernale	Attacco volante ad area, anche antiaereo	1	0	Voliera	250	100	0	0	3	280	35	140	20	2	1	1
+17	Nave cisterna	Cisterna infernale	Costruisce piattaforme e trasporta petrolio	1	0	Cantiere navale	100	40	0	0	1	160	0	115	10	1	1	1
+18	Trasporto	Arca dei dannati	Imbarca fino a sei unita terrestri	1	0	Cantiere navale	130	70	20	0	1	250	0	120	12	1	1	1
+19	Fregata	Fregata demoniaca	Scorta navale, antiaerea e rilevamento	1	0	Cantiere navale	170	80	40	0	2	280	24	115	14	1	1	1
+20	Corazzata	Corazzata infernale	Artiglieria navale e bombardamento costiero	1	0	Cantiere navale	260	150	100	0	2	480	60	75	20	1	1	1
+21	Sommergibile	Predatore sommerso	Siluri navali, occultato senza rilevatori	1	0	Cantiere navale	190	80	70	0	2	180	45	100	16	1	1	1
+22	Spirito evocato	Spettro abissale	Servitore temporaneo richiamato dai caduti	1	0	Nessuno	0	0	0	0	3	65	13	130	0	0	1	1
+23	Fattoria	Nido demoniaco	Aggiunge sei posti di popolazione	0	0	Nessuno	70	40	0	0	1	350	0	0	8	0	1	1
+24	Segheria	Segheria infernale	Deposito legno e sblocco tiratori	0	0	Nessuno	100	80	0	0	1	450	0	0	10	0	1	1
+25	Fucina	Forgia delle braci	Ricerca armi e armature	0	0	Nessuno	140	90	0	0	1	550	0	0	12	0	1	1
+26	Scuderia	Serraglio infernale	Addestra la cavalleria	0	0	Nessuno	170	100	0	0	2	550	0	0	13	0	1	1
+27	Santuario	Altare dell abisso	Guaritori, custodi e dottrina veterana	0	0	Nessuno	180	110	0	0	2	550	0	0	14	0	1	1
+28	Accademia arcana	Torre degli evocatori	Incantatori e ricerca magica	0	0	Nessuno	220	140	0	0	3	500	0	0	16	0	1	1
+29	Officina	Officina dei tormenti	Assedio, guastatori e ricognizione	0	0	Nessuno	180	120	0	0	2	550	0	0	14	0	1	1
+30	Voliera	Nido delle viverne	Addestra i roc da guerra	0	0	Nessuno	220	160	0	0	3	500	0	0	16	0	1	1
+31	Torre di vedetta	Torre del teschio	Rilevamento; evoluzione in torre armata	0	0	Nessuno	80	60	0	0	1	300	0	0	8	0	1	1
+32	Torre di guardia	Torre delle spine	Difesa a distanza e antiaerea	0	0	Nessuno	140	90	0	0	1	450	23	0	12	0	1	1
+33	Torre di artiglieria	Torre del fuoco	Difesa ad area contro terra e navi	0	0	Nessuno	190	110	0	0	2	550	48	0	14	0	1	1
+34	Cantiere navale	Cantiere dei dannati	Si costruisce sulla costa; produce navi	0	0	Nessuno	160	120	0	0	1	650	0	0	14	0	1	1
+35	Fonderia navale	Fonderia abissale	Sblocca corazzate e migliora la flotta	0	0	Nessuno	170	120	30	0	2	550	0	0	14	0	1	1
+36	Raffineria	Raffineria infernale	Aumenta il petrolio per consegna	0	0	Nessuno	140	100	0	0	1	500	0	0	12	0	1	1
+37	Piattaforma petrolifera	Trivella infernale	Cisterna: costruisci su un giacimento in mare	0	0	Nessuno	120	70	0	0	1	500	0	0	12	1	1	1
+38	Palizzata	Muro delle corna	Blocca i percorsi terrestri	0	0	Nessuno	10	15	0	0	1	280	0	0	3	0	1	1
+39	Giacimento	Giacimento		0	1	Nessuno	0	0	0	0	1	6000	0	0	10	0	1	1
+40	Caverna di cristalli	Caverna di cristalli		0	1	Nessuno	0	0	0	0	1	2400	0	0	10	0	1	1
+41	Minatore dell Aurora	Scavatore dell Abisso	Estrae cristalli e li consegna al reliquiario	1	0	Reliquiario dell Aurora	75	20	0	0	1	90	0	100	8	0	1	1
+42	Reliquiario dell Aurora	Reliquiario dell Abisso	Deposito cristalli e minatori specializzati	0	0	Nessuno	160	100	0	0	1	550	0	0	14	0	1	1
+43	Stele sacra	Stele dell Abisso	Aura locale: forza e consegne; non cumulabile	0	0	Nessuno	160	100	0	30	2	500	0	0	14	0	1	1
+44	Altare della Protezione	Altare del Velo Abissale	Barriera locale di 10 s, ricarica condivisa 90 s	0	0	Nessuno	220	140	0	50	3	600	0	0	18	0	1	1
+45	Laboratorio delle Rune	Forgia dei Sigilli	Produce rune consumabili per le truppe	0	0	Nessuno	190	130	0	30	2	550	0	0	16	0	1	1
+46	Santuario della Trasfigurazione	Altare della Trasfigurazione	Potenzia, contiene e cura la corruzione	0	0	Nessuno	230	160	0	0	3	700	0	0	20	0	1	1
+47	Obelisco della Liberta	Pilastro della Volonta	Immunita locale alla paralisi	0	0	Nessuno	180	120	0	40	2	550	0	0	15	0	1	1
+48	Domatore di ipogrifi	Cacciatore alato	Intercettore volante veloce	1	0	Voliera	230	100	0	35	3	230	30	185	18	2	1	0
+49	Cavaliere dell Aurora	Cavaliere del Velo	Cavalleria spirituale veloce	1	0	Scuderia	230	80	0	45	3	340	35	185	18	0	1	0
+50	Angelo minore	Angelo caduto	Supporto aereo, cura e rivelazione	1	0	Santuario	200	90	0	45	3	190	12	145	18	2	1	1
+51	Paladino	Paladino del Velo	Fanteria pesante, scudo e cura	1	0	Santuario	210	80	0	35	3	360	30	105	16	0	1	0
+52	Arca dell Aurora	Vascello dell Abisso	Trasporto aereo: sei posti, sbarco su terra libera	1	0	Voliera	320	180	0	80	4	420	0	90	26	2	1	1
+53	Spezzarune	Profanatore del Velo	Dissolve barriere e rune con rituale interrompibile	1	0	Laboratorio delle Rune	160	65	0	30	2	170	16	110	14	0	1	1
+54	Vincolatore runico	Carceriere dell Abisso	Paralisi di gruppo annunciata, mana e ricarica	1	0	Laboratorio delle Rune	180	80	0	40	3	120	16	105	16	0	1	1
+55	Drago demoniaco	Drago demoniaco	Volante pesante da assedio	1	0	Voliera	310	150	0	70	4	440	52	105	26	2	0	1
+56	Predatore su bestia dell Abisso	Predatore su bestia dell Abisso	Cavalleria da sfondamento	1	0	Scuderia	240	90	0	45	3	390	42	155	20	0	0	1
+57	Demone minore	Demone minore	Fanteria aggressiva	1	0	Caserma	120	35	0	15	2	190	26	135	10	0	0	1

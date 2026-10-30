@@ -37,6 +37,9 @@ documentazione/v2/anteprima-inizio-dev2.png
 documentazione/v2/base-dev3-1.png
 documentazione/v2/carichi-dev6.gif
 documentazione/v2/carichi-dev6.png
+documentazione/v2/catalogo-alpha1.tsv
+documentazione/v2/Guida-completa-2.0-alpha1.pdf
+documentazione/v2/GUIDA-COMPLETA-ALPHA1.md
 documentazione/v2/mappa-dev3-1.png
 documentazione/v2/mappa-dev3-11.png
 documentazione/v2/mappa-dev3-5.png
@@ -46,11 +49,14 @@ documentazione/v2/MAPPE-RICOSTRUITE.md
 documentazione/v2/README.md
 documentazione/v2/utensili-dev5.png
 documentazione/v2/utensili-oscuri-dev7.png
+documentazione/v2/VERIFICA-ALPHA1.json
 documentazione/v2/VERIFICA-ANIMAZIONI-004.json
 documentazione/v2/VERIFICA-M1-001.json
 documentazione/v2/VERIFICA-PREPRODUZIONE.json
 documentazione/v2/VERIFICA-REGIONI-002.json
 documentazione/v2/VERIFICA-RICOSTRUZIONE-003.json
+documentazione/v2/vista-oscuri-alpha1.png
+documentazione/v2/vista-umani-alpha1.png
 grafica/campagna-v1/prompt-pietra.md
 grafica/demoni-v1/prompt-artwork.md
 grafica/forest-v1/PROMPTS.md
@@ -72,6 +78,9 @@ grafica/source-v1/soldier.png
 grafica/source-v1/worker.png
 LEGGIMI.md
 LICENSE
+progetto/assets/abisso-v2/PROMPT-ROSTER.txt
+progetto/assets/abisso-v2/README.txt
+progetto/assets/abisso-v2/roster-v2.png
 progetto/assets/campagna-v1/pietra-del-mondo.png
 progetto/assets/demoni-v1/strutture-v1.png
 progetto/assets/demoni-v1/unita-v1.png
@@ -128,6 +137,7 @@ progetto/src/GameplayDemonArt.inl
 progetto/src/GameplayNavigation.inl
 progetto/src/GameplayRenderer.inl
 progetto/src/GameplayTerrain.inl
+progetto/src/GameplayV2Checks.inl
 progetto/src/Localization.h
 progetto/src/RtsCampaign.inl
 progetto/src/RtsCampaignLater.inl
@@ -137,6 +147,7 @@ progetto/src/RtsLegacyRegions.inl
 progetto/src/RtsProgression.inl
 progetto/src/RtsRegions.inl
 progetto/src/RtsSave.inl
+progetto/src/RtsV2.inl
 progetto/src/RtsWarCampaign.inl
 progetto/src/RtsWarEconomy.inl
 progetto/src/RtsWorld.inl
@@ -146,6 +157,7 @@ progetto/tests/alpha_tests.cpp
 progetto/tests/authored_maps_tests.cpp
 progetto/tests/campaign_slots_tests.cpp
 progetto/tests/campaign_tests.cpp
+progetto/tests/catalog_export.cpp
 progetto/tests/cheat_tests.cpp
 progetto/tests/final_battle_tests.cpp
 progetto/tests/forest_tests.cpp
@@ -154,6 +166,7 @@ progetto/tests/mechanics_tests.cpp
 progetto/tests/progression_tests.cpp
 progetto/tests/region_tests.cpp
 progetto/tests/roster_tests.cpp
+progetto/tests/v2_systems_tests.cpp
 progetto/tests/war_tests.cpp
 progetto/vendor/runtime-msvc/concrt140.dll
 progetto/vendor/runtime-msvc/msvcp140_1.dll

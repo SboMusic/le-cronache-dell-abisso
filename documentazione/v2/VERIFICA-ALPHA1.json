@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-30",
+  "version": "2.0.0-alpha.1",
+  "base": "3d1300f",
+  "build": "passed",
+  "model_suites": {
+    "alpha_tests": "SUCCESS 41 checks",
+    "authored_maps_tests": "SUCCESS 1255 authored maps, worker activity and navigation checks",
+    "campaign_slots_tests": "SUCCESS 70 faction campaign and save slot checks",
+    "campaign_tests": "SUCCESS 125 campaign maps objectives and saves checks",
+    "cheat_tests": "SUCCESS 64 cheat simulation checks",
+    "final_battle_tests": "SUCCESS both human and dark final wars, paid economy only",
+    "forest_tests": "SUCCESS 59 forest regression checks",
+    "map_foundation_tests": "SUCCESS 30 dynamic map and legacy save checks",
+    "mechanics_tests": "SUCCESS 30 economy and command mechanics checks",
+    "progression_tests": "SUCCESS 36 progression and shared economy checks",
+    "region_tests": "SUCCESS 78 progressive regions and free economy checks",
+    "roster_tests": "SUCCESS 260 roster checks",
+    "v2_systems_tests": "SUCCESS 165 V2 economy, automation, tactical, roster and save checks",
+    "war_tests": "SUCCESS 118 late campaign and final war checks"
+  },
+  "model_numbered_checks": 2331,
+  "native_modes": {
+    "display": "SUCCESS display toggle checks",
+    "control": "SUCCESS 10 interface checks",
+    "roster": "SUCCESS 84 roster interface checks",
+    "graphics": "SUCCESS 134 graphics checks",
+    "package": "SUCCESS 25 standalone package checks",
+    "forest": "SUCCESS 22 forest and camera interface checks",
+    "progress": "SUCCESS 139 guided interface checks",
+    "campaign": "SUCCESS 197 campaign interface and save checks",
+    "cheat": "SUCCESS 193 console and localization checks",
+    "presentation": "SUCCESS 39 illustration and bilingual frontend checks"
+  },
+  "new_system_suite": "165 checks, both factions, real economy commands and simulated effects; controlled fixtures use explicit starting resources.",
+  "new_native_commands": "20 additional checks in CAMPAIGN, now 197 total: recruitment, rune crafting/application, duties, barrier and v6 save/load for both factions.",
+  "save_schema": 6,
+  "save_readers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "v5_migration": "Explicit test preserves original village and adds finite crystal caves.",
+  "inventory": {
+    "kind_definitions": 58,
+    "building_types": 24,
+    "recruitable_human_types": 25,
+    "recruitable_dark_types": 25,
+    "additional_temporary_spirit": true,
+    "new_unit_roles": 11,
+    "new_buildings": 6
+  },
+  "artwork": {
+    "tool": "built-in image_gen",
+    "atlas": "progetto/assets/abisso-v2/roster-v2.png",
+    "prompt": "progetto/assets/abisso-v2/PROMPT-ROSTER.txt",
+    "layout": "6 by 6, original alpha preserved",
+    "limits": "Single-pose new roster; procedural animations and architectural accents do not replace full directional clips and four complete building art sets."
+  },
+  "visual_qa": [
+    "Engine-rendered controlled human and dark showcases; not normal paid playthroughs.",
+    "PDF 10 pages rendered via Poppler and inspected; tables, footer, image captions and pagination checked."
+  ],
+  "full_legacy_wars": [
+    "SUCCESS full final war faction 0: 253 paid units, 23 paid buildings, 32 spells, 1980 simulated seconds, no free resources",
+    "SUCCESS full final war faction 1: 219 paid units, 23 paid buildings, 26 spells, 1774 simulated seconds, no free resources",
+    "SUCCESS both human and dark final wars, paid economy only"
+  ],
+  "remaining": [
+    "Full paid playthrough and balance of all rebuilt maps with V2 mechanics",
+    "Long-running naval landing and combined tactical AI balance",
+    "Performance measurements on reference PCs",
+    "Complete directional animation and level-specific building art",
+    "Contextual language review",
+    "Independent Dark Kin narrative campaign remains outside this alpha",
+    "Stable release packaging and installer remain blocked"
+  ],
+  "stable_refs_unchanged": {
+    "main": "b68c51dfa3c5568195b798791c74d8f4358ed55b",
+    "release/1.x": "b68c51dfa3c5568195b798791c74d8f4358ed55b",
+    "v1.0.0": "49779c18f8911e33a9c981dbb338baeafdaf8e00"
+  },
+  "installer_created": false,
+  "sha256": {
+    "gioco/ChroniclesOfTheAbyss.exe": "203e8deb7972e180587ddf8372922984d31acbc3be9a0a711b450ff05d9f0d3c",
+    "progetto/src/RtsV2.inl": "f7d964dcfd8bf3026f6657c2773697bb0a1234d50e73dac4ac5f2e0be6622e62",
+    "progetto/src/RtsSave.inl": "cc65a353dd09bba206bf2cbd37635bd536be117d3597f1b5eae1974ae6313849",
+    "progetto/src/RtsCatalog.h": "3b1b28e21f034c7ee761d160ba319d3979b90244bfe3f0784e265443cbdbeb3e",
+    "progetto/assets/abisso-v2/roster-v2.png": "5f9e79baf0cd59c210e06eae1da5ac096ac7217f548a807862ac4ede402279b2",
+    "documentazione/v2/Guida-completa-2.0-alpha1.pdf": "ddd29e31841688b5f6b22cddcb2823ff1cb6ef2eed481266362ca6072564de96"
+  }
+}

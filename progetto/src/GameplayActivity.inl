@@ -1,7 +1,7 @@
 void Gameplay::drawActivity(sf::RenderTarget& target,const alpha::Entity& e,const Visual& v)const{
  if(e.hp<=0)return;
  auto line=[&](sf::Vector2f a,sf::Vector2f b,sf::Color color,float width){auto d=b-a;sf::RectangleShape r({alpha::distance(a,b),width});r.setPosition(a);r.setRotation(std::atan2(d.y,d.x)*180/3.14159265f);r.setFillColor(color);target.draw(r);};
- if(e.kind==alpha::Kind::Worker){
+ if(e.kind==alpha::Kind::Worker||e.kind==alpha::Kind::CrystalMiner){
   using A=presentation::WorkerAction;auto action=presentation::workerAction(world_,e,v.speed>5);auto pose=presentation::workerPose(action,v.phase+e.id*.07f,v.stride,e.cooldown,alpha::def(e.kind).cooldown/(e.haste>0?1.4f:1.f));
   float facing=(v.direction==1||v.direction==2)?-1.f:1.f;
   const bool dark=e.team>=0&&world_.faction[e.team]==1;
@@ -22,6 +22,8 @@ void Gameplay::drawActivity(sf::RenderTarget& target,const alpha::Entity& e,cons
      sf::CircleShape ring(1.65f,16);ring.setOrigin(1.65f,1.65f);ring.setScale(.52f,1);ring.setPosition(p+sf::Vector2f(10,0));ring.setFillColor(sf::Color::Transparent);ring.setOutlineThickness(.55f);ring.setOutlineColor({143,98,53});target.draw(ring);
     }
     for(float x:{-6.f,3.f}){line(load+sf::Vector2f(x,-9),load+sf::Vector2f(x-1,8),{75,61,39},2.5f);line(load+sf::Vector2f(x+.6f,-9),load+sf::Vector2f(x-.4f,8),{192,167,112},1.1f);}
+   }else if(e.cargoKind==alpha::Kind::CrystalCave){
+    for(int j=0;j<3;++j){sf::Vector2f p{float(j*5-5),float((j%2)*4)};polygon({p+sf::Vector2f(0,-8),p+sf::Vector2f(4,-2),p+sf::Vector2f(2,5),p+sf::Vector2f(-3,4),p+sf::Vector2f(-4,-2)},dark?sf::Color(121,52,167):sf::Color(48,166,203));line(load+p+sf::Vector2f(0,-6),load+p+sf::Vector2f(0,3),dark?sf::Color(245,128,214):sf::Color(171,240,255),1);}
    }else{
     // Stitched leather pouch: asymmetric silhouette, folds, cinched neck and a few visible nuggets.
     oval(load+sf::Vector2f(1,7),{1,.35f},9,{38,28,17,85});
@@ -70,6 +72,11 @@ void Gameplay::drawActivity(sf::RenderTarget& target,const alpha::Entity& e,cons
    if(action==A::Build||action==A::Repair){sf::CircleShape dust(8+pose.cycle*12,16);dust.setScale(1,.35f);dust.setPosition(e.pos+sf::Vector2f(facing*18,0));dust.setFillColor({182,155,115,static_cast<sf::Uint8>((1-pose.cycle)*55)});target.draw(dust);}
   }
   if((action==A::Walk||action==A::Carry)&&std::fmod(v.stride,1.f)<.25f){sf::CircleShape step(3,12);step.setScale(1,.4f);step.setPosition(e.pos+sf::Vector2f(-facing*5,12));step.setFillColor({185,161,114,60});target.draw(step);}
+ }
+ if(world_.modern()&&!alpha::mobile(e.kind)&&!alpha::resource(e.kind)&&e.build<=0&&e.level>=2){
+  bool dark=e.team>=0&&world_.faction[e.team]==1;float spread=52+e.level*4.f;
+  for(int side:{-1,1}){auto p=e.pos+sf::Vector2f(side*spread,25);line(p,p+sf::Vector2f(0,-30-e.level*9.f),dark?sf::Color(76,57,82):sf::Color(147,158,155),5);sf::CircleShape cap(e.level>=4?6.f:4.f,e.level>=4?4:3);cap.setOrigin(cap.getRadius(),cap.getRadius());cap.setPosition(p+sf::Vector2f(0,-30-e.level*9.f));cap.setFillColor(dark?sf::Color(218,66,113):sf::Color(223,194,102));target.draw(cap);}
+  for(int n=0;n<e.level-1;++n){sf::CircleShape seal(3.5f,4);seal.setOrigin(3.5f,3.5f);seal.setPosition(e.pos+sf::Vector2f(-9+n*9.f,40));seal.setFillColor(dark?sf::Color(224,82,113):sf::Color(240,211,120));target.draw(seal);}
  }
  // A small stack of cut timber replaces the oversized symbolic scaffolding.
  if(!alpha::mobile(e.kind)&&!alpha::resource(e.kind)&&e.build>0){

@@ -1,0 +1,3 @@
+#include "../src/AlphaSimulation.h"
+#include <iostream>
+int main(){alpha::World w;w.layoutVersion=1;w.mission=10;for(int i=0;i<int(alpha::Kind::Count);++i){auto k=alpha::Kind(i);auto d=alpha::def(k);std::cout<<i<<"\t"<<d.name<<"\t"<<d.clanName<<"\t"<<d.role<<"\t"<<d.unit<<"\t"<<d.node<<"\t"<<alpha::name(d.producer)<<"\t"<<d.cost.gold<<"\t"<<d.cost.wood<<"\t"<<d.cost.oil<<"\t"<<d.cost.crystals<<"\t"<<d.tier<<"\t"<<d.hp<<"\t"<<d.damage<<"\t"<<d.speed<<"\t"<<d.seconds<<"\t"<<int(d.domain)<<"\t";w.faction[0]=0;std::cout<<w.factionAllows(k)<<"\t";w.faction[0]=1;std::cout<<w.factionAllows(k)<<"\n";}}

@@ -24,3 +24,9 @@ Copy-Item (Join-Path $root "documentazione/GUIDE-ENGLISH.txt") (Join-Path $game 
 
 Copy-Item (Join-Path $root "LICENSE") (Join-Path $game "LICENSE.txt") -Force
 Copy-Item (Join-Path $root "THIRD_PARTY_NOTICES.md") (Join-Path $game "THIRD_PARTY_NOTICES.md") -Force
+
+# Bundle the current preview guide alongside the executable when it exists.
+foreach($guide in @('Guida-completa-2.0-alpha1.pdf','GUIDA-COMPLETA-ALPHA1.md')){
+ $source=Join-Path $root ('documentazione/v2/'+$guide)
+ if(Test-Path $source){Copy-Item $source (Join-Path $game $guide) -Force}
+}

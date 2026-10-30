@@ -2,7 +2,7 @@
 namespace alpha {
 inline void World::warEnemyEconomy(){
  std::string saved=message;std::vector<int> halls,producers,workers;bool constructing=false;int army=0;
- for(const auto& e:entities)if(e.hp>0&&e.team==1){if(e.kind==Kind::Hall&&e.build<=0)halls.push_back(e.id);if(e.kind==Kind::Worker){if(!busy(e))workers.push_back(e.id);}else if(mobile(e.kind)&&e.kind!=Kind::Tanker)++army;if(e.build>0)constructing=true;if(!mobile(e.kind)&&e.build<=0)producers.push_back(e.id);}
+ for(const auto& e:entities)if(e.hp>0&&e.team==1){if(e.kind==Kind::Hall&&e.build<=0)halls.push_back(e.id);if(e.kind==Kind::Worker){if(!busy(e))workers.push_back(e.id);}else if(mobile(e.kind)&&e.kind!=Kind::Tanker&&e.kind!=Kind::CrystalMiner)++army;if(e.build>0)constructing=true;if(!mobile(e.kind)&&e.build<=0)producers.push_back(e.id);}
  if(halls.empty())return;
  const int limit=mission==10?48:mission==9?36:mission==8?28:mission==7?24:mission==6?20:14;
  auto buildNear=[&](Kind kind){if(constructing||workers.empty())return false;for(int id:halls){auto anchor=get(id);if(!anchor)continue;for(int y=-350;y<=490;y+=140)for(int x=-490;x<=490;x+=140){auto p=anchor->pos+sf::Vector2f(float(x),float(y));if(p.x<100||p.x>width()-100||p.y<100||p.y>height()-100||water(p)||!placementIssue(p,kind).empty())continue;for(int worker:workers)if(build(worker,p,kind))return true;}}return false;};
@@ -33,7 +33,7 @@ inline void World::warEnemyEconomy(){
   if(e.kind==Kind::Tanker){int rig=-1;for(auto& r:entities)if(r.hp>0&&r.team==1&&r.kind==Kind::OilRig&&r.build<=0)rig=r.id;if(rig>=0)gather(e,rig);}
  }
  // Coordinated paid reinforcements: no spawned waves or income grants.
- if(missionStage>=1&&time>=wave){int target=-1;for(auto& e:entities)if(e.hp>0&&e.team==0&&e.kind==Kind::Hall){target=e.id;break;}int dispatched=0;int group=mission==10?10:mission==9?10:mission==8?8:mission==6?6:4;if(target>=0){for(auto& e:entities)if(dispatched<group&&e.hp>0&&e.team==1&&e.carrier<0&&mobile(e.kind)&&e.kind!=Kind::Worker&&e.kind!=Kind::Tanker&&e.order==Order::Idle){if(def(e.kind).domain==Domain::Sea){int port=-1;for(auto& p:entities)if(p.hp>0&&p.team==0&&p.kind==Kind::Shipyard){port=p.id;break;}if(port>=0)attack(e,port);}else if(e.kind==Kind::Healer)move(e,get(target)->pos+sf::Vector2f(300,0));else attack(e,target);++dispatched;}}wave=time+(mission==10?75.f:mission>=8?75.f:100.f);}
+ if(missionStage>=1&&time>=wave){int target=-1;for(auto& e:entities)if(e.hp>0&&e.team==0&&e.kind==Kind::Hall){target=e.id;break;}int dispatched=0;int group=mission==10?10:mission==9?10:mission==8?8:mission==6?6:4;if(target>=0){for(auto& e:entities)if(dispatched<group&&e.hp>0&&e.team==1&&e.carrier<0&&mobile(e.kind)&&e.kind!=Kind::Worker&&e.kind!=Kind::CrystalMiner&&e.kind!=Kind::Tanker&&e.order==Order::Idle){if(def(e.kind).domain==Domain::Sea){int port=-1;for(auto& p:entities)if(p.hp>0&&p.team==0&&p.kind==Kind::Shipyard){port=p.id;break;}if(port>=0)attack(e,port);}else if(e.kind==Kind::Healer)move(e,get(target)->pos+sf::Vector2f(300,0));else attack(e,target);++dispatched;}}wave=time+(mission==10?75.f:mission>=8?75.f:100.f);}
  if(mission>=8){std::vector<int> casters;for(auto& e:entities)if(e.hp>0&&e.team==1&&(e.kind==Kind::Warlock||e.kind==Kind::Mage)&&e.mana>=75&&e.spellCooldown<=0)casters.push_back(e.id);for(int id:casters){auto mage=get(id);if(!mage)continue;for(const auto& target:entities)if(target.hp>0&&target.team==0&&mobile(target.kind)&&distance(target.pos,mage->pos)<430){cast(id,mage->kind==Kind::Mage?Spell::Firestorm:Spell::Storm,target.pos);break;}}}
  message=saved;
 }

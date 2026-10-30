@@ -43,3 +43,7 @@ New authored worlds write schema 5 (layout identity and mission goal); readers r
 ## Animation increment 2.0.0-dev.4
 
 ActorAnimation.h renders non-overlapping construction bands with a soft reveal edge and articulated actor meshes. Gameplay visual state smooths the actual construction fraction; progress never runs independently. WorkerAnimation.h provides asymmetric tool strokes; soldier attacks use cooldown-relative impact/recovery, matching the simulation’s immediate damage timing. GameplayAnimationChecks.inl tests native framebuffer pixels for both factions. Save format and combat rules are unchanged.
+
+## Feature integration 2.0.0-alpha.1
+
+RtsV2.inl implements crystal economy, building levels, local duties, tactical effects, reversible corruption and paid V2 AI actions. Entity origin/control state remains explicit without indexing team arrays with a third hostile team. Shot state remembers rogue fire. World format 6 serializes these fields and reads earlier schemas; v5 import seeds finite crystal caves. New enums are appended; legacy fixture writers retain original sentinels/research counts. GameplayV2Checks.inl exercises real command dispatch, and v2_systems_tests.cpp tests both factions. Catalog export drives the player guide. New faction atlas and its original generation prompt are under assets/abisso-v2.
